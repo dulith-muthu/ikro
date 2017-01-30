@@ -1,0 +1,21 @@
+{
+  "name": "ikro",
+  "homepage": "https://github.com/mkspramuditha/ikro",
+  "authors": [
+    "Nipuna Sudharaka <nipuna.14@cse.mrt.ac.lk>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "semantic": "semantic-ui#^2.2.7"
+  }
+}
