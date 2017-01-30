@@ -1,13 +1,50 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+
+
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('bower/semantic/dist/semantic.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/app.base.css') }}">
+
+
+    {% endblock %}
+
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<body>
+<nav class="ui menu navbar">
+    <div class="ui container">
+        <a href="" class="brand item">IKRO HOME</a>
+        <a href="" class="active item">BILLING</a>
+        <a href="" class="item">DEBTS</a>
+        <a href="" class="item">STOCK</a>
+        <a href="" class="item">REPORTS</a>
+        <a href="" class="item">LOG</a>
+        <a href="" class="item">EXPENSES</a>
+        <a href="" class="item">CUSTOMERS</a>
+        <a href="" class="item">SETTINGS</a>
+    </div>
+</nav>
+<div class="ui container main-container">
+    {% block body %}{% endblock %}
+</div>
+<div class="ui inverted vertical footer segment">
+    <div class="ui container">
+        Travel Match 2017. All Rights Reserved
+    </div>
+</div>
+{% block javascripts %}
+
+    <script src="{{ asset('bower/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('bower/semantic/dist/semantic.min.js') }}"></script>
+
+
+
+{% endblock %}
+</body>
 </html>

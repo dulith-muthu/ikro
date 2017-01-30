@@ -1,0 +1,19 @@
+@import "variables";
+
+body > .grid {
+  height: 100%;
+}
+
+.image {
+  margin-top: -100px;
+}
+
+.column {
+  max-width: 450px;
+}
+
+.error-div {
+  padding-bottom: 15px;
+  font-weight: bold;
+  color: $flat-red;
+}

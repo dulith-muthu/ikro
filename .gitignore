@@ -39,3 +39,4 @@
 #custom IKRO
 .idea/*
 /SYMFONY_COMMANDS
+/web/bower/
