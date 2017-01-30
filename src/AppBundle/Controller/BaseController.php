@@ -50,4 +50,26 @@ class BaseController extends Controller
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig');
     }
+
+
+    protected function getRepository($class)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('AppBundle:'.$class);
+        return $repo;
+    }
+
+    protected function insert($object)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($object);
+        $em->flush();
+    }
+
+    protected function remove($object)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($object);
+        $em->flush();
+    }
 }
