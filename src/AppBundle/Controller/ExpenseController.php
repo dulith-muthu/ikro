@@ -26,13 +26,10 @@ class ExpenseController extends BaseController
         $form = $this->createForm(ExpenseType::class, $expense);
         $form->handleRequest($request);
 
-        $date = new \DateTime('now');
-        var_dump($date);
-        exit;
+
         if($form->isSubmitted() & $form->isValid()){
             $date = new \DateTime('now');
-            var_dump($date);
-            exit;
+
             $expense->setDateTime($date);
             $this->insert($expense);
 
