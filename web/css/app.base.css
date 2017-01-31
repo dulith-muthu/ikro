@@ -1,3 +1,32 @@
-.ui.menu.navbar{margin:0 !important}.main-container{min-height:600px}.ui.inverted.segment.footer{background-color:#212121;position:absolute !important;bottom:0;left:0;width:100%;padding:10px 0}
+.mdl-navigation .mdl-navigation__link.is-active {
+  background: #ff9800;
+  opacity: 1; }
+.mdl-navigation .mdl-navigation__link:hover {
+  background: #606fc7;
+  color: white; }
+
+footer.mdl-mini-footer {
+  padding: 0 20px; }
+
+.ikro-sidebar-div .mdl-list .mdl-list__item {
+  transition: background 0.3s; }
+  .ikro-sidebar-div .mdl-list .mdl-list__item.active {
+    background: #ff9800; }
+    .ikro-sidebar-div .mdl-list .mdl-list__item.active * {
+      color: white; }
+  .ikro-sidebar-div .mdl-list .mdl-list__item:hover {
+    background: grey;
+    cursor: pointer; }
+    .ikro-sidebar-div .mdl-list .mdl-list__item:hover * {
+      color: white; }
+    .ikro-sidebar-div .mdl-list .mdl-list__item:hover.active {
+      background: #ff9800; }
+
+.ikro-main-div {
+  padding: 30px;
+  height: 800px; }
+
+.wide-form .mdl-textfield.mdl-js-textfield {
+  width: 100%; }
 
 /*# sourceMappingURL=app.base.css.map */
