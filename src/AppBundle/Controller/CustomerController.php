@@ -24,8 +24,8 @@ class CustomerController extends BaseController
             $this->insert($customer);
 
             $this->addFlash(
-                'notice',
-                'Your changes were saved!'
+                'success',
+                'Customer successfully added'
             );
 
             return $this->redirectToRoute('customerAdd');
