@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8"/>
     <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link rel="stylesheet" type="text/css"
+          href="{{ asset('bower/material-design-icons/iconfont/material-icons.css') }}">
+
     {% block stylesheets %}
 
 
 
-        <link rel="stylesheet" type="text/css" href="{{ asset('bower/semantic/dist/semantic.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/theme/material.min.css') }}">
+
         <link rel="stylesheet" type="text/css" href="{{ asset('css/app.base.css') }}">
 
 
@@ -17,32 +22,99 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 </head>
 <body>
-<nav class="ui menu navbar">
-    <div class="ui container">
-        <a href="" class="brand item">IKRO HOME</a>
-        <a href="" class="active item">BILLING</a>
-        <a href="" class="item">DEBTS</a>
-        <a href="" class="item">STOCK</a>
-        <a href="" class="item">REPORTS</a>
-        <a href="" class="item">LOG</a>
-        <a href="" class="item">EXPENSES</a>
-        <a href="" class="item">CUSTOMERS</a>
-        <a href="" class="item">SETTINGS</a>
-    </div>
-</nav>
-<div class="ui container main-container">
-    {% block body %}{% endblock %}
+<!-- Simple header with scrollable tabs. -->
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">IKRO Trade Center</span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation. We hide it in small screens. -->
+            <nav class="mdl-navigation mdl-layout--large-screen-only">
+
+
+                <a href="" class="is-active mdl-navigation__link">BILLING</a>
+                <a href="" class="mdl-navigation__link">DEBTS</a>
+                <a href="" class="mdl-navigation__link">STOCK</a>
+                <a href="" class="mdl-navigation__link">REPORTS</a>
+                <a href="" class="mdl-navigation__link">LOG</a>
+                <a href="" class="mdl-navigation__link">EXPENSES</a>
+                <a href="" class="mdl-navigation__link">CUSTOMERS</a>
+                <a href="" class="mdl-navigation__link">SETTINGS</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="mdl-layout__content">
+        <div class="page-content">
+
+
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--2-col mdl-card mdl-shadow--2dp ikro-sidebar-div">
+                    <!-- Icon List -->
+
+
+                    <ul class="main-sidebar mdl-list">
+                        <li class="mdl-list__item active"><span class="mdl-list__item-primary-content"> <i
+                                        class="material-icons mdl-list__item-icon">person</i>
+    Bryan Cranston
+</span>
+                        </li>
+                        <li class="mdl-list__item"><span class="mdl-list__item-primary-content"> <i
+                                        class="material-icons mdl-list__item-icon">person</i>
+    Aaron Paul
+  </span>
+                        </li>
+                        <li class="mdl-list__item"><span class="mdl-list__item-primary-content"> <i
+                                        class="material-icons mdl-list__item-icon">person</i>
+    Bob Odenkirk
+  </span>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="mdl-cell mdl-cell--10-col mdl-card mdl-shadow--2dp ikro-main-div">
+                    {% block body %}{% endblock %}
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+        <footer class="mdl-mini-footer">
+            <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo">© 2017 Syntac Pvt Ltd. All Rights Reserved.</div>
+                <ul class="mdl-mini-footer__link-list">
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Privacy & Terms</a></li>
+                </ul>
+            </div>
+        </footer>
+    </main>
+
+
 </div>
-<div class="ui inverted vertical footer segment">
-    <div class="ui container">
-        Travel Match 2017. All Rights Reserved
-    </div>
-</div>
+
+{#<a href="" class="brand item">IKRO HOME</a>#}
+{#<a href="" class="active item">BILLING</a>#}
+{#<a href="" class="item">DEBTS</a>#}
+{#<a href="" class="item">STOCK</a>#}
+{#<a href="" class="item">REPORTS</a>#}
+{#<a href="" class="item">LOG</a>#}
+{#<a href="" class="item">EXPENSES</a>#}
+{#<a href="" class="item">CUSTOMERS</a>#}
+{#<a href="" class="item">SETTINGS</a>#}
+
+
+
 {% block javascripts %}
 
     <script src="{{ asset('bower/jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ asset('bower/semantic/dist/semantic.min.js') }}"></script>
-
+    <script src="{{ asset('bower/material-design-lite/material.min.js') }}"></script>
 
 
 {% endblock %}
