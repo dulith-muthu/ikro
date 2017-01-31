@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--6-col">
+            <h3>Customer List</h3>
+            {% for flash_message in app.session.flashBag.get('error') %}
+                <div class="alert alert-danger" style="text-align: center">
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+            {% for flash_message in app.session.flashBag.get('success') %}
+                <div class="alert alert-success" style="text-align: center">
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+
+            <form>
+
+                <input name="name" value="{{ name }}">
+                <input name="address" value="{{ address }}">
+                <input name="nic" value="{{ nic }}">
+                <input name="mobile" value="{{ mobile }}">
+                <input name="fixed" value="{{ fixed }}">
+                <button type="submit">Search</button>
+
+            </form>
+            <table>
+                <thead>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>NIC</th>
+                    <th>Mobile</th>
+                    <th>Fixed</th>
+                    <td>Edit</td>
+                </thead>
+            {% for customer in customers %}
+                <tr>
+                    <td>{{ customer.name }}</td>
+                    <td>{{ customer.address }}</td>
+                    <td>{{ customer.nic }}</td>
+                    <td>{{ customer.mobile }}</td>
+                    <td>{{ customer.fixed }}</td>
+                    <td><a href="{{ url('customerEdit',{id:customer.id}) }}">Edit</a></td>
+                </tr>
+
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}

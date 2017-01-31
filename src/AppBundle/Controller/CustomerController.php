@@ -68,4 +68,46 @@ class CustomerController extends BaseController
             'form' =>$form->createView()
         ));
     }
+
+    /**
+     * @Route("/admin/customer/list", name="customerList")
+     */
+
+    public function customerListAction(Request $request)
+    {
+        $name = $request->get('name');
+        $address = $request->get('address');
+        $nic = $request->get('nic');
+        $mobile = $request->get('mobile');
+        $fixed = $request->get('fixed');
+
+        var_dump($name);
+        var_dump($address);
+        var_dump($nic);
+
+        if($name != null || $address!= null || $nic!= null || $mobile!= null || $fixed!= null){
+            $customers = $this->getRepository('Customer')->search($name,$address,$nic,$mobile,$fixed);
+
+            return $this->render('customer/customerList.html.twig',array(
+               'customers'=>$customers,
+                'name'=>$name,
+                'address'=>$address,
+                'nic'=>$nic,
+                'mobile'=>$mobile,
+                'fixed'=>$fixed
+            ));
+        }
+
+        $customers = $this->getRepository('Customer')->findAll();
+        return $this->render('customer/customerList.html.twig',array(
+           'customers'=>$customers,
+            'name'=>$name,
+            'address'=>$address,
+            'nic'=>$nic,
+            'mobile'=>$mobile,
+            'fixed'=>$fixed
+        ));
+    }
+
+
 }

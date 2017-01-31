@@ -41,4 +41,37 @@ class ExpenseController extends BaseController
         ));
 
     }
+
+
+    /**
+     * @Route("/admin/expense/edit/{id}", name="expenseEdit")
+     */
+
+    public function expenseEditAction(Request $request,$id)
+    {
+        $expense = $this->getRepository('Expense')->find($id);
+        if($expense == null){
+            $this->addFlash(
+                'success',
+                'Invalid expense!'
+            );
+            return $this->redirectToRoute('expenseAdd');
+        }
+        $form = $this->createForm(ExpenseType::class, $expense);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() & $form->isValid()) {
+            $this->insert($expense);
+
+            $this->addFlash(
+                'success',
+                'Your changes were saved!'
+            );
+
+            return $this->redirectToRoute('expenseEdit');
+        }
+
+        return $this->render('expense/expenseEdit.html.twig',array(
+            'form' =>$form->createView()
+        ));
+    }
 }
