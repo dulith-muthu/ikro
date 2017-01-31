@@ -81,9 +81,6 @@ class CustomerController extends BaseController
         $mobile = $request->get('mobile');
         $fixed = $request->get('fixed');
 
-        var_dump($name);
-        var_dump($address);
-        var_dump($nic);
 
         if($name != null || $address!= null || $nic!= null || $mobile!= null || $fixed!= null){
             $customers = $this->getRepository('Customer')->search($name,$address,$nic,$mobile,$fixed);
