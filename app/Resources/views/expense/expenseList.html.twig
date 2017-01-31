@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--6-col">
+            <h3>Customer List</h3>
+            {% for flash_message in app.session.flashBag.get('error') %}
+                <div class="alert alert-danger" style="text-align: center">
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+            {% for flash_message in app.session.flashBag.get('success') %}
+                <div class="alert alert-success" style="text-align: center">
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+
+            <form>
+
+                <input name="description" value="{{ description }}">
+                <input name="amount" value="{{ amount }}">
+                <input name="startDate" value="{{ startDate }}">
+                <input name="endDate" value="{{ endDate }}">
+                <button type="submit">Search</button>
+
+            </form>
+            <table>
+                <thead>
+                <th>Type</th>
+                <th>Time</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <td>Edit</td>
+                </thead>
+                {% for expense in expenses %}
+                    <tr>
+                        <td>{{ expense.type.name }}</td>
+                        <td>{{ expense.dateTime | date('Y-m-d H:i:s') }}</td>
+                        <td>{{ expense.description }}</td>
+                        <td>{{ expense.amount }}</td>
+                        <td><a href="{{ url('expenseEdit',{id:expense.id}) }}">Edit</a></td>
+                    </tr>
+
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

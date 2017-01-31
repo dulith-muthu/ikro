@@ -33,11 +33,79 @@ class ExpenseController extends BaseController
             $expense->setDateTime($date);
             $this->insert($expense);
 
-            return $this->redirectToRoute('expenseAdd');
+            return $this->redirectToRoute('expenseList');
         }
 
         return $this->render('expense/expenseAdd.html.twig',array(
             'form' => $form->createView()
+        ));
+
+    }
+
+
+    /**
+     * @Route("/admin/expense/edit/{id}", name="expenseEdit")
+     */
+
+    public function expenseEditAction(Request $request,$id)
+    {
+        $expense = $this->getRepository('Expense')->find($id);
+        if($expense == null){
+            $this->addFlash(
+                'success',
+                'Invalid expense!'
+            );
+            return $this->redirectToRoute('expenseAdd');
+        }
+        $form = $this->createForm(ExpenseType::class, $expense);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() & $form->isValid()) {
+            $this->insert($expense);
+
+            $this->addFlash(
+                'success',
+                'Your changes were saved!'
+            );
+
+            return $this->redirectToRoute('expenseList');
+        }
+
+        return $this->render('expense/expenseEdit.html.twig',array(
+            'form' =>$form->createView()
+        ));
+    }
+
+    /**
+     * @Route("/admin/expense/list", name="expenseList")
+     */
+
+    public function expenseListAction(Request $request){
+        $description = $request->get('description');
+        $amount = $request->get('amount');
+        $startDate = $request->get('startDate');
+        $endDate = $request->get('endDate');
+
+
+        if($description != null || $amount!= null || $startDate!= null || $endDate!= null ){
+            $expenses = $this->getRepository('Expense')->search($description,$amount,$startDate,$endDate);
+
+            return $this->render('expense/expenseList.html.twig',array(
+                'expenses'=>$expenses,
+                'description'=>$description,
+                'amount'=>$amount,
+                'startDate'=>$startDate,
+                'endDate'=>$endDate,
+
+            ));
+        }
+
+        $expenses = $this->getRepository('Expense')->findAll();
+        return $this->render('expense/expenseList.html.twig',array(
+            'expenses'=>$expenses,
+            'description'=>$description,
+            'amount'=>$amount,
+            'startDate'=>$startDate,
+            'endDate'=>$endDate,
         ));
 
     }

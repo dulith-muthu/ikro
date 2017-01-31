@@ -12,4 +12,23 @@ use Doctrine\ORM\EntityRepository;
  */
 class ExpenseRepository extends EntityRepository
 {
+    public function search($description,$amount,$startDate,$endDate)
+    {
+        $qb = $this->createQueryBuilder('o');
+
+        $qb->select('o');
+
+        if($description != null & $description != ""){
+            $qb->andWhere('o.description LIKE :description')
+                ->setParameter('description',$description)
+            ;
+        }
+
+        if($amount != null & $amount != ""){
+            $qb->andWhere('o.amount LIKE :amount')
+                ->setParameter('amount',$amount)
+            ;
+        }
+        return $qb->getQuery()->getResult();
+    }
 }
