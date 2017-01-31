@@ -7,28 +7,27 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ItemType extends AbstractType
+class ExpenseType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('itemCode')
-            ->add('name')
             ->add('description')
-            ->add('availableStock')
+            ->add('amount')
+            ->add('type')
             ->add('save', SubmitType::class)
-        ;
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Item',
+            'data_class' => 'AppBundle\Entity\Expense',
         ));
     }
 
     public function getName()
     {
-        return 'app_bundle_item_type';
+        return 'app_bundle_expense_type';
     }
 }
