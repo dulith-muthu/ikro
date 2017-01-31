@@ -1,3 +1,9 @@
-body>.grid{height:100%}.image{margin-top:-100px}.column{max-width:450px}.error-div{padding-bottom:15px;font-weight:bold;color:#e74c3c}
+.mdl-layout {
+  align-items: center;
+  justify-content: center; }
+
+.mdl-layout__content {
+  padding: 24px;
+  flex: none; }
 
 /*# sourceMappingURL=app.login.css.map */

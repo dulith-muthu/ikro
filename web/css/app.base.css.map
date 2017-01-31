@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "AAAA,eAAgB,CACd,MAAM,CAAE,YAAY,CAGtB,eAAgB,CACd,UAAU,CAAE,KAAK,CAGnB,2BAA4B,CAC1B,gBAAgB,CAAE,OAAO,CACzB,QAAQ,CAAE,mBAAmB,CAC7B,MAAM,CAAE,CAAC,CACT,IAAI,CAAE,CAAC,CACP,KAAK,CAAE,IAAI,CACX,OAAO,CAAE,MAAM",
-"sources": ["../scss-ikro/app.base.scss"],
+"mappings": "",
+"sources": [],
 "names": [],
 "file": "app.base.css"
 }
