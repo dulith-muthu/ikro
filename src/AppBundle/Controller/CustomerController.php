@@ -61,7 +61,10 @@ class CustomerController extends BaseController
                 'Your changes were saved!'
             );
 
-            return $this->redirectToRoute('customerEdit');
+            $this->get('app.log')->addLog('TYPE_CUSTOMER','customer added','ACTION_ADD',$customer->getId());
+
+
+            return $this->redirectToRoute('customerList');
         }
 
         return $this->render('customer/customerEdit.html.twig',array(
