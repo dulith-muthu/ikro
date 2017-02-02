@@ -24,7 +24,7 @@ footer.mdl-mini-footer {
 
 .ikro-main-div {
   padding: 30px;
-  height: 800px; }
+  min-height: 800px; }
 
 .wide-form .mdl-textfield.mdl-js-textfield {
   width: 100%; }

@@ -1,8 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <input type="text" name="SearchProduct" id="SearchProduct" placeholder="Seach product">
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.billing.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="product-search-row">
+        <input type="text" name="SearchProduct" id="SearchProduct"
+               placeholder="Seach product">
+    </div>
     <div class="mdl-card mdl-shadow--2dp ikro-product-row">
         <table width="100%">
             <thead>
@@ -17,7 +25,8 @@
                 <th>Discount %</th>
                 <th></th>
             </tr>
-            <thead>
+            </thead>
+            <tbody>
             <tr>
                 <td>00015</td>
                 <td>Ornaments</td>
@@ -30,21 +39,21 @@
                     </select></td>
                 <td>13</td>
                 <td>JCK Industries</td>
-                <td><input class="" id="ex1" type="text"></td>
-                <td><input class="" id="ex1" type="text">
+                <td><input name="qtyInput" class="" id="qtyInput" type="number"></td>
+                <td><input name="discInput" class="" id="discInput" type="number">
                     <select name="discountSelect" id="discountSelect">
                         <option value="1">%</option>
                         <option value="2">Rs.</option>
 
                     </select>
                 </td>
-                <td><input class="" id="ex1" type="button" value="Add"> &nbsp;
-                    <input class="" id="ex1"
+                <td><input name="btnAdd" class="" id="btnAdd" type="button" value="Add"> &nbsp;
+                    <input name="btnClear" class="" id="btnClear"
                            type="button" value="Clear"></td>
 
             </tr>
 
-
+            </tbody>
         </table>
     </div>
     <table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp ikro-bill-table" width="100%">
@@ -60,7 +69,7 @@
             <th>Discount Rs.</th>
             <th>Sub Total</th>
             <th>
-                <button class="">
+                <button class="" name="btnRemoveAll" id="btnRemoveAll">
                     Remove All
                 </button>
             </th>
@@ -78,7 +87,7 @@
             <td>Rs.5,000</td>
             <td>Rs.45,000</td>
             <td>
-                <button class="">
+                <button class="" id="btnRemove" name="btnRemove">
                     X
                 </button>
             </td>
@@ -94,7 +103,7 @@
             <td>Rs.5,000</td>
             <td>Rs.45,000</td>
             <td>
-                <button class="">
+                <button class="" id="btnRemove" name="btnRemove">
                     X
                 </button>
             </td>
@@ -110,7 +119,7 @@
             <td>Rs.5,000</td>
             <td>Rs.45,000</td>
             <td>
-                <button class="">
+                <button class="" id="btnRemove" name="btnRemove">
                     X
                 </button>
             </td>
@@ -126,7 +135,7 @@
             <td>Rs.5,000</td>
             <td>Rs.45,000</td>
             <td>
-                <button class="">
+                <button class="" id="btnRemove" name="btnRemove">
                     X
                 </button>
             </td>
@@ -142,7 +151,7 @@
             <td>Rs.5,000</td>
             <td>Rs.45,000</td>
             <td>
-                <button class="">
+                <button class="" id="btnRemove" name="btnRemove">
                     X
                 </button>
             </td>
@@ -158,7 +167,7 @@
             <td>Rs.5,000</td>
             <td>Rs.45,000</td>
             <td>
-                <button class="">
+                <button class="" id="btnRemove" name="btnRemove">
                     X
                 </button>
             </td>
@@ -174,7 +183,7 @@
             <td>Rs.5,000</td>
             <td>Rs.45,000</td>
             <td>
-                <button class="">
+                <button class="" id="btnRemove" name="btnRemove">
                     X
                 </button>
             </td>
@@ -183,13 +192,13 @@
         </tbody>
     </table>
 
-    <input class="main-buttons" id="" type="button" value="Cancel">
-    <input class="main-buttons" id="" type="button" value="Quotation">
-    <input class="main-buttons" id="" type="button" value="Monthly Plan">
-    <input class="main-buttons" id="" type="button" value="Cash Payment">
-    <style>
-        .main-buttons {
-            width: 25%;
-        }
-    </style>
+    <div class="main-buttons-row">
+        <input class="main-buttons" id="btnCashPayment" type="button" value="Cash Payment">
+        <input class="main-buttons" id="btnMonthlyPlan" type="button" value="Monthly Plan">
+        <input class="main-buttons" id="btnQuotation" type="button" value="Quotation">
+        <input class="main-buttons" id="btnCancel" type="button" value="Cancel">
+
+
+    </div>
+
 {% endblock %}
