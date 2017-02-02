@@ -100,14 +100,12 @@ class ItemController extends BaseController
                 $tempObject = new \stdClass();
                 $tempObject->itemCode = $item->getItemCode();
                 $tempObject->name = $item->getName();
-                $tempObject->label = $item->getItemCode()."-".$item->getName();
+                $tempObject->label = $item->getItemCode()." - ".$item->getName();
                 $tempObject->value = $item->getItemCode();
                 //TODO manufacturer should be added to the database
                 $dataArray[] = $tempObject;
             }
             $responseObject->data = $dataArray;
-
-
         }
         else{
             $responseObject->result = false;
