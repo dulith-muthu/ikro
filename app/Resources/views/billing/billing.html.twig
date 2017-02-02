@@ -209,10 +209,14 @@
     </table>
 
     <div class="main-buttons-row">
-        <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons" id="btnCashPayment" type="button" value="Cash Payment">
-        <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons" id="btnMonthlyPlan" type="button" value="Monthly Plan">
-        <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons" id="btnQuotation" type="button" value="Quotation">
-        <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons" id="btnCancel" type="button" value="Cancel">
+        <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
+               id="btnCashPayment" type="button" value="Cash Payment">
+        <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
+               id="btnMonthlyPlan" type="button" value="Monthly Plan">
+        <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
+               id="btnQuotation" type="button" value="Quotation">
+        <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
+               id="btnCancel" type="button" value="Cancel">
 
 
     </div>
@@ -222,17 +226,8 @@
  {% block javascripts %}
      {{ parent() }}
      <script src="{{ asset('bower/jquery-ui/jquery-ui.min.js') }}"></script>
-     <script>
-         $(function () {
-             var origin=window.location.origin
-             $(function () {
-                 $("#searchProduct").autocomplete({
-                     source: origin+ "/admin/item/getItemsByCode",
-                     minLength: 1
-                 });
-             });
-         });
-     </script>
+     <script src="{{ asset('js/app.billing.js') }}"></script>
+
 
  {% endblock %}
 
