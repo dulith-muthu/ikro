@@ -99,8 +99,8 @@ class ItemController extends BaseController
             foreach ($items as $item){
                 $tempObject = new \stdClass();
                 $tempObject->itemCode = $item->getItemCode();
-                $tempObject->name = $item->getName();
-                $tempObject->type = $item->getType()->getName();
+                $tempObject->itemName = $item->getName();
+                $tempObject->itemType = $item->getType()->getName();
                 $tempObject->manufacturer = $item->getManufacturer();
                 $unitPrice = [];
                 foreach ($item->getStock() as $stock){

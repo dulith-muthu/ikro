@@ -15,6 +15,4 @@ class NotificationController extends BaseController
     public function notificationListAction(Request $request){
         return new Response("notification List");
     }
-
-
 }
