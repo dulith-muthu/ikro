@@ -56,6 +56,18 @@ class Item
      */
     private $availableStock;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Stock", mappedBy="item")
+     */
+
+    private $stock;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Sale", mappedBy="item")
+     */
+
+    private $sale;
+
 
     /**
      * @var string
@@ -219,6 +231,7 @@ class Item
     {
         return $this->stock;
     }
+<<<<<<< HEAD
 
     /**
      * Add sale
@@ -275,4 +288,6 @@ class Item
     {
         return $this->type;
     }
+=======
+>>>>>>> c74d57de822a63d22949ffa9ff2cdd61871e6e0d
 }

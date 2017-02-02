@@ -56,15 +56,6 @@ class Item
      */
     private $availableStock;
 
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="manufacturer", type="string", length=255)
-     */
-    private $manufacturer;
-
-
     /**
      * @ORM\OneToMany(targetEntity="Stock", mappedBy="item")
      */
@@ -76,6 +67,15 @@ class Item
      */
 
     private $sale;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="manufacturer", type="string", length=255)
+     */
+    private $manufacturer;
+
 
 
     /**
@@ -298,4 +298,5 @@ class Item
     {
         return $this->manufacturer;
     }
+
 }

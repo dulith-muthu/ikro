@@ -63,11 +63,10 @@ class Stock
     private $isAvailable;
 
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -90,7 +89,7 @@ class Stock
     /**
      * Get dateTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateTime()
     {
@@ -113,7 +112,7 @@ class Stock
     /**
      * Get quantity
      *
-     * @return string 
+     * @return string
      */
     public function getQuantity()
     {
@@ -136,7 +135,7 @@ class Stock
     /**
      * Get cost
      *
-     * @return string 
+     * @return string
      */
     public function getCost()
     {
@@ -159,7 +158,7 @@ class Stock
     /**
      * Get sellingPrice
      *
-     * @return float 
+     * @return float
      */
     public function getSellingPrice()
     {
@@ -182,7 +181,7 @@ class Stock
     /**
      * Get item
      *
-     * @return \AppBundle\Entity\Item 
+     * @return \AppBundle\Entity\Item
      */
     public function getItem()
     {
@@ -205,7 +204,7 @@ class Stock
     /**
      * Get isAvailable
      *
-     * @return integer 
+     * @return integer
      */
     public function getIsAvailable()
     {

@@ -110,6 +110,7 @@ class ItemController extends BaseController
                 }
                 $tempObject->unitPrice = $unitPrice;
                 $tempObject->availableStock = $item->getAvailableStock();
+
                 $tempObject->label = $item->getItemCode()." - ".$item->getName();
                 $tempObject->value = $item->getItemCode();
                 $dataArray[] = $tempObject;
