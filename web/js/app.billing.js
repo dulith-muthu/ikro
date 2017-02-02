@@ -23,7 +23,9 @@ function setProductBar(data) {
     $('.ikro-product-row .itemCode').html(data.itemCode)
     $('.ikro-product-row .itemType').html(data.itemType)
     $('.ikro-product-row .itemName').html(data.itemName)
-    addToSelectElement(".ikro-product-row #priceSelect", ["ABC", "ABC", "ABC", "ABC", "ABC"])
+    $('.ikro-product-row .manufacturer').html(data.manufacturer)
+    $('.ikro-product-row .availableQty').html(data.availableStock)
+    addToSelectElement(".ikro-product-row #priceSelect", data.unitPrice)
 }
 
 function addToSelectElement(element, selectValues) {
