@@ -100,9 +100,18 @@ class ItemController extends BaseController
                 $tempObject = new \stdClass();
                 $tempObject->itemCode = $item->getItemCode();
                 $tempObject->name = $item->getName();
+                $tempObject->type = $item->getType()->getName();
+                $tempObject->manufacturer = $item->getManufacturer();
+                $unitPrice = [];
+                foreach ($item->getStock() as $stock){
+                    if($stock->getIsAvailable == 1){
+                        $unitPrice[] = $stock->getSellingPrice();
+                    }
+                }
+                $tempObject->unitPrice = $unitPrice;
+                $tempObject->availableStock = $item->getAvailableStock();
                 $tempObject->label = $item->getItemCode()." - ".$item->getName();
                 $tempObject->value = $item->getItemCode();
-                //TODO manufacturer should be added to the database
                 $dataArray[] = $tempObject;
             }
             $responseObject->data = $dataArray;

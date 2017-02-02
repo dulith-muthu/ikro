@@ -55,6 +55,14 @@ class Stock
      */
     private $sellingPrice;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="isAvailable", type="integer")
+     */
+    private $isAvailable;
+
+
 
     /**
      * Get id
@@ -179,5 +187,28 @@ class Stock
     public function getItem()
     {
         return $this->item;
+    }
+
+    /**
+     * Set isAvailable
+     *
+     * @param integer $isAvailable
+     * @return Stock
+     */
+    public function setIsAvailable($isAvailable)
+    {
+        $this->isAvailable = $isAvailable;
+
+        return $this;
+    }
+
+    /**
+     * Get isAvailable
+     *
+     * @return integer 
+     */
+    public function getIsAvailable()
+    {
+        return $this->isAvailable;
     }
 }

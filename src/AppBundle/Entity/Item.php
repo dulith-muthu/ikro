@@ -22,6 +22,13 @@ class Item
     private $id;
 
     /**
+     * @ORM\ManyToOne(targetEntity="ItemType", inversedBy="item")
+     * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
+     */
+    private $type;
+
+
+    /**
      * @var string
      *
      * @ORM\Column(name="itemCode", type="string", length=255, unique=true)
@@ -48,6 +55,15 @@ class Item
      * @ORM\Column(name="availableStock", type="integer")
      */
     private $availableStock;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="manufacturer", type="string", length=255)
+     */
+    private $manufacturer;
+
 
     /**
      * @ORM\OneToMany(targetEntity="Stock", mappedBy="item")
@@ -235,5 +251,51 @@ class Item
     public function getSale()
     {
         return $this->sale;
+    }
+
+    /**
+     * Set type
+     *
+     * @param \AppBundle\Entity\ItemType $type
+     * @return Item
+     */
+    public function setType(\AppBundle\Entity\ItemType $type = null)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \AppBundle\Entity\ItemType 
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set manufacturer
+     *
+     * @param string $manufacturer
+     * @return Item
+     */
+    public function setManufacturer($manufacturer)
+    {
+        $this->manufacturer = $manufacturer;
+
+        return $this;
+    }
+
+    /**
+     * Get manufacturer
+     *
+     * @return string 
+     */
+    public function getManufacturer()
+    {
+        return $this->manufacturer;
     }
 }
