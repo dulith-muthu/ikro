@@ -46,7 +46,7 @@ class CustomerController extends BaseController
         $customer = $this->getRepository('Customer')->find($id);
         if($customer == null){
             $this->addFlash(
-                'success',
+                'error',
                 'Invalid customer!'
             );
             return $this->redirectToRoute('customerAdd');

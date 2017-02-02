@@ -33,6 +33,11 @@ class ExpenseController extends BaseController
             $expense->setDateTime($date);
             $this->insert($expense);
 
+            $this->addFlash(
+                'success',
+                'Your changes were saved!'
+            );
+
             return $this->redirectToRoute('expenseList');
         }
 
