@@ -90,11 +90,8 @@ class ItemController extends BaseController
     public function itemsGetByCode(Request $request){
         $itemCode = $request->get('term');
 
-//        $items = $this->getRepository('Item')->getSuggestions("s");
-//        exit;
         $items = $this->getRepository('Item')->getSuggestions($itemCode);
         $responseObject = new \stdClass();
-//        var_dump($items);
         $dataArray = [];
 
         if(count($items) >0){
