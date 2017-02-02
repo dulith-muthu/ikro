@@ -49,6 +49,18 @@ class Item
      */
     private $availableStock;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Stock", mappedBy="item")
+     */
+
+    private $stock;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Sale", mappedBy="item")
+     */
+
+    private $sale;
+
 
     /**
      * Get id
@@ -150,5 +162,45 @@ class Item
     public function getAvailableStock()
     {
         return $this->availableStock;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->stock = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add stock
+     *
+     * @param \AppBundle\Entity\Stock $stock
+     * @return Item
+     */
+    public function addStock(\AppBundle\Entity\Stock $stock)
+    {
+        $this->stock[] = $stock;
+
+        return $this;
+    }
+
+    /**
+     * Remove stock
+     *
+     * @param \AppBundle\Entity\Stock $stock
+     */
+    public function removeStock(\AppBundle\Entity\Stock $stock)
+    {
+        $this->stock->removeElement($stock);
+    }
+
+    /**
+     * Get stock
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getStock()
+    {
+        return $this->stock;
     }
 }

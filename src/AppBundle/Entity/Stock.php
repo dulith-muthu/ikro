@@ -36,6 +36,12 @@ class Stock
     private $quantity;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Item", inversedBy="stock")
+     * @ORM\JoinColumn(name="item_id", referencedColumnName="id")
+     */
+    private $item;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="cost", type="float")
@@ -150,5 +156,28 @@ class Stock
     public function getSellingPrice()
     {
         return $this->sellingPrice;
+    }
+
+    /**
+     * Set item
+     *
+     * @param \AppBundle\Entity\Item $item
+     * @return Stock
+     */
+    public function setItem(\AppBundle\Entity\Item $item = null)
+    {
+        $this->item = $item;
+
+        return $this;
+    }
+
+    /**
+     * Get item
+     *
+     * @return \AppBundle\Entity\Item 
+     */
+    public function getItem()
+    {
+        return $this->item;
     }
 }

@@ -106,8 +106,6 @@ class ItemController extends BaseController
                 $dataArray[] = $tempObject;
             }
             $responseObject->data = $dataArray;
-
-
         }
         else{
             $responseObject->result = false;
