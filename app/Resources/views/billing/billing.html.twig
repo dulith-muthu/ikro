@@ -9,8 +9,6 @@
 {% endblock %}
 
 {% block body %}
-
-
     <div class="product-search-row">
         <input type="text" name="searchProduct" id="searchProduct"
                placeholder="Seach product">
@@ -233,9 +231,10 @@
      <script src="{{ asset('bower/jquery-ui/jquery-ui.min.js') }}"></script>
      <script>
          $(function () {
+             var origin=window.location.origin
              $(function () {
                  $("#searchProduct").autocomplete({
-                     source: "http://www.json-generator.com/api/json/get/bHGTXdCrma",
+                     source: origin+ "/admin/item/getItemsByCode",
                      minLength: 1
                  });
              });

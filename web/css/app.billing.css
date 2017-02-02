@@ -1,6 +1,3 @@
-.test .ui-autocomplete-input.ui-autocomplete-loading {
-  background: wheat; }
-
 /* #Belize Hole Sea Flat Button
 ==================================================*/
 .flat-button {
@@ -63,6 +60,18 @@
     background-color: #e74c3c;
     color: white; }
 
+.product-search-row {
+  width: 100%; }
+  .product-search-row #searchProduct {
+    width: 50%;
+    line-height: 32px;
+    padding-left: 12px;
+    font-size: 20px;
+    border: 1px solid darkgrey; }
+    .product-search-row #searchProduct.ui-autocomplete-input.ui-autocomplete-loading {
+      border: 1px solid darkgrey;
+      background: url("../img/billing.img/loading.gif") no-repeat right; }
+
 .ikro-product-row {
   width: 100%;
   min-height: 0;
@@ -74,12 +83,5 @@
     line-height: 25px; }
   .ikro-product-row table select {
     height: 30px; }
-
-.main-buttons-row {
-  margin: 30px auto;
-  width: 100%; }
-  .main-buttons-row .main-buttons {
-    float: right;
-    padding: 15px; }
 
 /*# sourceMappingURL=app.billing.css.map */
