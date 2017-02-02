@@ -114,4 +114,15 @@ class ItemController extends BaseController
         return new Response($this->objectSerialize($dataArray));
     }
 
+    /**
+     * @Route("/admin/item/history/{id}", name="itemHistory")
+     */
+    public function itemHistoryAction(Request $request,$id){
+        $item = $this->getRepository('Item')->find($id);
+
+        $sales = $item->getSales();
+        $stock = $item->getStock();
+
+    }
+
 }
