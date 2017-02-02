@@ -29,4 +29,14 @@ class BaseController extends Controller
         $em->remove($object);
         $em->flush();
     }
+
+    protected function objectSerialize($object){
+        //some encoding here
+        return json_encode($object);
+    }
+
+    protected function objectDeserialize($text){
+        // some decoding here
+        return json_decode($text);
+    }
 }

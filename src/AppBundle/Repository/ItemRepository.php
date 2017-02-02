@@ -12,4 +12,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class ItemRepository extends EntityRepository
 {
+    public function getSuggestions($itemCode){
+        $qb = $this->createQueryBuilder('o');
+
+        $qb
+            ->select('o')
+            ->where('o.itemCode LIKE :itemCode')
+            ->setParameter('itemCode',"%".$itemCode."%")
+        ;
+
+        return $qb->getQuery()->getResult();
+
+    }
 }

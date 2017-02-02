@@ -78,9 +78,45 @@ class ItemController extends BaseController
      * @Route("/admin/item/list", name="itemList")
      */
 
-    public function customerListAction(Request $request)
+    public function itemListAction(Request $request)
     {
         return new Response('Item List');
+    }
+
+    /**
+     * @Route("admin/item/getItemsByCode", name = "getItemByCode")
+     */
+
+    public function itemsGetByCode(Request $request){
+        $itemCode = $request->get('term');
+
+//        $items = $this->getRepository('Item')->getSuggestions("s");
+//        exit;
+        $items = $this->getRepository('Item')->getSuggestions($itemCode);
+        $responseObject = new \stdClass();
+//        var_dump($items);
+        $dataArray = [];
+
+        if(count($items) >0){
+            $responseObject->result = true;
+            foreach ($items as $item){
+                $tempObject = new \stdClass();
+                $tempObject->itemCode = $item->getItemCode();
+                $tempObject->name = $item->getName();
+                $tempObject->label = $item->getItemCode()."-".$item->getName();
+                $tempObject->value = $item->getItemCode();
+                //TODO manufacturer should be added to the database
+                $dataArray[] = $tempObject;
+            }
+            $responseObject->data = $dataArray;
+
+
+        }
+        else{
+            $responseObject->result = false;
+            $responseObject->data = null;
+        }
+        return new Response($this->objectSerialize($dataArray));
     }
 
 }
