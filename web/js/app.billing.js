@@ -27,7 +27,7 @@ function setProductBar(data) {
     $('.ikro-product-row .itemName').html(data.itemName)
     $('.ikro-product-row .manufacturer').html(data.manufacturer)
     $('.ikro-product-row .availableQty').html(data.availableStock)
-    addToSelectElement(".ikro-product-row #priceSelect", data.unitPrice)
+    //addToSelectElement(".ikro-product-row #priceSelect", data.unitPrice) temp
 }
 function addToSelectElement(element, selectValues) {
     $(element).html("")
@@ -57,14 +57,30 @@ function insertRow() {
     currentItem['qty'] = $('#qtyInput').val()
     currentItem['disc'] = $('#discInput').val()
     currentItem['discType'] = $('#discountSelect').val()
+    currentItem['price'] = $('#priceSelect').val()
     console.log(currentItem)
     dataTable['count']++
     dataTable["data"].push(currentItem)
     renderTable()
 }
 function renderTable() {
-    var tableQuery=$('.ikro-bill-table tbody');
+    var tableQuery = $('.ikro-bill-table tbody');
     tableQuery.html("")
-    var template = "<tr><td>01</td><td>TRE-2263543</td><td>Living Room Couch</td><td>Damro Sofa Model B23</td><td>Rs.25,000</td><td>2</td><td>10%</td><td>Rs.5,000</td><td>Rs.45,000</td><td><button class='btnEdit' id='btnEdit' name='btnEdit'> ✎ </button> <button class='btnRemove' id='btnRemove' name='btnRemove'> ✖ </button></td></tr>"
-    tableQuery.append(template)
+
+    dataTable.data.forEach(function (item, index) {
+        // "+index+"
+        // "+item.availableStock+"
+        // "+item.disc+"
+        // "+item.discType+"
+        // "+item.itemCode+"
+        // "+item.itemName+"
+        // "+item.itemType+"
+        // "+item.manufacturer+"
+        // "+item.price+"
+        // "+item.qty+"
+        var template = "<tr><td> "+index+"</td><td>"+item.itemCode+"</td><td>"+item.itemType+"</td><td>"+item.itemName+"</td><td>"+item.price+"</td><td>"+item.qty+"</td><td>"+item.disc+"</td><td>"+item.disc+"</td><td>"+item.price+"</td><td><button class='btnEdit' id='btnEdit' name='btnEdit'> ✎ </button> <button class='btnRemove' id='btnRemove' name='btnRemove'> ✖ </button></td></tr>"
+        tableQuery.append(template)
+    })
+
+
 }
