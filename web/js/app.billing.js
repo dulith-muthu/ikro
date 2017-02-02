@@ -60,4 +60,11 @@ function insertRow() {
     console.log(currentItem)
     dataTable['count']++
     dataTable["data"].push(currentItem)
+    renderTable()
+}
+function renderTable() {
+    var tableQuery=$('.ikro-bill-table tbody');
+    tableQuery.html("")
+    var template = "<tr><td>01</td><td>TRE-2263543</td><td>Living Room Couch</td><td>Damro Sofa Model B23</td><td>Rs.25,000</td><td>2</td><td>10%</td><td>Rs.5,000</td><td>Rs.45,000</td><td><button class='btnEdit' id='btnEdit' name='btnEdit'> ✎ </button> <button class='btnRemove' id='btnRemove' name='btnRemove'> ✖ </button></td></tr>"
+    tableQuery.append(template)
 }
