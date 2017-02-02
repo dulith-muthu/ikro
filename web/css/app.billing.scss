@@ -30,6 +30,7 @@
     }
     input[type='number'] {
       line-height: 25px;
+      padding-left: 10px;
     }
     select {
       height: 30px;
@@ -38,11 +39,11 @@
   }
 }
 
-//.main-buttons-row {
-//  margin: 30px auto;
-//  width: 100%;
-//  .main-buttons {
-//    float: right;
-//    padding: 15px;
-//  }
-//}
+.main-buttons-row {
+  margin: 30px auto;
+  width: 100%;
+  .main-buttons {
+    float: right;
+    margin-left: 6px;
+  }
+}
