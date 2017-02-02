@@ -1,5 +1,6 @@
 @import "variables";
 //============================================================
+
 .product-search-row {
   width: 100%;
   #searchProduct {
@@ -19,6 +20,7 @@
 
 
 //========================================
+
 .ikro-product-row {
   width: 100%;
   min-height: 0;
@@ -28,6 +30,7 @@
     th {
       text-align: left;
     }
+
     input[type='number'] {
       line-height: 25px;
       padding-left: 10px;
@@ -45,5 +48,6 @@
   .main-buttons {
     float: right;
     margin-left: 6px;
+
   }
 }
