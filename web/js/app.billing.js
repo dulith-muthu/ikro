@@ -1,7 +1,8 @@
+var dataTable = {'count': 0, 'data': []};
+var currentItem = {};
 $(function () {
     initAutocomplete();
 })
-
 
 function initAutocomplete() {
     var origin = window.location.origin
@@ -12,14 +13,14 @@ function initAutocomplete() {
             select: function (event, object) {
 
                 console.log(object.item)
+                currentItem = object.item
                 setProductBar(object.item)
                 jumpToNextTabIndex(object.item.unitPrice)
                 console.log(this)
             }
         });
     });
-};
-
+}
 function setProductBar(data) {
     $('.ikro-product-row .itemCode').html(data.itemCode)
     $('.ikro-product-row .itemType').html(data.itemType)
@@ -28,7 +29,6 @@ function setProductBar(data) {
     $('.ikro-product-row .availableQty').html(data.availableStock)
     addToSelectElement(".ikro-product-row #priceSelect", data.unitPrice)
 }
-
 function addToSelectElement(element, selectValues) {
     $(element).html("")
     setUnitPriceCount(selectValues)
@@ -51,3 +51,13 @@ function jumpToNextTabIndex(priceArray) {
 
 }
 
+function insertRow() {
+    delete currentItem['label']
+    delete currentItem['value']
+    currentItem['qty'] = $('#qtyInput').val()
+    currentItem['disc'] = $('#discInput').val()
+    currentItem['discType'] = $('#discountSelect').val()
+    console.log(currentItem)
+    dataTable['count']++
+    dataTable["data"].push(currentItem)
+}
