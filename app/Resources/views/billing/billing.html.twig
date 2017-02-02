@@ -5,9 +5,31 @@
     {{ parent() }}
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.billing.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('bower/jquery-ui/themes/base/autocomplete.css') }}">
+
 {% endblock %}
 
 {% block body %}
+    <div class="test">
+
+
+        <input id="autocomplete-5">
+        <br><br><br><br><br><br><br><br>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="product-search-row">
         <input type="text" name="SearchProduct" id="SearchProduct"
                placeholder="Seach product">
@@ -48,8 +70,8 @@
 
                     </select>
                 </td>
-                <td><input name="btnAdd" class="" id="btnAdd" type="button" value="Add"> &nbsp;
-                    <input name="btnClear" class="" id="btnClear"
+                <td><input name="btnAdd" class="flat-button" id="btnAdd" type="button" value="Add"> &nbsp;
+                    <input name="btnClear" class="flat-button red" id="btnClear"
                            type="button" value="Clear"></td>
 
             </tr>
@@ -88,8 +110,11 @@
             <td>Rs.5,000</td>
             <td>Rs.45,000</td>
             <td>
-                <button class="" id="btnRemove" name="btnRemove">
-                    X
+                <button class="btnEdit" id="btnEdit" name="btnEdit">
+                    ✎
+                </button>
+                <button class="btnRemove" id="btnRemove" name="btnRemove">
+                    ✖
                 </button>
             </td>
         </tr>
@@ -104,8 +129,11 @@
             <td>Rs.5,000</td>
             <td>Rs.45,000</td>
             <td>
-                <button class="" id="btnRemove" name="btnRemove">
-                    X
+                <button class="btnEdit" id="btnEdit" name="btnEdit">
+                    ✎
+                </button>
+                <button class="btnRemove" id="btnRemove" name="btnRemove">
+                    ✖
                 </button>
             </td>
         </tr>
@@ -120,8 +148,11 @@
             <td>Rs.5,000</td>
             <td>Rs.45,000</td>
             <td>
-                <button class="" id="btnRemove" name="btnRemove">
-                    X
+                <button class="btnEdit" id="btnEdit" name="btnEdit">
+                    ✎
+                </button>
+                <button class="btnRemove" id="btnRemove" name="btnRemove">
+                    ✖
                 </button>
             </td>
         </tr>
@@ -136,8 +167,11 @@
             <td>Rs.5,000</td>
             <td>Rs.45,000</td>
             <td>
-                <button class="" id="btnRemove" name="btnRemove">
-                    X
+                <button class="btnEdit" id="btnEdit" name="btnEdit">
+                    ✎
+                </button>
+                <button class="btnRemove" id="btnRemove" name="btnRemove">
+                    ✖
                 </button>
             </td>
         </tr>
@@ -152,8 +186,11 @@
             <td>Rs.5,000</td>
             <td>Rs.45,000</td>
             <td>
-                <button class="" id="btnRemove" name="btnRemove">
-                    X
+                <button class="btnEdit" id="btnEdit" name="btnEdit">
+                    ✎
+                </button>
+                <button class="btnRemove" id="btnRemove" name="btnRemove">
+                    ✖
                 </button>
             </td>
         </tr>
@@ -168,8 +205,11 @@
             <td>Rs.5,000</td>
             <td>Rs.45,000</td>
             <td>
-                <button class="" id="btnRemove" name="btnRemove">
-                    X
+                <button class="btnEdit" id="btnEdit" name="btnEdit">
+                    ✎
+                </button>
+                <button class="btnRemove" id="btnRemove" name="btnRemove">
+                    ✖
                 </button>
             </td>
         </tr>
@@ -184,8 +224,11 @@
             <td>Rs.5,000</td>
             <td>Rs.45,000</td>
             <td>
-                <button class="" id="btnRemove" name="btnRemove">
-                    X
+                <button class="btnEdit" id="btnEdit" name="btnEdit">
+                    ✎
+                </button>
+                <button class="btnRemove" id="btnRemove" name="btnRemove">
+                    ✖
                 </button>
             </td>
         </tr>
@@ -207,6 +250,15 @@
  {% block javascripts %}
      {{ parent() }}
      <script src="{{ asset('bower/jquery-ui/jquery-ui.min.js') }}"></script>
-
+     <script>
+         $(function () {
+             $(function () {
+                 $("#autocomplete-5").autocomplete({
+                     source: "/jqueryui/search.php",
+                     minLength: 1
+                 });
+             });
+         });
+     </script>
 
  {% endblock %}
