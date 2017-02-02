@@ -70,6 +70,10 @@
   padding: 20px; }
   .ikro-product-row table th {
     text-align: left; }
+  .ikro-product-row table input[type='number'] {
+    line-height: 25px; }
+  .ikro-product-row table select {
+    height: 30px; }
 
 .main-buttons-row {
   margin: 30px auto;

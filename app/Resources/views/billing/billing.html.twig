@@ -4,34 +4,15 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.billing.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('bower/jquery-ui/themes/base/autocomplete.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('bower/jquery-ui/themes/base/jquery-ui.min.css') }}">
 
 {% endblock %}
 
 {% block body %}
-    <div class="test">
-
-
-        <input id="autocomplete-5">
-        <br><br><br><br><br><br><br><br>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     <div class="product-search-row">
-        <input type="text" name="SearchProduct" id="SearchProduct"
+        <input type="text" name="searchProduct" id="searchProduct"
                placeholder="Seach product">
     </div>
     <div class="mdl-card mdl-shadow--2dp ikro-product-row">
@@ -253,8 +234,8 @@
      <script>
          $(function () {
              $(function () {
-                 $("#autocomplete-5").autocomplete({
-                     source: "/jqueryui/search.php",
+                 $("#searchProduct").autocomplete({
+                     source: "http://www.json-generator.com/api/json/get/bHGTXdCrma",
                      minLength: 1
                  });
              });
@@ -262,3 +243,4 @@
      </script>
 
  {% endblock %}
+
