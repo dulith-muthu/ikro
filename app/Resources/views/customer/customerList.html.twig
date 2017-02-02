@@ -46,6 +46,10 @@
 
                 {% endfor %}
             </table>
+
+            <div class="navigation">
+                {{ knp_pagination_render(customers) }}
+            </div>
         </div>
     </div>
 {% endblock %}

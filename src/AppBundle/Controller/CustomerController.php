@@ -87,20 +87,20 @@ class CustomerController extends BaseController
 
         if($name != null || $address!= null || $nic!= null || $mobile!= null || $fixed!= null){
             $customers = $this->getRepository('Customer')->search($name,$address,$nic,$mobile,$fixed);
-
-            return $this->render('customer/customerList.html.twig',array(
-               'customers'=>$customers,
-                'name'=>$name,
-                'address'=>$address,
-                'nic'=>$nic,
-                'mobile'=>$mobile,
-                'fixed'=>$fixed
-            ));
+        }
+        else{
+            $customers = $this->getRepository('Customer')->findAll();
         }
 
-        $customers = $this->getRepository('Customer')->findAll();
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $customers, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
+
         return $this->render('customer/customerList.html.twig',array(
-           'customers'=>$customers,
+           'customers'=>$pagination,
             'name'=>$name,
             'address'=>$address,
             'nic'=>$nic,
