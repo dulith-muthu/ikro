@@ -1,0 +1,195 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <input type="text" name="SearchProduct" id="SearchProduct" placeholder="Seach product">
+
+    <div class="mdl-card mdl-shadow--2dp ikro-product-row">
+        <table width="100%">
+            <thead>
+            <tr>
+                <th>Item Code</th>
+                <th>Item Type</th>
+                <th>Item Name</th>
+                <th>Unit Price</th>
+                <th>Available Qty</th>
+                <th>Manufacturer</th>
+                <th>Quantity</th>
+                <th>Discount %</th>
+                <th></th>
+            </tr>
+            <thead>
+            <tr>
+                <td>00015</td>
+                <td>Ornaments</td>
+                <td>Flower Pot</td>
+                <td><select name="priceSelect" id="priceSelect">
+                        <option value="100">Rs.100</option>
+                        <option value="200">Rs.200</option>
+                        <option value="300">Rs.300</option>
+                        <option value="400">Rs.400</option>
+                    </select></td>
+                <td>13</td>
+                <td>JCK Industries</td>
+                <td><input class="" id="ex1" type="text"></td>
+                <td><input class="" id="ex1" type="text">
+                    <select name="discountSelect" id="discountSelect">
+                        <option value="1">%</option>
+                        <option value="2">Rs.</option>
+
+                    </select>
+                </td>
+                <td><input class="" id="ex1" type="button" value="Add"> &nbsp;
+                    <input class="" id="ex1"
+                           type="button" value="Clear"></td>
+
+            </tr>
+
+
+        </table>
+    </div>
+    <table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp ikro-bill-table" width="100%">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Item Code</th>
+            <th>Item Type</th>
+            <th>Item Name</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Discount %</th>
+            <th>Discount Rs.</th>
+            <th>Sub Total</th>
+            <th>
+                <button class="">
+                    Remove All
+                </button>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>01</td>
+            <td>TRE-2263543</td>
+            <td>Living Room Couch</td>
+            <td>Damro Sofa Model B23</td>
+            <td>Rs.25,000</td>
+            <td>2</td>
+            <td>10%</td>
+            <td>Rs.5,000</td>
+            <td>Rs.45,000</td>
+            <td>
+                <button class="">
+                    X
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td>01</td>
+            <td>TRE-2263543</td>
+            <td>Living Room Couch</td>
+            <td>Damro Sofa Model B23</td>
+            <td>Rs.25,000</td>
+            <td>2</td>
+            <td>10%</td>
+            <td>Rs.5,000</td>
+            <td>Rs.45,000</td>
+            <td>
+                <button class="">
+                    X
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td>01</td>
+            <td>TRE-2263543</td>
+            <td>Living Room Couch</td>
+            <td>Damro Sofa Model B23</td>
+            <td>Rs.25,000</td>
+            <td>2</td>
+            <td>10%</td>
+            <td>Rs.5,000</td>
+            <td>Rs.45,000</td>
+            <td>
+                <button class="">
+                    X
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td>01</td>
+            <td>TRE-2263543</td>
+            <td>Living Room Couch</td>
+            <td>Damro Sofa Model B23</td>
+            <td>Rs.25,000</td>
+            <td>2</td>
+            <td>10%</td>
+            <td>Rs.5,000</td>
+            <td>Rs.45,000</td>
+            <td>
+                <button class="">
+                    X
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td>01</td>
+            <td>TRE-2263543</td>
+            <td>Living Room Couch</td>
+            <td>Damro Sofa Model B23</td>
+            <td>Rs.25,000</td>
+            <td>2</td>
+            <td>10%</td>
+            <td>Rs.5,000</td>
+            <td>Rs.45,000</td>
+            <td>
+                <button class="">
+                    X
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td>01</td>
+            <td>TRE-2263543</td>
+            <td>Living Room Couch</td>
+            <td>Damro Sofa Model B23</td>
+            <td>Rs.25,000</td>
+            <td>2</td>
+            <td>10%</td>
+            <td>Rs.5,000</td>
+            <td>Rs.45,000</td>
+            <td>
+                <button class="">
+                    X
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td>01</td>
+            <td>TRE-2263543</td>
+            <td>Living Room Couch</td>
+            <td>Damro Sofa Model B23</td>
+            <td>Rs.25,000</td>
+            <td>2</td>
+            <td>10%</td>
+            <td>Rs.5,000</td>
+            <td>Rs.45,000</td>
+            <td>
+                <button class="">
+                    X
+                </button>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+    <input class="main-buttons" id="" type="button" value="Cancel">
+    <input class="main-buttons" id="" type="button" value="Quotation">
+    <input class="main-buttons" id="" type="button" value="Monthly Plan">
+    <input class="main-buttons" id="" type="button" value="Cash Payment">
+    <style>
+        .main-buttons {
+            width: 25%;
+        }
+    </style>
+{% endblock %}
