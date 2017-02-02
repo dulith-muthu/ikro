@@ -13,7 +13,8 @@ function initAutocomplete() {
 
                 console.log(object.item)
                 setProductBar(object.item)
-                $("#priceSelect").focus()
+                jumpToNextTabIndex(object.item.unitPrice)
+                console.log(this)
             }
         });
     });
@@ -41,5 +42,12 @@ function addToSelectElement(element, selectValues) {
 function setUnitPriceCount(selectValues) {
     $('#unitPriceCaption').html("Unit Price (" + selectValues.length + ")")
 }
+function jumpToNextTabIndex(priceArray) {
+    if (priceArray > 1) {
+        $("#priceSelect").focus()
+    } else {
+        $("#qtyInput").focus()
+    }
 
+}
 
