@@ -1,2 +1,22 @@
 @import "variables";
 //============================================================
+.ikro-product-row {
+  width: 100%;
+  min-height: 0;
+  margin: 15px 0;
+  padding: 20px;
+  table {
+    th {
+      text-align: left;
+    }
+
+  }
+}
+.main-buttons-row{
+  margin: 30px auto;
+  width:100%;
+  .main-buttons{
+    float: right;
+    padding: 15px;
+  }
+}
