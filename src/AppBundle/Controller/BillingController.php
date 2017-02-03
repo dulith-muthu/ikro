@@ -23,4 +23,14 @@ class BillingController extends BaseController
 
     }
 
+    /**
+     * @Route("/bill/purchase" ,name="billPurchase")
+     */
+
+    public function billingPurchaseAction(Request $request){
+        $data = $this->objectDeserialize($request->get('bill'));
+        var_dump($data);
+        exit;
+    }
+
 }
