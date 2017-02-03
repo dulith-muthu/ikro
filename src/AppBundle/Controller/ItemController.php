@@ -104,7 +104,7 @@ class ItemController extends BaseController
                 $tempObject->manufacturer = $item->getManufacturer();
                 $unitPrice = [];
                 foreach ($item->getStock() as $stock){
-                    if($stock->getIsAvailable == 1){
+                    if($stock->getIsAvailable() == 1){
                         $unitPrice[] = $stock->getSellingPrice();
                     }
                 }
