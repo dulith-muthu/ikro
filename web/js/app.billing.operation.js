@@ -33,12 +33,12 @@ function initAutocomplete() {
     console.log(window.location);
     $(function () {
         $("#searchProduct").autocomplete({
-            source: href + "/getItemByCode",
+            source: href + "/getItemsByCode",
             minLength: 1,
             select: function (event, object) {
 
                 //console.log(object.item)
-                currentItem = object.item
+                currentItem = object.item;
                 if (isExistInTable(currentItem.itemCode)) {
                     console.log("item EXISTS in the table")
                     // console.log(getItemFromTable(currentItem.itemCode))
