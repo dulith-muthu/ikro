@@ -56,22 +56,26 @@ function initAutocomplete() {
     });
 }
 function setProductBar(data, mode) {
-    //currentItem = data; not working here yet
 
-    //currentItem={"haha":"haha"}
+
     $('.ikro-product-row .itemCode').html(data.itemCode)
     $('.ikro-product-row .itemType').html(data.itemType)
     $('.ikro-product-row .itemName').html(data.itemName)
     $('.ikro-product-row .manufacturer').html(data.manufacturer)
     $('.ikro-product-row .availableQty').html(data.availableStock)
+    addToSelectElement(".ikro-product-row #priceSelect", data.unitPrice)
     if (mode == "EXISTS") { //only if loading an existing value
         $("#qtyInput").val(data.qty)
         $("#discInput").val(data.disc)
         $("#discountSelect").val(data.discType)
+        $("#priceSelect").val(data.price)
+        $("#btnAdd").text("Change")
+    } else {
+        $("#btnAdd").text("Add")
     }
     console.log("this is data into set product bar")
     console.log(data)
-    //addToSelectElement(".ikro-product-row #priceSelect", data.unitPrice) temp
+
 }
 function addToSelectElement(element, selectValues) {
     $(element).html("")
@@ -79,8 +83,8 @@ function addToSelectElement(element, selectValues) {
     $.each(selectValues, function (key, value) {
         $(element)
             .append($("<option></option>")
-                .attr("value", key)
-                .text(value));
+                .attr("value", value)
+                .text("Rs." + value));
     });
 }
 function setUnitPriceCount(selectValues) {
@@ -155,7 +159,7 @@ function clearProductRow() {
     $("#discInput").val(0)
     $("#discountSelect").val(1)
 
-    // $(".ikro-product-row #priceSelect").html("<option value=''>&nbsp;&nbsp;-&nbsp;&nbsp;</option>")
+    $(".ikro-product-row #priceSelect").html("<option value=''>&nbsp;&nbsp;-&nbsp;&nbsp;</option>")
 }
 function isExistInTable(itemCode) {
     var result = $.grep(dataTable.data, function (e) {

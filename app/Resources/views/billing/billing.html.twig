@@ -38,10 +38,8 @@
                 <td class="itemType">-</td>
                 <td class="itemName">-</td>
                 <td><select name="priceSelect" id="priceSelect">
-                        <option value="100">Rs.100</option>
-                        <option value="200">Rs.200</option>
-                        <option value="300">Rs.300</option>
-                        <option value="400">Rs.400</option>
+                        <option value="100">&nbsp;&nbsp;-&nbsp;&nbsp;</option>
+
                     </select></td>
                 <td class="availableQty">-</td>
                 <td class="manufacturer">-</td>
@@ -231,7 +229,7 @@
  {% block javascripts %}
      {{ parent() }}
      <script src="{{ asset('bower/jquery-ui/jquery-ui.min.js') }}"></script>
-     <script src="{{ asset('js/app.billing.js') }}"></script>
+     <script src="{{ asset('js/app.billing.operation.js') }}"></script>
      <script src="{{ asset('js/app.billing.validation.js') }}"></script>
      <script src="{{ asset('js/app.billing.submission.js') }}"></script>
 

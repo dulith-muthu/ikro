@@ -2,7 +2,7 @@ $(function () {
 
 })
 function bindMainButtons() {
-    
+    //param=bill
 }
 
 
