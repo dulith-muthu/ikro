@@ -77,6 +77,8 @@
   min-height: 0;
   margin: 15px 0;
   padding: 20px; }
+  .ikro-product-row table, .ikro-product-row table * {
+    transition: all 0.3s !important; }
   .ikro-product-row table th {
     text-align: left; }
   .ikro-product-row table input[type='number'] {

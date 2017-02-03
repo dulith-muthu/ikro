@@ -2,6 +2,7 @@ var dataTable = {'count': 0, 'data': []};
 var currentItem = {};
 $(function () {
     initAutocomplete();
+    focusSearchBox()
 })
 
 function initAutocomplete() {
@@ -61,6 +62,9 @@ function insertRow() {
     console.log(currentItem)
     dataTable['count']++
     dataTable["data"].push(currentItem)
+    //============================
+    clearProductRow()
+    focusSearchBox()
     renderTable()
 }
 function renderTable() {
@@ -78,9 +82,22 @@ function renderTable() {
         // "+item.manufacturer+"
         // "+item.price+"
         // "+item.qty+"
-        var template = "<tr><td> "+index+"</td><td>"+item.itemCode+"</td><td>"+item.itemType+"</td><td>"+item.itemName+"</td><td>"+item.price+"</td><td>"+item.qty+"</td><td>"+item.disc+"</td><td>"+item.disc+"</td><td>"+item.price+"</td><td><button class='btnEdit' id='btnEdit' name='btnEdit'> ✎ </button> <button class='btnRemove' id='btnRemove' name='btnRemove'> ✖ </button></td></tr>"
+        var template = "<tr><td> " + index + "</td><td>" + item.itemCode + "</td><td>" + item.itemType + "</td><td>" + item.itemName + "</td><td>" + item.price + "</td><td>" + item.qty + "</td><td>" + item.disc + "</td><td>" + item.disc + "</td><td>" + item.price + "</td><td><button class='btnEdit' id='btnEdit' name='btnEdit'> ✎ </button> <button class='btnRemove' id='btnRemove' name='btnRemove'> ✖ </button></td></tr>"
         tableQuery.append(template)
     })
 
+}
+function focusSearchBox() {
+    $("#searchProduct").val("").focus()
+}
 
+function clearProductRow() {
+    $('.ikro-product-row .itemCode').html("-")
+    $('.ikro-product-row .itemType').html("-")
+    $('.ikro-product-row .itemName').html("-")
+    $('.ikro-product-row .manufacturer').html("-")
+    $('.ikro-product-row .availableQty').html("-")
+    $("#qtyInput").val(1)
+    $("#discInput").val(0)
+    // $(".ikro-product-row #priceSelect").html("<option value=''>&nbsp;&nbsp;-&nbsp;&nbsp;</option>")
 }
