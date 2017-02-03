@@ -3,8 +3,16 @@ var currentItem = {};
 $(function () {
     initAutocomplete();
     focusSearchBox()
+    bindStuff()
 })
-
+function bindStuff() {
+    $(".ikro-bill-table").on('click','.btnEdit', function () {
+        var toEditId = $(this).data('id')
+        console.log(toEditId)
+        console.log(getItemFromTable(toEditId))
+        setProductBar(getItemFromTable(toEditId)[0])
+    })
+}
 function initAutocomplete() {
     var origin = window.location.origin
     $(function () {
@@ -82,7 +90,7 @@ function renderTable() {
         // "+item.manufacturer+"
         // "+item.price+"
         // "+item.qty+"
-        var template = "<tr><td> " + index + "</td><td>" + item.itemCode + "</td><td>" + item.itemType + "</td><td>" + item.itemName + "</td><td>" + item.price + "</td><td>" + item.qty + "</td><td>" + item.disc + "</td><td>" + item.disc + "</td><td>" + item.price + "</td><td><button class='btnEdit' id='btnEdit' name='btnEdit'> ✎ </button> <button class='btnRemove' id='btnRemove' name='btnRemove'> ✖ </button></td></tr>"
+        var template = "<tr><td> " + index + "</td><td>" + item.itemCode + "</td><td>" + item.itemType + "</td><td>" + item.itemName + "</td><td>" + item.price + "</td><td>" + item.qty + "</td><td>" + item.disc + "</td><td>" + item.disc + "</td><td>" + item.price + "</td><td><button data-id='" + item.itemCode + "' class='btnEdit' name='btnEdit'> ✎ </button> <button class='btnRemove'  name='btnRemove'> ✖ </button></td></tr>"
         tableQuery.append(template)
     })
 
@@ -100,4 +108,17 @@ function clearProductRow() {
     $("#qtyInput").val(1)
     $("#discInput").val(0)
     // $(".ikro-product-row #priceSelect").html("<option value=''>&nbsp;&nbsp;-&nbsp;&nbsp;</option>")
+}
+function isExistInTable(itemCode) {
+    var result = $.grep(dataTable.data, function (e) {
+        return e.itemCode == itemCode;
+    });
+    return result.length
+}
+
+function getItemFromTable(itemCode) {
+    return $.grep(dataTable.data, function (e) {
+        return e.itemCode == itemCode;
+    });
+
 }
