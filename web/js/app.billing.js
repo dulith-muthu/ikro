@@ -6,11 +6,11 @@ $(function () {
     bindStuff()
 })
 function bindStuff() {
-    $(".ikro-bill-table").on('click','.btnEdit', function () {
+    $(".ikro-bill-table").on('click', '.btnEdit', function () {
         var toEditId = $(this).data('id')
         console.log(toEditId)
         console.log(getItemFromTable(toEditId))
-        setProductBar(getItemFromTable(toEditId)[0])
+        setProductBar(getItemFromTable(toEditId)[0], "EDIT")
     })
 }
 function initAutocomplete() {
@@ -23,19 +23,32 @@ function initAutocomplete() {
 
                 console.log(object.item)
                 currentItem = object.item
-                setProductBar(object.item)
+                if (isExistInTable(currentItem.itemCode)) {
+                    console.log("item EXISTS in the table")
+                    console.log(getItemFromTable(currentItem.itemCode))
+                    setProductBar(getItemFromTable(currentItem.itemCode)[0], "EXISTS")
+                } else {
+                    console.log("NEW item")
+                    setProductBar(object.item, "EDIT")
+
+                }
                 jumpToNextTabIndex(object.item.unitPrice)
-                console.log(this)
+
             }
         });
     });
 }
-function setProductBar(data) {
+function setProductBar(data, mode) {
     $('.ikro-product-row .itemCode').html(data.itemCode)
     $('.ikro-product-row .itemType').html(data.itemType)
     $('.ikro-product-row .itemName').html(data.itemName)
     $('.ikro-product-row .manufacturer').html(data.manufacturer)
     $('.ikro-product-row .availableQty').html(data.availableStock)
+    if (mode == "EXISTS") { //only if loading an existing value
+        $("#qtyInput").val(data.qty)
+        $("#discInput").val(data.disc)
+        $("#discountSelect").val(data.discType)
+    }
     //addToSelectElement(".ikro-product-row #priceSelect", data.unitPrice) temp
 }
 function addToSelectElement(element, selectValues) {
@@ -107,6 +120,8 @@ function clearProductRow() {
     $('.ikro-product-row .availableQty').html("-")
     $("#qtyInput").val(1)
     $("#discInput").val(0)
+    $("#discountSelect").val(1)
+
     // $(".ikro-product-row #priceSelect").html("<option value=''>&nbsp;&nbsp;-&nbsp;&nbsp;</option>")
 }
 function isExistInTable(itemCode) {
