@@ -33,6 +33,11 @@ class ExpenseController extends BaseController
             $expense->setDateTime($date);
             $this->insert($expense);
 
+            $this->addFlash(
+                'success',
+                'Your changes were saved!'
+            );
+
             return $this->redirectToRoute('expenseList');
         }
 
@@ -88,20 +93,18 @@ class ExpenseController extends BaseController
 
         if($description != null || $amount!= null || $startDate!= null || $endDate!= null ){
             $expenses = $this->getRepository('Expense')->search($description,$amount,$startDate,$endDate);
-
-            return $this->render('expense/expenseList.html.twig',array(
-                'expenses'=>$expenses,
-                'description'=>$description,
-                'amount'=>$amount,
-                'startDate'=>$startDate,
-                'endDate'=>$endDate,
-
-            ));
+        }else{
+            $expenses = $this->getRepository('Expense')->findAll();
         }
 
-        $expenses = $this->getRepository('Expense')->findAll();
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $expenses, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
         return $this->render('expense/expenseList.html.twig',array(
-            'expenses'=>$expenses,
+            'expenses'=>$pagination,
             'description'=>$description,
             'amount'=>$amount,
             'startDate'=>$startDate,

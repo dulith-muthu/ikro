@@ -178,7 +178,7 @@ class Users implements UserInterface, \Serializable
         if($this->isactive ==0){
             return array('INACTIVE');
         }else{
-            return array($this->get);
+            return array($this->getRole()->getMetacode());
         }
 
     }
@@ -211,4 +211,27 @@ class Users implements UserInterface, \Serializable
             ) = unserialize($serialized);
     }
 
+
+    /**
+     * Set role
+     *
+     * @param \AppBundle\Entity\Roles $role
+     * @return Users
+     */
+    public function setRole(\AppBundle\Entity\Roles $role = null)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return \AppBundle\Entity\Roles 
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
 }

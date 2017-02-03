@@ -29,6 +29,18 @@ class Sale
     private $dateTime;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Item", inversedBy="sale")
+     * @ORM\JoinColumn(name="item_id", referencedColumnName="id")
+     */
+    private $item;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Invoice", inversedBy="sale")
+     * @ORM\JoinColumn(name="invoice_id", referencedColumnName="id")
+     */
+    private $invoice;
+
+    /**
      * @var float
      *
      * @ORM\Column(name="soldPrice", type="float")
@@ -120,5 +132,51 @@ class Sale
     public function getQuantity()
     {
         return $this->quantity;
+    }
+
+    /**
+     * Set item
+     *
+     * @param \AppBundle\Entity\Item $item
+     * @return Sale
+     */
+    public function setItem(\AppBundle\Entity\Item $item = null)
+    {
+        $this->item = $item;
+
+        return $this;
+    }
+
+    /**
+     * Get item
+     *
+     * @return \AppBundle\Entity\Item 
+     */
+    public function getItem()
+    {
+        return $this->item;
+    }
+
+    /**
+     * Set invoice
+     *
+     * @param \AppBundle\Entity\Invoice $invoice
+     * @return Sale
+     */
+    public function setInvoice(\AppBundle\Entity\Invoice $invoice = null)
+    {
+        $this->invoice = $invoice;
+
+        return $this;
+    }
+
+    /**
+     * Get invoice
+     *
+     * @return \AppBundle\Entity\Invoice 
+     */
+    public function getInvoice()
+    {
+        return $this->invoice;
     }
 }

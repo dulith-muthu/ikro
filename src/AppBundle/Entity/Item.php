@@ -22,6 +22,13 @@ class Item
     private $id;
 
     /**
+     * @ORM\ManyToOne(targetEntity="ItemType", inversedBy="item")
+     * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
+     */
+    private $type;
+
+
+    /**
      * @var string
      *
      * @ORM\Column(name="itemCode", type="string", length=255, unique=true)
@@ -48,6 +55,27 @@ class Item
      * @ORM\Column(name="availableStock", type="integer")
      */
     private $availableStock;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Stock", mappedBy="item")
+     */
+
+    private $stock;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Sale", mappedBy="item")
+     */
+
+    private $sale;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="manufacturer", type="string", length=255)
+     */
+    private $manufacturer;
+
 
 
     /**
@@ -151,4 +179,124 @@ class Item
     {
         return $this->availableStock;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->stock = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add stock
+     *
+     * @param \AppBundle\Entity\Stock $stock
+     * @return Item
+     */
+    public function addStock(\AppBundle\Entity\Stock $stock)
+    {
+        $this->stock[] = $stock;
+
+        return $this;
+    }
+
+    /**
+     * Remove stock
+     *
+     * @param \AppBundle\Entity\Stock $stock
+     */
+    public function removeStock(\AppBundle\Entity\Stock $stock)
+    {
+        $this->stock->removeElement($stock);
+    }
+
+    /**
+     * Get stock
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getStock()
+    {
+        return $this->stock;
+    }
+
+    /**
+     * Add sale
+     *
+     * @param \AppBundle\Entity\Sale $sale
+     * @return Item
+     */
+    public function addSale(\AppBundle\Entity\Sale $sale)
+    {
+        $this->sale[] = $sale;
+
+        return $this;
+    }
+
+    /**
+     * Remove sale
+     *
+     * @param \AppBundle\Entity\Sale $sale
+     */
+    public function removeSale(\AppBundle\Entity\Sale $sale)
+    {
+        $this->sale->removeElement($sale);
+    }
+
+    /**
+     * Get sale
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSale()
+    {
+        return $this->sale;
+    }
+
+    /**
+     * Set type
+     *
+     * @param \AppBundle\Entity\ItemType $type
+     * @return Item
+     */
+    public function setType(\AppBundle\Entity\ItemType $type = null)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \AppBundle\Entity\ItemType 
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set manufacturer
+     *
+     * @param string $manufacturer
+     * @return Item
+     */
+    public function setManufacturer($manufacturer)
+    {
+        $this->manufacturer = $manufacturer;
+
+        return $this;
+    }
+
+    /**
+     * Get manufacturer
+     *
+     * @return string 
+     */
+    public function getManufacturer()
+    {
+        return $this->manufacturer;
+    }
+
 }

@@ -46,7 +46,7 @@ class CustomerController extends BaseController
         $customer = $this->getRepository('Customer')->find($id);
         if($customer == null){
             $this->addFlash(
-                'success',
+                'error',
                 'Invalid customer!'
             );
             return $this->redirectToRoute('customerAdd');
@@ -61,7 +61,10 @@ class CustomerController extends BaseController
                 'Your changes were saved!'
             );
 
-            return $this->redirectToRoute('customerEdit');
+            $this->get('app.log')->addLog('TYPE_CUSTOMER','customer added','ACTION_ADD',$customer->getId());
+
+
+            return $this->redirectToRoute('customerList');
         }
 
         return $this->render('customer/customerEdit.html.twig',array(
@@ -84,20 +87,20 @@ class CustomerController extends BaseController
 
         if($name != null || $address!= null || $nic!= null || $mobile!= null || $fixed!= null){
             $customers = $this->getRepository('Customer')->search($name,$address,$nic,$mobile,$fixed);
-
-            return $this->render('customer/customerList.html.twig',array(
-               'customers'=>$customers,
-                'name'=>$name,
-                'address'=>$address,
-                'nic'=>$nic,
-                'mobile'=>$mobile,
-                'fixed'=>$fixed
-            ));
+        }
+        else{
+            $customers = $this->getRepository('Customer')->findAll();
         }
 
-        $customers = $this->getRepository('Customer')->findAll();
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $customers, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
+
         return $this->render('customer/customerList.html.twig',array(
-           'customers'=>$customers,
+           'customers'=>$pagination,
             'name'=>$name,
             'address'=>$address,
             'nic'=>$nic,

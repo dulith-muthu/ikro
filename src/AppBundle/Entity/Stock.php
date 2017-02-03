@@ -36,6 +36,12 @@ class Stock
     private $quantity;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Item", inversedBy="stock")
+     * @ORM\JoinColumn(name="item_id", referencedColumnName="id")
+     */
+    private $item;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="cost", type="float")
@@ -49,11 +55,18 @@ class Stock
      */
     private $sellingPrice;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="isAvailable", type="integer")
+     */
+    private $isAvailable;
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -76,7 +89,7 @@ class Stock
     /**
      * Get dateTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateTime()
     {
@@ -99,7 +112,7 @@ class Stock
     /**
      * Get quantity
      *
-     * @return string 
+     * @return string
      */
     public function getQuantity()
     {
@@ -122,7 +135,7 @@ class Stock
     /**
      * Get cost
      *
-     * @return string 
+     * @return string
      */
     public function getCost()
     {
@@ -145,10 +158,56 @@ class Stock
     /**
      * Get sellingPrice
      *
-     * @return float 
+     * @return float
      */
     public function getSellingPrice()
     {
         return $this->sellingPrice;
+    }
+
+    /**
+     * Set item
+     *
+     * @param \AppBundle\Entity\Item $item
+     * @return Stock
+     */
+    public function setItem(\AppBundle\Entity\Item $item = null)
+    {
+        $this->item = $item;
+
+        return $this;
+    }
+
+    /**
+     * Get item
+     *
+     * @return \AppBundle\Entity\Item
+     */
+    public function getItem()
+    {
+        return $this->item;
+    }
+
+    /**
+     * Set isAvailable
+     *
+     * @param integer $isAvailable
+     * @return Stock
+     */
+    public function setIsAvailable($isAvailable)
+    {
+        $this->isAvailable = $isAvailable;
+
+        return $this;
+    }
+
+    /**
+     * Get isAvailable
+     *
+     * @return integer
+     */
+    public function getIsAvailable()
+    {
+        return $this->isAvailable;
     }
 }

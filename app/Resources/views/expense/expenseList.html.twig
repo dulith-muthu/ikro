@@ -31,7 +31,7 @@
                 <th>Time</th>
                 <th>Description</th>
                 <th>Amount</th>
-                <td>Edit</td>
+                <th>Edit</th>
                 </thead>
                 {% for expense in expenses %}
                     <tr>
@@ -44,6 +44,10 @@
 
                 {% endfor %}
             </table>
+
+            <div class="navigation">
+                {{ knp_pagination_render(expenses) }}
+            </div>
         </div>
     </div>
 
