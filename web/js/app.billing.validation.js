@@ -1,0 +1,4 @@
+var allowSubmission=true
+$(function () {
+
+})
