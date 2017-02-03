@@ -24,7 +24,7 @@
                 <th>Item Code</th>
                 <th>Item Type</th>
                 <th>Item Name</th>
-                <th>Unit Price</th>
+                <th id="unitPriceCaption">Unit Price</th>
                 <th>Available Qty</th>
                 <th>Manufacturer</th>
                 <th>Quantity</th>
@@ -34,17 +34,17 @@
             </thead>
             <tbody>
             <tr>
-                <td>00015</td>
-                <td>Ornaments</td>
-                <td>Flower Pot</td>
+                <td class="itemCode">00015</td>
+                <td class="itemType">Ornaments</td>
+                <td class="itemName">Flower Pot</td>
                 <td><select name="priceSelect" id="priceSelect">
                         <option value="100">Rs.100</option>
                         <option value="200">Rs.200</option>
                         <option value="300">Rs.300</option>
                         <option value="400">Rs.400</option>
                     </select></td>
-                <td>13</td>
-                <td>JCK Industries</td>
+                <td class="availableQty">13</td>
+                <td class="manufacturer">JCK Industries</td>
 
                 <td><input name="qtyInput" class="" id="qtyInput" type="number" value="1"></td>
                 <td><input name="discInput" class="" id="discInput" type="number" value="0">
@@ -56,10 +56,10 @@
                     </select>
                 </td>
 
-                <td><input name="btnAdd" class="flat-button" id="btnAdd" type="button" value="Add"> &nbsp;
-                    <input name="btnClear" class="flat-button red" id="btnClear"
+                <td><button name="btnAdd" class="flat-button" id="btnAdd" type="button" onclick="insertRow()">Add</button> &nbsp;
+                    <button name="btnClear" class="flat-button red" id="btnClear"
 
-                           type="button" value="Clear"></td>
+                            type="button">Clear</button></td>
 
             </tr>
 
@@ -209,10 +209,14 @@
     </table>
 
     <div class="main-buttons-row">
-        <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons" id="btnCashPayment" type="button" value="Cash Payment">
-        <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons" id="btnMonthlyPlan" type="button" value="Monthly Plan">
-        <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons" id="btnQuotation" type="button" value="Quotation">
-        <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons" id="btnCancel" type="button" value="Cancel">
+        <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
+               id="btnCashPayment" type="button" value="Cash Payment">
+        <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
+               id="btnMonthlyPlan" type="button" value="Monthly Plan">
+        <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
+               id="btnQuotation" type="button" value="Quotation">
+        <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
+               id="btnCancel" type="button" value="Cancel">
 
 
     </div>
@@ -222,17 +226,8 @@
  {% block javascripts %}
      {{ parent() }}
      <script src="{{ asset('bower/jquery-ui/jquery-ui.min.js') }}"></script>
-     <script>
-         $(function () {
-             var origin=window.location.origin
-             $(function () {
-                 $("#searchProduct").autocomplete({
-                     source: origin+ "/admin/item/getItemsByCode",
-                     minLength: 1
-                 });
-             });
-         });
-     </script>
+     <script src="{{ asset('js/app.billing.js') }}"></script>
+
 
  {% endblock %}
 
