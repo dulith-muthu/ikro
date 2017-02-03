@@ -29,10 +29,11 @@ function bindStuff() {
     })
 }
 function initAutocomplete() {
-    var origin = window.location.origin
+    var href = window.location.href
+    console.log(window.location);
     $(function () {
         $("#searchProduct").autocomplete({
-            source: origin + "/admin/item/getItemsByCode",
+            source: href + "/getItemByCode",
             minLength: 1,
             select: function (event, object) {
 

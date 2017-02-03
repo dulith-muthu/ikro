@@ -84,7 +84,7 @@ class ItemController extends BaseController
     }
 
     /**
-     * @Route("admin/item/getItemsByCode", name = "getItemByCode")
+     * @Route("admin/bill/getItemsByCode", name = "getItemByCode")
      */
 
     public function itemsGetByCode(Request $request){
