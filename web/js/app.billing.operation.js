@@ -36,7 +36,9 @@ function initAutocomplete() {
     var href = window.location.href
     console.log(window.location);
     $(function () {
-        $("#searchProduct").autocomplete({
+        var searchProductBox = $("#searchProduct")
+        searchProductBox.autocomplete({
+            autoFocus: true,
             source: href + "/getItemsByCode",
             minLength: 1,
             select: function (event, object) {
@@ -57,11 +59,14 @@ function initAutocomplete() {
 
             }
         });
+        searchProductBox.bind('focus', function () {
+            $(this).autocomplete("search");
+        });
     });
 }
 function setProductBar(data, mode) {
 
-
+    allowSubmission = false;
     $('.ikro-product-row .itemCode').html(data.itemCode)
     $('.ikro-product-row .itemType').html(data.itemType)
     $('.ikro-product-row .itemName').html(data.itemName)
@@ -106,6 +111,7 @@ function jumpToNextTabIndex(priceArray) {
 
 function insertRow() {
     if (validate()) {
+        allowSubmission = true
         //==========================================
         delete currentItem['label']
         delete currentItem['value']

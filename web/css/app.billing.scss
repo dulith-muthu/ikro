@@ -4,8 +4,13 @@
 .product-search-row {
   margin-bottom: 20px;
   width: 100%;
+  .shortcuts{
+    float: right;
+    cursor: pointer;
+    padding-top: 10px;
+  }
   #searchProduct {
-    width:50%;
+    width: 50%;
     line-height: 32px;
     padding-left: 12px;
     font-size: 20px;
@@ -18,7 +23,6 @@
     }
   }
 }
-
 
 //========================================
 
@@ -36,7 +40,7 @@
     input[type='number'] {
       line-height: 25px;
       padding-left: 10px;
-      &.error{
+      &.error {
         border: 2px solid $brand-danger;
       }
     }
@@ -54,6 +58,14 @@
     float: right;
     margin-left: 6px;
 
+  }
+}
+
+.ikro-bill-table {
+  tr {
+    //&:focus {
+    //  background: red !important;
+    //}
   }
 }
 
