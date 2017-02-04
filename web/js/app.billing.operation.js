@@ -8,12 +8,7 @@ $(function () {
 function bindStuff() {
     $(".ikro-bill-table").on('click', '.btnEdit', function () {
         var toEditId = $(this).data('id')
-        console.log(toEditId + "-- this is the loaded object")
-        var loadedItem = getItemFromTable(toEditId)[0]
-        console.log(loadedItem)
-        currentItem = loadedItem
-        setProductBar(loadedItem, "EXISTS")
-
+        lodToEditEntry(toEditId)
     })
     $(".ikro-bill-table").on('click', '.btnRemove', function () {
         var toRemoveId = $(this).data('id')
@@ -28,6 +23,15 @@ function bindStuff() {
         renderTable()
     })
 }
+function lodToEditEntry(toEditId) {
+
+    console.log(toEditId + "-- this is the loaded object")
+    var loadedItem = getItemFromTable(toEditId)[0]
+    console.log(loadedItem)
+    currentItem = loadedItem
+    setProductBar(loadedItem, "EXISTS")
+
+}
 function initAutocomplete() {
     var href = window.location.href
     console.log(window.location);
@@ -41,8 +45,8 @@ function initAutocomplete() {
                 currentItem = object.item;
                 if (isExistInTable(currentItem.itemCode)) {
                     console.log("item EXISTS in the table")
-                    // console.log(getItemFromTable(currentItem.itemCode))
-                    setProductBar(getItemFromTable(currentItem.itemCode)[0], "EXISTS")
+                    lodToEditEntry(currentItem.itemCode)
+
                 } else {
                     console.log("NEW item")
                     setProductBar(object.item, "EDIT")
@@ -101,31 +105,31 @@ function jumpToNextTabIndex(priceArray) {
 }
 
 function insertRow() {
-   if(validate()){
-       //==========================================
-       delete currentItem['label']
-       delete currentItem['value']
-       currentItem['qty'] = $('#qtyInput').val()
-       currentItem['disc'] = $('#discInput').val()
-       currentItem['discType'] = $('#discountSelect').val()
-       currentItem['price'] = $('#priceSelect').val()
-       //console.log(currentItem)
-       //===========================
-       if (isExistInTable(currentItem.itemCode)) {
-           getItemFromTable(currentItem.itemCode)[0] = currentItem
+    if (validate()) {
+        //==========================================
+        delete currentItem['label']
+        delete currentItem['value']
+        currentItem['qty'] = $('#qtyInput').val()
+        currentItem['disc'] = $('#discInput').val()
+        currentItem['discType'] = $('#discountSelect').val()
+        currentItem['price'] = $('#priceSelect').val()
+        //console.log(currentItem)
+        //===========================
+        if (isExistInTable(currentItem.itemCode)) {
+            getItemFromTable(currentItem.itemCode)[0] = currentItem
 
-       } else {
-           dataTable['count']++
-           dataTable["data"].push(currentItem)
+        } else {
+            dataTable['count']++
+            dataTable["data"].push(currentItem)
 
-       }
-       $("#btnAdd").text("Add")
-       currentItem = {}
-       //============================
-       clearProductRow()
-       focusSearchBox()
-       renderTable()
-   }
+        }
+        $("#btnAdd").text("Add")
+        currentItem = {}
+        //============================
+        clearProductRow()
+        focusSearchBox()
+        renderTable()
+    }
 }
 function renderTable() {
     var tableQuery = $('.ikro-bill-table tbody');
