@@ -37,6 +37,7 @@ function initAutocomplete() {
     console.log(window.location);
     $(function () {
         $("#searchProduct").autocomplete({
+            autoFocus: true,
             source: href + "/getItemsByCode",
             minLength: 1,
             select: function (event, object) {

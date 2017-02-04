@@ -45,7 +45,7 @@
                 <td class="availableQty">-</td>
                 <td class="manufacturer">-</td>
 
-                <td><input name="qtyInput" class=""  id="qtyInput" type="number" value="1"></td>
+                <td><input name="qtyInput" class="" id="qtyInput" type="number" value="1"></td>
                 <td><input name="discInput" class="" id="discInput" type="number" value="0">
 
                     <select name="discountSelect" id="discountSelect">
@@ -90,7 +90,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
+        {#<tr>
             <td>01</td>
             <td class="itemCodeTd">TRE-2263543</td>
             <td>Living Room Couch</td>
@@ -207,20 +207,24 @@
                     ✖
                 </button>
             </td>
-        </tr>
+        </tr>#}
 
         </tbody>
     </table>
 
     <div class="main-buttons-row">
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
-                id="btnCashPayment" type="button" onclick="purchaseSubmit();">Cash Payment</button>
+                id="btnCashPayment" type="button" onclick="purchaseSubmit();">Cash Payment
+        </button>
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
-                id="btnMonthlyPlan" type="button">Monthly Plan</button>
+                id="btnMonthlyPlan" type="button">Monthly Plan
+        </button>
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
-                id="btnQuotation" type="button">Quotation</button>
+                id="btnQuotation" type="button">Quotation
+        </button>
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
-                id="btnCancel" type="button">Cancel</button>
+                id="btnCancel" type="button">Cancel
+        </button>
 
 
     </div>
