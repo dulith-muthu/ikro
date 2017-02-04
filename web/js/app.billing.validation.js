@@ -1,4 +1,4 @@
-var allowSubmission=true
+var allowSubmission=false
 
 
 $(function () {

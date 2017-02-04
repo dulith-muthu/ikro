@@ -61,7 +61,7 @@ function initAutocomplete() {
 }
 function setProductBar(data, mode) {
 
-
+    allowSubmission=false;
     $('.ikro-product-row .itemCode').html(data.itemCode)
     $('.ikro-product-row .itemType').html(data.itemType)
     $('.ikro-product-row .itemName').html(data.itemName)
@@ -106,6 +106,7 @@ function jumpToNextTabIndex(priceArray) {
 
 function insertRow() {
     if (validate()) {
+        allowSubmission=true
         //==========================================
         delete currentItem['label']
         delete currentItem['value']
