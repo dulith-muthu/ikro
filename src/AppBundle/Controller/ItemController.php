@@ -84,7 +84,7 @@ class ItemController extends BaseController
     }
 
     /**
-     * @Route("admin/item/getItemsByCode", name = "getItemByCode")
+     * @Route("admin/bill/getItemsByCode", name = "getItemByCode")
      */
 
     public function itemsGetByCode(Request $request){
@@ -104,7 +104,7 @@ class ItemController extends BaseController
                 $tempObject->manufacturer = $item->getManufacturer();
                 $unitPrice = [];
                 foreach ($item->getStock() as $stock){
-                    if($stock->getIsAvailable == 1){
+                    if($stock->getIsAvailable() == 1){
                         $unitPrice[] = $stock->getSellingPrice();
                     }
                 }

@@ -2,6 +2,7 @@
 //============================================================
 
 .product-search-row {
+  margin-bottom: 20px;
   width: 100%;
   #searchProduct {
     width:50%;
@@ -24,12 +25,10 @@
 .ikro-product-row {
   width: 100%;
   min-height: 0;
-  margin: 15px 0;
+  margin: 0 0 20px 0;
   padding: 20px;
   table {
-    &,*{
-      transition: all 0.3s!important;
-    }
+
     th {
       text-align: left;
     }
@@ -37,6 +36,9 @@
     input[type='number'] {
       line-height: 25px;
       padding-left: 10px;
+      &.error{
+        border: 2px solid $brand-danger;
+      }
     }
     select {
       height: 30px;
@@ -54,3 +56,4 @@
 
   }
 }
+
