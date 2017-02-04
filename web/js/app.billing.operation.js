@@ -6,14 +6,10 @@ $(function () {
     bindStuff()
 })
 function bindStuff() {
-    $(".ikro-bill-table").on('click', '.btnEdit', function () {
+    $(".ikro-bill-table").on('click', '.btnEdit', function () 
         var toEditId = $(this).data('id')
-        console.log(toEditId + "-- this is the loaded object")
-        var loadedItem = getItemFromTable(toEditId)[0]
-        console.log(loadedItem)
-        currentItem = loadedItem
-        setProductBar(loadedItem, "EXISTS")
 
+        lodToEditEntry(toEditId)
     })
     $(".ikro-bill-table").on('click', '.btnRemove', function () {
         var toRemoveId = $(this).data('id')
@@ -28,11 +24,24 @@ function bindStuff() {
         renderTable()
     })
 }
+
+function lodToEditEntry(toEditId) {
+
+    console.log(toEditId + "-- this is the loaded object")
+    var loadedItem = getItemFromTable(toEditId)[0]
+    console.log(loadedItem)
+    currentItem = loadedItem
+    setProductBar(loadedItem, "EXISTS")
+
+}
 function initAutocomplete() {
     var href = window.location.href
     console.log(window.location);
     $(function () {
-        $("#searchProduct").autocomplete({
+
+        var searchProductBox = $("#searchProduct")
+        searchProductBox.autocomplete({
+            autoFocus: true,
             source: href + "/getItemsByCode",
             minLength: 1,
             select: function (event, object) {
@@ -41,8 +50,7 @@ function initAutocomplete() {
                 currentItem = object.item;
                 if (isExistInTable(currentItem.itemCode)) {
                     console.log("item EXISTS in the table")
-                    // console.log(getItemFromTable(currentItem.itemCode))
-                    setProductBar(getItemFromTable(currentItem.itemCode)[0], "EXISTS")
+                    lodToEditEntry(currentItem.itemCode)
                 } else {
                     console.log("NEW item")
                     setProductBar(object.item, "EDIT")
@@ -53,25 +61,35 @@ function initAutocomplete() {
 
             }
         });
+        searchProductBox.bind('focus', function () {
+            $(this).autocomplete("search");
+        });
     });
 }
 function setProductBar(data, mode) {
-    //currentItem = data; not working here yet
 
-    //currentItem={"haha":"haha"}
+    allowSubmission = false;
     $('.ikro-product-row .itemCode').html(data.itemCode)
     $('.ikro-product-row .itemType').html(data.itemType)
     $('.ikro-product-row .itemName').html(data.itemName)
     $('.ikro-product-row .manufacturer').html(data.manufacturer)
     $('.ikro-product-row .availableQty').html(data.availableStock)
+
+    addToSelectElement(".ikro-product-row #priceSelect", data.unitPrice)
     if (mode == "EXISTS") { //only if loading an existing value
         $("#qtyInput").val(data.qty)
         $("#discInput").val(data.disc)
         $("#discountSelect").val(data.discType)
+        $("#priceSelect").val(data.price)
+        $("#btnAdd").text("Change")
+    } else {
+        $("#btnAdd").text("Add")
     }
+    $(".ikro-product-row").slideDown(60)
     console.log("this is data into set product bar")
     console.log(data)
-    //addToSelectElement(".ikro-product-row #priceSelect", data.unitPrice) temp
+
+
 }
 function addToSelectElement(element, selectValues) {
     $(element).html("")
@@ -79,8 +97,8 @@ function addToSelectElement(element, selectValues) {
     $.each(selectValues, function (key, value) {
         $(element)
             .append($("<option></option>")
-                .attr("value", key)
-                .text(value));
+                .attr("value", value)
+                .text("Rs." + value));
     });
 }
 function setUnitPriceCount(selectValues) {
@@ -96,44 +114,38 @@ function jumpToNextTabIndex(priceArray) {
 }
 
 function insertRow() {
-    //==========================================
-    delete currentItem['label']
-    delete currentItem['value']
-    currentItem['qty'] = $('#qtyInput').val()
-    currentItem['disc'] = $('#discInput').val()
-    currentItem['discType'] = $('#discountSelect').val()
-    currentItem['price'] = $('#priceSelect').val()
-    //console.log(currentItem)
-    //===========================
-    if (isExistInTable(currentItem.itemCode)) {
-        var itemFromDataTable = getItemFromTable(currentItem.itemCode)[0]
-        itemFromDataTable = currentItem
-    } else {
-        dataTable['count']++
-        dataTable["data"].push(currentItem)
+    if (validate()) {
+        allowSubmission = true
+        //==========================================
+        delete currentItem['label']
+        delete currentItem['value']
+        currentItem['qty'] = $('#qtyInput').val()
+        currentItem['disc'] = $('#discInput').val()
+        currentItem['discType'] = $('#discountSelect').val()
+        currentItem['price'] = $('#priceSelect').val()
+        //console.log(currentItem)
+        //===========================
+        if (isExistInTable(currentItem.itemCode)) {
+            getItemFromTable(currentItem.itemCode)[0] = currentItem
 
+        } else {
+            dataTable['count']++
+            dataTable["data"].push(currentItem)
+
+        }
+        $("#btnAdd").text("Add")
+        currentItem = {}
+        //============================
+        clearProductRow()
+        focusSearchBox()
+        renderTable()
     }
-
-    //============================
-    clearProductRow()
-    focusSearchBox()
-    renderTable()
 }
 function renderTable() {
     var tableQuery = $('.ikro-bill-table tbody');
     tableQuery.html("")
 
     dataTable.data.forEach(function (item, index) {
-        // "+index+"
-        // "+item.availableStock+"
-        // "+item.disc+"
-        // "+item.discType+"
-        // "+item.itemCode+"
-        // "+item.itemName+"
-        // "+item.itemType+"
-        // "+item.manufacturer+"
-        // "+item.price+"
-        // "+item.qty+"
         var template = "<tr><td> " + index + "</td><td>" + item.itemCode + "</td><td>" + item.itemType + "</td><td>" + item.itemName + "</td><td>" + item.price + "</td><td>" + item.qty + "</td><td>" + item.disc + "</td><td>" + item.disc + "</td><td>" + item.price + "</td><td><button data-id='" + item.itemCode + "' class='btnEdit' name='btnEdit'> ✎ </button> <button data-id='" + item.itemCode + "'  class='btnRemove'  name='btnRemove'> ✖ </button></td></tr>"
         tableQuery.append(template)
     })
@@ -145,7 +157,7 @@ function focusSearchBox() {
 
 function clearProductRow() {
     //currentItem = {}
-
+    $(".ikro-product-row").slideUp(60)
     $('.ikro-product-row .itemCode').html("-")
     $('.ikro-product-row .itemType').html("-")
     $('.ikro-product-row .itemName').html("-")
@@ -155,7 +167,7 @@ function clearProductRow() {
     $("#discInput").val(0)
     $("#discountSelect").val(1)
 
-    // $(".ikro-product-row #priceSelect").html("<option value=''>&nbsp;&nbsp;-&nbsp;&nbsp;</option>")
+    $(".ikro-product-row #priceSelect").html("<option value=''>&nbsp;&nbsp;-&nbsp;&nbsp;</option>")
 }
 function isExistInTable(itemCode) {
     var result = $.grep(dataTable.data, function (e) {

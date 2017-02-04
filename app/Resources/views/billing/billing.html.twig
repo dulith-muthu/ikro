@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.billing.css') }}">
 
     <link rel="stylesheet" type="text/css" href="{{ asset('bower/jquery-ui/themes/base/jquery-ui.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('js/tools/mdl-jquery-modal-dialog.css') }}">
 
 
 {% endblock %}
@@ -15,9 +16,9 @@
 
         <input type="text" name="searchProduct" id="searchProduct"
 
-               placeholder="Seach product">
+               placeholder="Seach product"> <a class="shortcuts">Keyboard Shortcuts</a>
     </div>
-    <div class="mdl-card mdl-shadow--2dp ikro-product-row">
+    <div class="mdl-card mdl-shadow--2dp ikro-product-row" style="display: none">
         <table width="100%">
             <thead>
             <tr>
@@ -38,10 +39,8 @@
                 <td class="itemType">-</td>
                 <td class="itemName">-</td>
                 <td><select name="priceSelect" id="priceSelect">
-                        <option value="100">Rs.100</option>
-                        <option value="200">Rs.200</option>
-                        <option value="300">Rs.300</option>
-                        <option value="400">Rs.400</option>
+                        <option value="100">&nbsp;&nbsp;-&nbsp;&nbsp;</option>
+
                     </select></td>
                 <td class="availableQty">-</td>
                 <td class="manufacturer">-</td>
@@ -91,7 +90,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
+        {#<tr>
             <td>01</td>
             <td class="itemCodeTd">TRE-2263543</td>
             <td>Living Room Couch</td>
@@ -208,20 +207,24 @@
                     ✖
                 </button>
             </td>
-        </tr>
+        </tr>#}
 
         </tbody>
     </table>
 
     <div class="main-buttons-row">
-        <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
-               id="btnCashPayment" type="button" value="Cash Payment">
-        <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
-               id="btnMonthlyPlan" type="button" value="Monthly Plan">
-        <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
-               id="btnQuotation" type="button" value="Quotation">
-        <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
-               id="btnCancel" type="button" value="Cancel">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
+                id="btnCashPayment" type="button" onclick="purchaseSubmit();">Cash Payment
+        </button>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
+                id="btnMonthlyPlan" type="button">Monthly Plan
+        </button>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
+                id="btnQuotation" type="button">Quotation
+        </button>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
+                id="btnCancel" type="button">Cancel
+        </button>
 
 
     </div>
@@ -231,9 +234,16 @@
  {% block javascripts %}
      {{ parent() }}
      <script src="{{ asset('bower/jquery-ui/jquery-ui.min.js') }}"></script>
+
+     <script src="{{ asset('bower/mousetrap/mousetrap.min.js') }}"></script>
+     <script src="{{ asset('bower/mousetrap/plugins/global-bind/mousetrap-global-bind.min.js') }}"></script>
+     <script src="{{ asset('js/tools/mdl-jquery-modal-dialog.js') }}"></script>
+
      <script src="{{ asset('js/app.billing.operation.js') }}"></script>
      <script src="{{ asset('js/app.billing.validation.js') }}"></script>
      <script src="{{ asset('js/app.billing.submission.js') }}"></script>
+     <script src="{{ asset('js/app.billing.hotkeys.js') }}"></script>
+
 
 
  {% endblock %}

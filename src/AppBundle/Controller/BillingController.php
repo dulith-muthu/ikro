@@ -24,7 +24,7 @@ class BillingController extends BaseController
     }
 
     /**
-     * @Route("/bill/purchase" ,name="billPurchase")
+     * @Route("/admin/bill/purchase" ,name="billPurchase")
      */
 
     public function billingPurchaseAction(Request $request){
