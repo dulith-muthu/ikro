@@ -10,9 +10,10 @@ function purchaseSubmit() {
        var href = window.location.href
        console.log(window.location);
        var path = href + "/purchase"
-       post(path, {"bill": JSON.stringify()})
+       console.log(JSON.stringify(dataTable))
+       post(path, {"bill": JSON.stringify(dataTable)})
    }else{
-
+       dialogBillIncomplete()
    }
 }
 

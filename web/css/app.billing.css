@@ -61,6 +61,7 @@
     color: white; }
 
 .product-search-row {
+  margin-bottom: 20px;
   width: 100%; }
   .product-search-row #searchProduct {
     width: 50%;
@@ -75,15 +76,15 @@
 .ikro-product-row {
   width: 100%;
   min-height: 0;
-  margin: 15px 0;
+  margin: 0 0 20px 0;
   padding: 20px; }
-  .ikro-product-row table, .ikro-product-row table * {
-    transition: all 0.3s !important; }
   .ikro-product-row table th {
     text-align: left; }
   .ikro-product-row table input[type='number'] {
     line-height: 25px;
     padding-left: 10px; }
+    .ikro-product-row table input[type='number'].error {
+      border: 2px solid #e74c3c; }
   .ikro-product-row table select {
     height: 30px; }
 

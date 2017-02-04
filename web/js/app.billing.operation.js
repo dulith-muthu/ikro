@@ -73,6 +73,7 @@ function setProductBar(data, mode) {
     } else {
         $("#btnAdd").text("Add")
     }
+    $(".ikro-product-row").slideDown(60)
     console.log("this is data into set product bar")
     console.log(data)
 
@@ -100,45 +101,38 @@ function jumpToNextTabIndex(priceArray) {
 }
 
 function insertRow() {
-    //==========================================
-    delete currentItem['label']
-    delete currentItem['value']
-    currentItem['qty'] = $('#qtyInput').val()
-    currentItem['disc'] = $('#discInput').val()
-    currentItem['discType'] = $('#discountSelect').val()
-    currentItem['price'] = $('#priceSelect').val()
-    //console.log(currentItem)
-    //===========================
-    if (isExistInTable(currentItem.itemCode)) {
-        getItemFromTable(currentItem.itemCode)[0] = currentItem
+   if(validate()){
+       //==========================================
+       delete currentItem['label']
+       delete currentItem['value']
+       currentItem['qty'] = $('#qtyInput').val()
+       currentItem['disc'] = $('#discInput').val()
+       currentItem['discType'] = $('#discountSelect').val()
+       currentItem['price'] = $('#priceSelect').val()
+       //console.log(currentItem)
+       //===========================
+       if (isExistInTable(currentItem.itemCode)) {
+           getItemFromTable(currentItem.itemCode)[0] = currentItem
 
-    } else {
-        dataTable['count']++
-        dataTable["data"].push(currentItem)
+       } else {
+           dataTable['count']++
+           dataTable["data"].push(currentItem)
 
-    }
-    $("#btnAdd").text("Add")
-    currentItem={}
-    //============================
-    clearProductRow()
-    focusSearchBox()
-    renderTable()
+       }
+       $("#btnAdd").text("Add")
+       currentItem = {}
+       //============================
+       clearProductRow()
+       focusSearchBox()
+       renderTable()
+   }
 }
 function renderTable() {
     var tableQuery = $('.ikro-bill-table tbody');
     tableQuery.html("")
 
     dataTable.data.forEach(function (item, index) {
-        // "+index+"
-        // "+item.availableStock+"
-        // "+item.disc+"
-        // "+item.discType+"
-        // "+item.itemCode+"
-        // "+item.itemName+"
-        // "+item.itemType+"
-        // "+item.manufacturer+"
-        // "+item.price+"
-        // "+item.qty+"
+
         var template = "<tr><td> " + index + "</td><td>" + item.itemCode + "</td><td>" + item.itemType + "</td><td>" + item.itemName + "</td><td>" + item.price + "</td><td>" + item.qty + "</td><td>" + item.disc + "</td><td>" + item.disc + "</td><td>" + item.price + "</td><td><button data-id='" + item.itemCode + "' class='btnEdit' name='btnEdit'> ✎ </button> <button data-id='" + item.itemCode + "'  class='btnRemove'  name='btnRemove'> ✖ </button></td></tr>"
         tableQuery.append(template)
     })
@@ -150,7 +144,7 @@ function focusSearchBox() {
 
 function clearProductRow() {
     //currentItem = {}
-
+    $(".ikro-product-row").slideUp(60)
     $('.ikro-product-row .itemCode').html("-")
     $('.ikro-product-row .itemType').html("-")
     $('.ikro-product-row .itemName').html("-")
