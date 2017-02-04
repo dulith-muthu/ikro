@@ -63,6 +63,10 @@
 .product-search-row {
   margin-bottom: 20px;
   width: 100%; }
+  .product-search-row .shortcuts {
+    float: right;
+    cursor: pointer;
+    padding-top: 10px; }
   .product-search-row #searchProduct {
     width: 50%;
     line-height: 32px;

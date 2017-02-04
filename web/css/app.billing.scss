@@ -4,6 +4,11 @@
 .product-search-row {
   margin-bottom: 20px;
   width: 100%;
+  .shortcuts{
+    float: right;
+    cursor: pointer;
+    padding-top: 10px;
+  }
   #searchProduct {
     width: 50%;
     line-height: 32px;
