@@ -4,6 +4,9 @@ var allowSubmission=true
 $(function () {
 
 })
+$(".ikro-product-row input[type='number']").on('keypress',function () {
+    $(this).removeClass("error")
+})
 function validate() {
     var error=0;
     var qty=$("#qtyInput").val()
