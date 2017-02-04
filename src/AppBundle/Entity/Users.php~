@@ -31,6 +31,20 @@ class Users implements UserInterface, \Serializable
     private $username;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdAt", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updatedAt", type="datetime")
+     */
+    private $updatedAt;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=255)
