@@ -6,8 +6,9 @@ $(function () {
     bindStuff()
 })
 function bindStuff() {
-    $(".ikro-bill-table").on('click', '.btnEdit', function () {
+    $(".ikro-bill-table").on('click', '.btnEdit', function () 
         var toEditId = $(this).data('id')
+
         lodToEditEntry(toEditId)
     })
     $(".ikro-bill-table").on('click', '.btnRemove', function () {
@@ -23,6 +24,7 @@ function bindStuff() {
         renderTable()
     })
 }
+
 function lodToEditEntry(toEditId) {
 
     console.log(toEditId + "-- this is the loaded object")
@@ -36,6 +38,7 @@ function initAutocomplete() {
     var href = window.location.href
     console.log(window.location);
     $(function () {
+
         var searchProductBox = $("#searchProduct")
         searchProductBox.autocomplete({
             autoFocus: true,
@@ -48,7 +51,6 @@ function initAutocomplete() {
                 if (isExistInTable(currentItem.itemCode)) {
                     console.log("item EXISTS in the table")
                     lodToEditEntry(currentItem.itemCode)
-
                 } else {
                     console.log("NEW item")
                     setProductBar(object.item, "EDIT")
@@ -72,6 +74,7 @@ function setProductBar(data, mode) {
     $('.ikro-product-row .itemName').html(data.itemName)
     $('.ikro-product-row .manufacturer').html(data.manufacturer)
     $('.ikro-product-row .availableQty').html(data.availableStock)
+
     addToSelectElement(".ikro-product-row #priceSelect", data.unitPrice)
     if (mode == "EXISTS") { //only if loading an existing value
         $("#qtyInput").val(data.qty)
@@ -85,6 +88,7 @@ function setProductBar(data, mode) {
     $(".ikro-product-row").slideDown(60)
     console.log("this is data into set product bar")
     console.log(data)
+
 
 }
 function addToSelectElement(element, selectValues) {
@@ -142,7 +146,6 @@ function renderTable() {
     tableQuery.html("")
 
     dataTable.data.forEach(function (item, index) {
-
         var template = "<tr><td> " + index + "</td><td>" + item.itemCode + "</td><td>" + item.itemType + "</td><td>" + item.itemName + "</td><td>" + item.price + "</td><td>" + item.qty + "</td><td>" + item.disc + "</td><td>" + item.disc + "</td><td>" + item.price + "</td><td><button data-id='" + item.itemCode + "' class='btnEdit' name='btnEdit'> ✎ </button> <button data-id='" + item.itemCode + "'  class='btnRemove'  name='btnRemove'> ✖ </button></td></tr>"
         tableQuery.append(template)
     })
