@@ -110,14 +110,15 @@ function insertRow() {
     //console.log(currentItem)
     //===========================
     if (isExistInTable(currentItem.itemCode)) {
-        var itemFromDataTable = getItemFromTable(currentItem.itemCode)[0]
-        itemFromDataTable = currentItem
+        getItemFromTable(currentItem.itemCode)[0] = currentItem
+
     } else {
         dataTable['count']++
         dataTable["data"].push(currentItem)
 
     }
-
+    $("#btnAdd").text("Add")
+    currentItem={}
     //============================
     clearProductRow()
     focusSearchBox()

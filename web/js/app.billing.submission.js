@@ -2,18 +2,19 @@ $(function () {
 
 })
 function bindMainButtons() {
-    //param=bill
+
+
 }
+function purchaseSubmit() {
+   if(allowSubmission){
+       var href = window.location.href
+       console.log(window.location);
+       var path = href + "/purchase"
+       post(path, {"bill": JSON.stringify()})
+   }else{
 
-
-
-
-
-
-
-
-
-
+   }
+}
 
 function post(path, params, method) {
     method = method || "post"; // Set method to post by default if not specified.
@@ -24,8 +25,8 @@ function post(path, params, method) {
     form.setAttribute("method", method);
     form.setAttribute("action", path);
 
-    for(var key in params) {
-        if(params.hasOwnProperty(key)) {
+    for (var key in params) {
+        if (params.hasOwnProperty(key)) {
             var hiddenField = document.createElement("input");
             hiddenField.setAttribute("type", "hidden");
             hiddenField.setAttribute("name", key);
@@ -38,3 +39,4 @@ function post(path, params, method) {
     document.body.appendChild(form);
     form.submit();
 }
+
