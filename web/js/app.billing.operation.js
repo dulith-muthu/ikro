@@ -6,7 +6,7 @@ $(function () {
     bindStuff()
 })
 function bindStuff() {
-    $(".ikro-bill-table").on('click', '.btnEdit', function () 
+    $(".ikro-bill-table").on('click', '.btnEdit', function () {
         var toEditId = $(this).data('id')
 
         lodToEditEntry(toEditId)
@@ -146,7 +146,7 @@ function renderTable() {
     tableQuery.html("")
 
     dataTable.data.forEach(function (item, index) {
-        var template = "<tr><td> " + index + "</td><td>" + item.itemCode + "</td><td>" + item.itemType + "</td><td>" + item.itemName + "</td><td>" + item.price + "</td><td>" + item.qty + "</td><td>" + item.disc + "</td><td>" + item.disc + "</td><td>" + item.price + "</td><td><button data-id='" + item.itemCode + "' class='btnEdit' name='btnEdit'> ✎ </button> <button data-id='" + item.itemCode + "'  class='btnRemove'  name='btnRemove'> ✖ </button></td></tr>"
+        var template = "<tr><td> " + index + "</td><td>" + item.itemCode + "</td><td>" + item.itemType + "</td><td>" + item.itemName + "</td><td>" + item.price + "</td><td>" + item.qty + "</td><td>" + item.disc + "</td><td>" + item.disc + "</td><td>" + item.price + "</td><td><button data-id='" + item.itemCode + "' class='btnEdit' name='btnEdit' data-tabbic='1'> ✎ </button> <button data-id='" + item.itemCode + "'  class='btnRemove'  name='btnRemove' data-tabbic='1'> ✖ </button></td></tr>"
         tableQuery.append(template)
     })
 
