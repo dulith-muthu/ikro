@@ -47,7 +47,31 @@
             </nav>
         </div>
     </header>
-
+    {% if app.request.attributes.get('_route')=='bill' %}
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Customer Details</span>
+            <nav class="mdl-navigation">
+                {#<a class="mdl-navigation__link" href="">Link</a>#}
+                {#<a class="mdl-navigation__link" href="">Link</a>#}
+                {#<a class="mdl-navigation__link" href="">Link</a>#}
+                {#<a class="mdl-navigation__link" href="">Link</a>#}
+                <div class="sidebar-customer">
+                    <div class="field-group">
+                        <label for="customerName">Customer Name</label>
+                        <input class="tabic sidebar" name="customerName" id="customerName" type="text">
+                    </div>
+                    <div class="field-group">
+                        <label for="contactNumber">Contact Number</label>
+                        <input class="tabic sidebar" name="contactNumber" id="contactNumber" type="text">
+                    </div>
+                    <div class="field-group">
+                        <label for="address">Address</label>
+                        <textarea class="tabic sidebar" name="address" id="address" type="text" rows="4"></textarea>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    {% endif %}
     <main class="mdl-layout__content">
         <div class="page-content">
 

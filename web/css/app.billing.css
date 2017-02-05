@@ -60,6 +60,17 @@
     background-color: #e74c3c;
     color: white; }
 
+.sidebar-customer {
+  width: 100%; }
+  .sidebar-customer .field-group {
+    margin: 15px 15px; }
+    .sidebar-customer .field-group input, .sidebar-customer .field-group textarea {
+      display: block;
+      margin: 8px -2px;
+      width: 100%;
+      padding-top: 8px;
+      padding-bottom: 8px; }
+
 .product-search-row {
   margin-bottom: 20px;
   width: 100%; }
