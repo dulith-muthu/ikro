@@ -10,6 +10,7 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class MainController extends BaseController
 {
@@ -54,5 +55,37 @@ class MainController extends BaseController
     {
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig');
+    }
+
+
+    /**
+     * @Route("/admin/bill/customer/getSuggestionsByNic", name="getSuggestionsByNic")
+     */
+    public function userGetSuggestionsByNic(Request $request)
+    {
+        //Todo Move to the correct controller
+        $nic = $request->get('nic');
+        $customers = $this->getRepository('Customer')->getsuggestion($nic);
+        $response = new \stdClass();
+        $dataArray = [];
+
+        if(count($customers)!= 0){
+            $response->status = true;
+            foreach ($customers as $customer){
+                $tempObject = new \stdClass();
+                $tempObject->name = $customer->getName();
+                $tempObject->address = $customer->getAddress();
+                $tempObject->nic = $customer->getNic();
+                $tempObject->mobile = $customer->getMobile();
+                $tempObject->fixed = $customer->getFixed();
+                $dataArray[] = $tempObject;
+            }
+            $response->data = $dataArray;
+
+        }else{
+            $response->status = false;
+        }
+
+        return new Response($this->objectSerialize($response));
     }
 }

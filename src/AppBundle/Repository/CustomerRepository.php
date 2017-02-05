@@ -52,4 +52,19 @@ class CustomerRepository extends EntityRepository
         ;
         return $qb->getQuery()->getResult();
     }
+
+
+    public function getSuggestions($nic){
+        $qb = $this->createQueryBuilder('o');
+
+        $qb
+            ->select('o')
+            ->orWhere('o.nic LIKE :nic')
+            ->setParameter('nic',$nic."%")
+            ->setMaxResults(10)
+        ;
+
+        return $qb->getQuery()->getResult();
+
+    }
 }
