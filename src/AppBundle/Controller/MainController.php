@@ -64,8 +64,8 @@ class MainController extends BaseController
     public function userGetSuggestionsByNic(Request $request)
     {
         //Todo Move to the correct controller
-        $nic = $request->get('nic');
-        $customers = $this->getRepository('Customer')->getsuggestion($nic);
+        $nic = $request->get('term');
+        $customers = $this->getRepository('Customer')->getSuggestions($nic);
         $dataArray = [];
 
         if(count($customers)!= 0){
