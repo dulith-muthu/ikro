@@ -50,4 +50,13 @@ class UserController extends BaseController
         ));
 
     }
+    
+    /**
+     * @Route("admin/users/approve" , name ="userApprove")
+     */
+    
+    public function userApproveAction(Request $request){
+        
+        
+    }
 }
