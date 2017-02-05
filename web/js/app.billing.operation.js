@@ -67,7 +67,7 @@ function initAutocomplete() {
     });
 }
 function setProductBar(data, mode) {
-
+//TODO use data from API to auto select best price from list
     allowSubmission = false;
     $('.ikro-product-row .itemCode').html(data.itemCode)
     $('.ikro-product-row .itemType').html(data.itemType)
