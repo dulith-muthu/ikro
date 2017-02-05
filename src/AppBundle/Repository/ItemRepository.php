@@ -17,7 +17,8 @@ class ItemRepository extends EntityRepository
 
         $qb
             ->select('o')
-            ->where('o.itemCode LIKE :itemCode')
+            ->orWhere('o.itemCode LIKE :itemCode')
+            ->orWhere('o.name LIKE :itemCode')
             ->setParameter('itemCode',"%".$itemCode."%")
             ->setMaxResults(10)
         ;
