@@ -1,4 +1,4 @@
-var dataTable = {'count': 0, 'data': []};
+var dataTable = {'count': 0, 'data': [], 'customer': {}};
 var currentItem = {};
 $(function () {
     initAutocomplete();

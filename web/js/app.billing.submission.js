@@ -1,10 +1,7 @@
 $(function () {
 
 })
-function bindMainButtons() {
 
-
-}
 function purchaseSubmit() {
    if(allowSubmission){
        var href = window.location.href

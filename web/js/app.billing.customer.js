@@ -1,6 +1,6 @@
 var isSidebar = false
 $(function () {
-    $(".mdl-layout__drawer-button").on('click', function () {
+    $(".mdl-layout__drawer-button,.mdl-layout__obfuscator").on('click', function () {
         toggleSidebar()
     })
     initAutocompleteCustomer()
@@ -36,9 +36,16 @@ function setCustomerFields(data) {
     $("#homeNumber").val(data.fixed)
     $("#address").val(data.address)
 }
-function sidebarDone() {
+function sidebarSave() {
     $(".mdl-layout__drawer-button").click()
     toggleSidebar()
+}
+function sidebarClear() {
+    $("#customerNIC").val("")
+    $("#customerName").val("")
+    $("#mobileNumber").val("")
+    $("#homeNumber").val("")
+    $("#address").val("")
 }
 function toggleSidebar() {
     //$(".mdl-layout__drawer-button").click()
@@ -48,9 +55,18 @@ function toggleSidebar() {
             focusInput("#customerNIC")
         } else {
             $("#customerNIC").autocomplete("close");
+            dataTable.customer = createCustomerObject()
         }
     }, 100)
 }
 function focusInput(obj) {
     $(obj).select()
+}
+function createCustomerObject() {
+    var nic = $("#customerNIC").val()
+    var name = $("#customerName").val()
+    var mobile = $("#mobileNumber").val()
+    var home = $("#homeNumber").val()
+    var address = $("#address").val()
+    return {'nic': nic, 'name': name, 'mobile': mobile, 'home': home, 'address': address}
 }
