@@ -66,26 +66,24 @@ class MainController extends BaseController
         //Todo Move to the correct controller
         $nic = $request->get('nic');
         $customers = $this->getRepository('Customer')->getsuggestion($nic);
-        $response = new \stdClass();
         $dataArray = [];
 
         if(count($customers)!= 0){
-            $response->status = true;
             foreach ($customers as $customer){
                 $tempObject = new \stdClass();
                 $tempObject->name = $customer->getName();
+                $tempObject->label = $customer->getNic()."-".$customer->getName();
+                $tempObject->value = $customer->getNic();
                 $tempObject->address = $customer->getAddress();
                 $tempObject->nic = $customer->getNic();
                 $tempObject->mobile = $customer->getMobile();
                 $tempObject->fixed = $customer->getFixed();
                 $dataArray[] = $tempObject;
             }
-            $response->data = $dataArray;
-
         }else{
-            $response->status = false;
+
         }
 
-        return new Response($this->objectSerialize($response));
+        return new Response($this->objectSerialize($dataArray));
     }
 }
