@@ -58,19 +58,28 @@
                 <div class="sidebar-customer">
                     <div class="field-group">
                         <label for="customerNIC">Customer NIC</label>
-                        <input class="tabic sidebar" name="customerNIC" id="customerNIC" type="text">
+                        <input class="tabic sidebar" data-tabbic='1' name="customerNIC" id="customerNIC" type="text">
                     </div>
-                   <div class="field-group">
+                    <div class="field-group">
                         <label for="customerName">Customer Name</label>
-                        <input class="tabic sidebar" name="customerName" id="customerName" type="text">
+                        <input class="tabic sidebar" data-tabbic='1' name="customerName" id="customerName" type="text">
                     </div>
                     <div class="field-group">
                         <label for="contactNumber">Contact Number</label>
-                        <input class="tabic sidebar" name="contactNumber" id="contactNumber" type="text">
+                        <input class="tabic sidebar" data-tabbic='1' name="contactNumber" id="contactNumber"
+                               type="text">
                     </div>
                     <div class="field-group">
                         <label for="address">Address</label>
-                        <textarea class="tabic sidebar" name="address" id="address" type="text" rows="4"></textarea>
+                        <textarea class="tabic sidebar" data-tabbic='1' name="address" id="address" type="text"
+                                  rows="4"></textarea>
+                    </div>
+                    <div class="field-group">
+                        <button onclick="sidebarDone()"
+                                data-tabbic='1'
+                                class="sidebar tabic mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent main-buttons">
+                            Done
+                        </button>
                     </div>
                 </div>
             </nav>
