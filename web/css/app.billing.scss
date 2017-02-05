@@ -46,7 +46,12 @@
   margin: 0 0 20px 0;
   padding: 20px;
   table {
-
+    &.two td {
+      padding-right: 30px;
+      #priceSelect{
+        width: 150px;
+      }
+    }
     th {
       text-align: left;
     }
@@ -79,10 +84,6 @@
 }
 
 .ikro-bill-table {
-  tr {
-    //&:focus {
-    //  background: red !important;
-    //}
-  }
+
 }
 

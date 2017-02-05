@@ -18,18 +18,16 @@
                placeholder="Seach product"> <a class="shortcuts">Keyboard Shortcuts</a>
     </div>
     <div class="mdl-card mdl-shadow--2dp ikro-product-row" style="display: none">
-        <table width="100%">
+        <table class="one" width="100%">
             <thead>
             <tr>
                 <th>Item Code</th>
                 <th>Item Type</th>
                 <th>Item Name</th>
-                <th id="unitPriceCaption">Unit Price</th>
+
                 <th>Available Qty</th>
                 <th>Manufacturer</th>
-                <th>Quantity</th>
-                <th>Discount %</th>
-                <th></th>
+
             </tr>
             </thead>
             <tbody>
@@ -37,12 +35,38 @@
                 <td class="itemCode">-</td>
                 <td class="itemType">-</td>
                 <td class="itemName">-</td>
+
+                <td class="availableQty">-</td>
+                <td class="manufacturer">-</td>
+
+
+
+
+
+            </tr>
+
+            </tbody>
+        </table>
+        <hr>
+        <table class="two" width="">
+            <thead>
+            <tr>
+
+                <th id="unitPriceCaption">Unit Price</th>
+
+                <th>Quantity</th>
+                <th>Discount %</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+
                 <td><select name="priceSelect" id="priceSelect" data-tabbic="1">
                         <option value="100">&nbsp;&nbsp;-&nbsp;&nbsp;</option>
 
                     </select></td>
-                <td class="availableQty">-</td>
-                <td class="manufacturer">-</td>
+
 
                 <td><input name="qtyInput" class="" id="qtyInput" type="number" value="1" data-tabbic="1"></td>
                 <td><input name="discInput" class="" id="discInput" type="number" value="0" data-tabbic="1">
