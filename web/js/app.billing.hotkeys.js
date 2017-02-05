@@ -19,6 +19,11 @@ $(function () {
         preventKey(e)
         $("#btnRemoveAll").click()
     });
+    Mousetrap.bindGlobal(['ctrl+right', 'ctrl+left'], function (e) {
+        preventKey(e)
+        openSidebar()
+        $(".mdl-layout__drawer-button").click()
+    });
     Mousetrap.bindGlobal('*', function (e) {
         preventKey(e)
         cycleFocus(1);
@@ -31,6 +36,7 @@ $(function () {
     });
 
 })
+
 function cycleFocus(step) {
     var tabicList = $("[data-tabbic='1']:visible")
     var focused = $(':focus')[0];
@@ -41,7 +47,7 @@ function cycleFocus(step) {
         tabicList[0].select()
     } else {
         var nextElement = $(tabicList[focusedEelementId + step])
-        if (nextElement.is("input")) {
+        if (nextElement.is("input,textarea")) {
             nextElement.select()
 
         } else {
