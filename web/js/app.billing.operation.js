@@ -186,6 +186,6 @@ function getItemFromTable(itemCode) {
 
 }
 function removeAll() {
-    dataTable = {'count': 0, 'data': []};
+    dataTable = {'count': 0, 'data': [], 'customer': {}};
     renderTable()
 }

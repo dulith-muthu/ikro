@@ -17,8 +17,7 @@ $(function () {
     });
     Mousetrap.bindGlobal('ctrl+home', function (e) {
         preventKey(e)
-        $("#btnRemoveAll").click()
-        clearProductRow();
+        resetAll()
     });
     Mousetrap.bindGlobal(['ctrl+right', 'ctrl+left'], function (e) {
         preventKey(e)
@@ -39,7 +38,11 @@ $(function () {
     });
 
 })
-
+function resetAll() {
+    $("#btnRemoveAll").click()
+    clearProductRow();
+    sidebarClear()
+}
 function cycleFocus(step) {
     var tabicList
     if (!isSidebar) {
@@ -51,7 +54,7 @@ function cycleFocus(step) {
     }
 
     var focused = $(':focus')[0];
-     console.log(tabicList)
+    console.log(tabicList)
     var focusedEelementId = $.inArray(focused, tabicList)
     console.log("focusedEelementId = " + focusedEelementId)
     if (focusedEelementId == -1) {
