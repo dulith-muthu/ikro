@@ -21,7 +21,9 @@ $(function () {
     });
     Mousetrap.bindGlobal(['ctrl+right', 'ctrl+left'], function (e) {
         preventKey(e)
+
         toggleSidebar()
+
         $(".mdl-layout__drawer-button").click()
     });
     Mousetrap.bindGlobal('*', function (e) {

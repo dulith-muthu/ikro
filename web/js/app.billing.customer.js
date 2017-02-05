@@ -1,5 +1,6 @@
 var isSidebar = false
 $(function () {
+
     $(".mdl-layout__drawer-button,.mdl-layout__obfuscator").on('click', function () {
         toggleSidebar()
     })
@@ -56,11 +57,13 @@ function toggleSidebar() {
         } else {
             $("#customerNIC").autocomplete("close");
             dataTable.customer = createCustomerObject()
+
         }
     }, 100)
 }
 function focusInput(obj) {
     $(obj).select()
+
 }
 function createCustomerObject() {
     var nic = $("#customerNIC").val()
@@ -69,4 +72,5 @@ function createCustomerObject() {
     var home = $("#homeNumber").val()
     var address = $("#address").val()
     return {'nic': nic, 'name': name, 'mobile': mobile, 'home': home, 'address': address}
+
 }
