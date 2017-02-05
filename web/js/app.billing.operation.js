@@ -158,6 +158,7 @@ function focusSearchBox() {
 function clearProductRow() {
     //currentItem = {}
     $(".ikro-product-row").slideUp(60)
+
     $('.ikro-product-row .itemCode').html("-")
     $('.ikro-product-row .itemType').html("-")
     $('.ikro-product-row .itemName').html("-")
@@ -166,7 +167,8 @@ function clearProductRow() {
     $("#qtyInput").val(1)
     $("#discInput").val(0)
     $("#discountSelect").val(1)
-
+    $("#searchProduct").val("")
+    $("#searchProduct").select()
     $(".ikro-product-row #priceSelect").html("<option value=''>&nbsp;&nbsp;-&nbsp;&nbsp;</option>")
 }
 function isExistInTable(itemCode) {

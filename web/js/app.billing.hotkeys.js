@@ -18,6 +18,7 @@ $(function () {
     Mousetrap.bindGlobal('ctrl+home', function (e) {
         preventKey(e)
         $("#btnRemoveAll").click()
+        clearProductRow();
     });
     Mousetrap.bindGlobal(['ctrl+right', 'ctrl+left'], function (e) {
         preventKey(e)
