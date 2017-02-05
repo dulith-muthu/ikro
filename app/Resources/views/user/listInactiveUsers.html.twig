@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h3>Inactive Users</h3>
+    <table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Created Date</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for inactiveUser in inactiveUsers %}
+            <tr>
+                <td>{{ inactiveUser.username }}</td>
+                <td>{{ inactiveUser.createdAt | date('F j,Y,g:i a') }}</td>
+                <td>{{ inactiveUser.email }}</td>
+                <td>
+                    <a href="approve/userActive/{{ inactiveUser.id }}" class="mdl-button mdl-js-button">Activate</a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
