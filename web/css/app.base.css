@@ -66,6 +66,8 @@
 .mdl-navigation .mdl-navigation__link:hover {
   background: #606fc7;
   color: white; }
+.mdl-navigation .ul-user-menu li, .mdl-navigation .ul-user-menu a {
+  text-decoration: none; }
 
 footer.mdl-mini-footer {
   padding: 0 20px; }

@@ -43,7 +43,18 @@
                 <a href="" class="mdl-navigation__link">EXPENSES</a>
                 <a href="" class="mdl-navigation__link">CUSTOMERS</a>
                 <a href="" class="mdl-navigation__link">SETTINGS</a>
-                <a href="{{ url('logout') }}">Logout</a>
+                {#<a href="{{ url('logout') }}">Logout</a>#}
+                <!-- Right aligned menu below button -->
+                <button id="demo-menu-lower-right"
+                        class="mdl-button mdl-js-button mdl-button--icon">
+                    <i class="material-icons">person</i>
+                </button>
+
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect ul-user-menu"
+                    for="demo-menu-lower-right">
+                    <li class="mdl-menu__item">My Account</li>
+                    <a href="{{ url('logout') }}">  <li class="mdl-menu__item">Logout</li></a>
+                </ul>
             </nav>
         </div>
     </header>
