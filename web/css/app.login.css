@@ -10,7 +10,8 @@
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
   background: #ff9800;
   border: 0;
-  cursor: pointer; }
+  cursor: pointer;
+  border-radius: 2px; }
   .flat-button.red {
     background: #e74c3c; }
 

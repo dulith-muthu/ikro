@@ -43,11 +43,71 @@
                 <a href="" class="mdl-navigation__link">EXPENSES</a>
                 <a href="" class="mdl-navigation__link">CUSTOMERS</a>
                 <a href="" class="mdl-navigation__link">SETTINGS</a>
-                <a href="{{ url('logout') }}">Logout</a>
+                {#<a href="{{ url('logout') }}">Logout</a>#}
+                <!-- Right aligned menu below button -->
+                <button id="demo-menu-lower-right"
+                        class="mdl-button mdl-js-button mdl-button--icon">
+                    <i class="material-icons">person</i>
+                </button>
+
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect ul-user-menu"
+                    for="demo-menu-lower-right">
+                    <li class="mdl-menu__item">My Account</li>
+                    <a href="{{ url('logout') }}">  <li class="mdl-menu__item">Logout</li></a>
+                </ul>
             </nav>
         </div>
     </header>
+    {% if app.request.attributes.get('_route')=='bill' %}
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Customer Details</span>
+            <nav class="mdl-navigation">
+                {#<a class="mdl-navigation__link" href="">Link</a>#}
+                {#<a class="mdl-navigation__link" href="">Link</a>#}
+                {#<a class="mdl-navigation__link" href="">Link</a>#}
+                {#<a class="mdl-navigation__link" href="">Link</a>#}
+                <div class="sidebar-customer">
+                    <div class="field-group">
 
+                        <label for="customerNIC">Customer NIC</label>
+                        <input class="tabic sidebar" data-tabbic='1' name="customerNIC" id="customerNIC" type="text">
+                    </div>
+                    <div class="field-group">
+                        <label for="customerName">Customer Name</label>
+                        <input class="tabic sidebar" data-tabbic='1' name="customerName" id="customerName" type="text">
+                    </div>
+                    <div class="field-group">
+                        <label for="mobileNumber">Mobile Number</label>
+                        <input class="tabic sidebar" data-tabbic='1' name="mobileNumber" id="mobileNumber"
+                               type="text">
+                    </div>
+                    <div class="field-group">
+                        <label for="homeNumber">Home Number</label>
+                        <input class="tabic sidebar" data-tabbic='1' name="homeNumber" id="homeNumber"
+                               type="text">
+                    </div>
+                    <div class="field-group">
+                        <label for="address">Address</label>
+                        <textarea class="tabic sidebar" data-tabbic='1' name="address" id="address" type="text"
+                                  rows="4"></textarea>
+                    </div>
+                    <div class="field-group">
+                        <button onclick="sidebarSave()"
+                                data-tabbic='1'
+                                class="sidebar tabic mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons">
+                            Save
+                        </button>
+                        <button onclick="sidebarClear()"
+                                data-tabbic='1'
+                                class="sidebar tabic mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  main-buttons">
+                            Clear
+                        </button>
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+    {% endif %}
     <main class="mdl-layout__content">
         <div class="page-content">
 

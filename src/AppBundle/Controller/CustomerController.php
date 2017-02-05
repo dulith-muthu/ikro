@@ -28,7 +28,7 @@ class CustomerController extends BaseController
                 'Customer successfully added'
             );
 
-            return $this->redirectToRoute('customerAdd');
+            return $this->redirectToRoute('customerList');
         }
 
         return $this->render('customer/customerAdd.html.twig',array(

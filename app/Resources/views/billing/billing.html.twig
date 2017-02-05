@@ -4,7 +4,6 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.billing.css') }}">
-
     <link rel="stylesheet" type="text/css" href="{{ asset('bower/jquery-ui/themes/base/jquery-ui.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('js/tools/mdl-jquery-modal-dialog.css') }}">
 
@@ -14,23 +13,21 @@
 {% block body %}
     <div class="product-search-row">
 
-        <input type="text" name="searchProduct" id="searchProduct"
+        <input type="text" name="searchProduct" id="searchProduct" data-tabbic="1"
 
                placeholder="Seach product"> <a class="shortcuts">Keyboard Shortcuts</a>
     </div>
     <div class="mdl-card mdl-shadow--2dp ikro-product-row" style="display: none">
-        <table width="100%">
+        <table class="one" width="100%">
             <thead>
             <tr>
                 <th>Item Code</th>
                 <th>Item Type</th>
                 <th>Item Name</th>
-                <th id="unitPriceCaption">Unit Price</th>
+
                 <th>Available Qty</th>
                 <th>Manufacturer</th>
-                <th>Quantity</th>
-                <th>Discount %</th>
-                <th></th>
+
             </tr>
             </thead>
             <tbody>
@@ -38,17 +35,43 @@
                 <td class="itemCode">-</td>
                 <td class="itemType">-</td>
                 <td class="itemName">-</td>
-                <td><select name="priceSelect" id="priceSelect">
-                        <option value="100">&nbsp;&nbsp;-&nbsp;&nbsp;</option>
 
-                    </select></td>
                 <td class="availableQty">-</td>
                 <td class="manufacturer">-</td>
 
-                <td><input name="qtyInput" class="" id="qtyInput" type="number" value="1"></td>
-                <td><input name="discInput" class="" id="discInput" type="number" value="0">
 
-                    <select name="discountSelect" id="discountSelect">
+
+
+
+            </tr>
+
+            </tbody>
+        </table>
+        <hr>
+        <table class="two" width="">
+            <thead>
+            <tr>
+
+                <th id="unitPriceCaption">Unit Price</th>
+
+                <th>Quantity</th>
+                <th>Discount %</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+
+                <td><select name="priceSelect" id="priceSelect" data-tabbic="1">
+                        <option value="100">&nbsp;&nbsp;-&nbsp;&nbsp;</option>
+
+                    </select></td>
+
+
+                <td><input name="qtyInput" class="" id="qtyInput" type="number" value="1" data-tabbic="1"></td>
+                <td><input name="discInput" class="" id="discInput" type="number" value="0" data-tabbic="1">
+
+                    <select name="discountSelect" id="discountSelect" data-tabbic="1">
                         <option value="1">%</option>
                         <option value="2">Rs.</option>
 
@@ -56,11 +79,12 @@
                 </td>
 
                 <td>
-                    <button name="btnAdd" class="flat-button" id="btnAdd" type="button" onclick="insertRow()">Add
+                    <button name="btnAdd" class="flat-button" id="btnAdd" type="button" onclick="insertRow()"
+                            data-tabbic="1">Add
                     </button>
                     &nbsp;
                     <button name="btnClear" class="flat-button red" id="btnClear" onclick="clearProductRow()"
-
+                            data-tabbic="1"
                             type="button">Clear
                     </button>
                 </td>
@@ -83,7 +107,7 @@
             <th>Discount Rs.</th>
             <th>Sub Total</th>
             <th>
-                <button class="" name="btnRemoveAll" id="btnRemoveAll" onclick="removeAll()">
+                <button class="" name="btnRemoveAll" id="btnRemoveAll" onclick="removeAll()" data-tabbic="1">
                     Remove All
                 </button>
             </th>
@@ -213,17 +237,17 @@
     </table>
 
     <div class="main-buttons-row">
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
-                id="btnCashPayment" type="button" onclick="purchaseSubmit();">Cash Payment
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent main-buttons"
+                id="btnCashPayment" type="button" onclick="purchaseSubmit();" data-tabbic="1"><i class="material-icons">attach_money</i>&nbsp;Cash Payment
         </button>
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
-                id="btnMonthlyPlan" type="button">Monthly Plan
+                id="btnMonthlyPlan" type="button" data-tabbic="1"><i class="material-icons">date_range</i>&nbsp;Monthly Plan
         </button>
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
-                id="btnQuotation" type="button">Quotation
+                id="btnQuotation" type="button" data-tabbic="1"><i class="material-icons">list</i>&nbsp;Quotation
         </button>
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
-                id="btnCancel" type="button">Cancel
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  main-buttons"
+                id="btnCancel" type="button" data-tabbic="1">Cancel
         </button>
 
 
@@ -242,6 +266,7 @@
      <script src="{{ asset('js/app.billing.operation.js') }}"></script>
      <script src="{{ asset('js/app.billing.validation.js') }}"></script>
      <script src="{{ asset('js/app.billing.submission.js') }}"></script>
+     <script src="{{ asset('js/app.billing.customer.js') }}"></script>
      <script src="{{ asset('js/app.billing.hotkeys.js') }}"></script>
 
 

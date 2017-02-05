@@ -82,18 +82,27 @@ function showDialog(options) {
     }
     componentHandler.upgradeDom();
     if (options.cancelable) {
+        $($(':focus')[0]).blur()
         dialog.click(function () {
             hideDialog(dialog);
         });
         $(document).bind("keyup.dialog", function (e) {
             if (e.which == 27)
                 hideDialog(dialog);
-            if (e.which == 13) {
-                if (!options.positive.onClick(e)) {
-                    hideDialog(dialog)
-                }
-            }
+
         });
+        setTimeout(function() {
+
+            $(document).bind("keyup.dialog", function (e) {
+
+                if (e.which == 13) {
+                    if (!options.positive.onClick(e)) {
+                        hideDialog(dialog)
+                    }
+                }
+            });
+        }, 500);
+
         content.click(function (e) {
             e.stopPropagation();
         });

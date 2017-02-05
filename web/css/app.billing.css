@@ -10,7 +10,8 @@
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
   background: #ff9800;
   border: 0;
-  cursor: pointer; }
+  cursor: pointer;
+  border-radius: 2px; }
   .flat-button.red {
     background: #e74c3c; }
 
@@ -60,6 +61,17 @@
     background-color: #e74c3c;
     color: white; }
 
+.sidebar-customer {
+  width: 100%; }
+  .sidebar-customer .field-group {
+    margin: 15px 15px; }
+    .sidebar-customer .field-group input, .sidebar-customer .field-group textarea {
+      display: block;
+      margin: 8px -2px;
+      width: 100%;
+      padding-top: 8px;
+      padding-bottom: 8px; }
+
 .product-search-row {
   margin-bottom: 20px;
   width: 100%; }
@@ -82,6 +94,10 @@
   min-height: 0;
   margin: 0 0 20px 0;
   padding: 20px; }
+  .ikro-product-row table.two td {
+    padding-right: 30px; }
+    .ikro-product-row table.two td #priceSelect {
+      width: 150px; }
   .ikro-product-row table th {
     text-align: left; }
   .ikro-product-row table input[type='number'] {

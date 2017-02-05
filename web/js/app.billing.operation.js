@@ -1,4 +1,4 @@
-var dataTable = {'count': 0, 'data': []};
+var dataTable = {'count': 0, 'data': [], 'customer': {}};
 var currentItem = {};
 $(function () {
     initAutocomplete();
@@ -6,7 +6,7 @@ $(function () {
     bindStuff()
 })
 function bindStuff() {
-    $(".ikro-bill-table").on('click', '.btnEdit', function () 
+    $(".ikro-bill-table").on('click', '.btnEdit', function () {
         var toEditId = $(this).data('id')
 
         lodToEditEntry(toEditId)
@@ -67,7 +67,7 @@ function initAutocomplete() {
     });
 }
 function setProductBar(data, mode) {
-
+//TODO use data from API to auto select best price from list
     allowSubmission = false;
     $('.ikro-product-row .itemCode').html(data.itemCode)
     $('.ikro-product-row .itemType').html(data.itemType)
@@ -146,7 +146,7 @@ function renderTable() {
     tableQuery.html("")
 
     dataTable.data.forEach(function (item, index) {
-        var template = "<tr><td> " + index + "</td><td>" + item.itemCode + "</td><td>" + item.itemType + "</td><td>" + item.itemName + "</td><td>" + item.price + "</td><td>" + item.qty + "</td><td>" + item.disc + "</td><td>" + item.disc + "</td><td>" + item.price + "</td><td><button data-id='" + item.itemCode + "' class='btnEdit' name='btnEdit'> ✎ </button> <button data-id='" + item.itemCode + "'  class='btnRemove'  name='btnRemove'> ✖ </button></td></tr>"
+        var template = "<tr><td> " + index + "</td><td>" + item.itemCode + "</td><td>" + item.itemType + "</td><td>" + item.itemName + "</td><td>" + item.price + "</td><td>" + item.qty + "</td><td>" + item.disc + "</td><td>" + item.disc + "</td><td>" + item.price + "</td><td><button data-id='" + item.itemCode + "' class='btnEdit' name='btnEdit' data-tabbic='1'> ✎ </button> <button data-id='" + item.itemCode + "'  class='btnRemove'  name='btnRemove' data-tabbic='1'> ✖ </button></td></tr>"
         tableQuery.append(template)
     })
 
@@ -158,6 +158,7 @@ function focusSearchBox() {
 function clearProductRow() {
     //currentItem = {}
     $(".ikro-product-row").slideUp(60)
+
     $('.ikro-product-row .itemCode').html("-")
     $('.ikro-product-row .itemType').html("-")
     $('.ikro-product-row .itemName').html("-")
@@ -166,7 +167,8 @@ function clearProductRow() {
     $("#qtyInput").val(1)
     $("#discInput").val(0)
     $("#discountSelect").val(1)
-
+    $("#searchProduct").val("")
+    $("#searchProduct").select()
     $(".ikro-product-row #priceSelect").html("<option value=''>&nbsp;&nbsp;-&nbsp;&nbsp;</option>")
 }
 function isExistInTable(itemCode) {

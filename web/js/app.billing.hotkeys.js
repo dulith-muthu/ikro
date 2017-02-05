@@ -18,18 +18,58 @@ $(function () {
     Mousetrap.bindGlobal('ctrl+home', function (e) {
         preventKey(e)
         $("#btnRemoveAll").click()
+        clearProductRow();
     });
-    Mousetrap.bindGlobal('end', function (e) {
+    Mousetrap.bindGlobal(['ctrl+right', 'ctrl+left'], function (e) {
         preventKey(e)
-        //TODO use an array to collect all tabable elements, check current one, focus next one
-        var focused = $(':focus');
-        console.log(focused)
-        focused.next('button').focus();
+
+        toggleSidebar()
+
+        $(".mdl-layout__drawer-button").click()
+    });
+    Mousetrap.bindGlobal('*', function (e) {
+        preventKey(e)
+        cycleFocus(1);
+
+    });
+    Mousetrap.bindGlobal('/', function (e) {
+        preventKey(e)
+        cycleFocus(-1);
 
     });
 
 })
 
+function cycleFocus(step) {
+    var tabicList
+    if (!isSidebar) {
+        tabicList = $("[data-tabbic='1']:visible").not(".sidebar")
+
+
+    } else {
+        tabicList = $(".sidebar[data-tabbic='1']:visible")
+    }
+
+    var focused = $(':focus')[0];
+     console.log(tabicList)
+    var focusedEelementId = $.inArray(focused, tabicList)
+    console.log("focusedEelementId = " + focusedEelementId)
+    if (focusedEelementId == -1) {
+        tabicList[0].select()
+    } else {
+        var nextElement = $(tabicList[focusedEelementId + step])
+        if (nextElement.is("input,textarea")) {
+            nextElement.select()
+
+        } else {
+            nextElement.focus()
+        }
+
+
+    }
+    console.log("CHANGED FOCUS")
+    //  focused.next('button').focus();
+}
 function preventKey(e) {
     if (e.preventDefault) {
         e.preventDefault();
