@@ -71,6 +71,11 @@ class Users implements UserInterface, \Serializable
      */
     private $role;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Log", mappedBy="user")
+     */
+
+    private $log;
 
     /**
      * Get id
@@ -293,5 +298,45 @@ class Users implements UserInterface, \Serializable
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->log = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add log
+     *
+     * @param \AppBundle\Entity\Log $log
+     * @return Users
+     */
+    public function addLog(\AppBundle\Entity\Log $log)
+    {
+        $this->log[] = $log;
+
+        return $this;
+    }
+
+    /**
+     * Remove log
+     *
+     * @param \AppBundle\Entity\Log $log
+     */
+    public function removeLog(\AppBundle\Entity\Log $log)
+    {
+        $this->log->removeElement($log);
+    }
+
+    /**
+     * Get log
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getLog()
+    {
+        return $this->log;
     }
 }
