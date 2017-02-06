@@ -36,8 +36,8 @@ class Installment
     private $dateTime;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Dept", inversedBy="installment")
-     * @ORM\JoinColumn(name="dept-id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Debt", inversedBy="installment")
+     * @ORM\JoinColumn(name="dept_id", referencedColumnName="id")
      */
     private $dept;
 
