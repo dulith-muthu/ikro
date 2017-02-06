@@ -1,0 +1,264 @@
+@import "../../variables";
+.navigation{
+  margin: auto;
+  padding-top: 25px;
+  display: table;
+}
+
+//colors
+$color_steel_blue_approx: $brand-primary;
+$white: #fff;
+$color_alto_approx: #ddd;
+$color_blumine_approx: #23527c;
+$color_gallery_approx: #eee;
+$color_tapa_approx: #777;
+
+.pagination {
+  display: inline-block;
+  padding-left: 0;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 4px;
+  > li {
+    display: inline;
+    > a {
+      position: relative;
+      float: left;
+      padding: 6px 12px;
+      margin-left: -1px;
+      line-height: 1.42857143;
+      color: $color_steel_blue_approx;
+      text-decoration: none;
+      background-color: $white;
+      border: 1px solid $color_alto_approx;
+      &:hover {
+        z-index: 2;
+        color: $color_blumine_approx;
+        background-color: $color_gallery_approx;
+        border-color: $color_alto_approx;
+      }
+      &:focus {
+        z-index: 2;
+        color: $color_blumine_approx;
+        background-color: $color_gallery_approx;
+        border-color: $color_alto_approx;
+      }
+    }
+    > span {
+      position: relative;
+      float: left;
+      padding: 6px 12px;
+      margin-left: -1px;
+      line-height: 1.42857143;
+      color: $color_steel_blue_approx;
+      text-decoration: none;
+      background-color: $white;
+      border: 1px solid $color_alto_approx;
+      &:hover {
+        z-index: 2;
+        color: $color_blumine_approx;
+        background-color: $color_gallery_approx;
+        border-color: $color_alto_approx;
+      }
+      &:focus {
+        z-index: 2;
+        color: $color_blumine_approx;
+        background-color: $color_gallery_approx;
+        border-color: $color_alto_approx;
+      }
+    }
+    &:first-child {
+      > a {
+        margin-left: 0;
+        //Instead of the line below you could use @include border-top-left-radius($radius)
+        border-top-left-radius: 4px;
+        //Instead of the line below you could use @include border-bottom-left-radius($radius)
+        border-bottom-left-radius: 4px;
+      }
+      > span {
+        margin-left: 0;
+        //Instead of the line below you could use @include border-top-left-radius($radius)
+        border-top-left-radius: 4px;
+        //Instead of the line below you could use @include border-bottom-left-radius($radius)
+        border-bottom-left-radius: 4px;
+      }
+    }
+    &:last-child {
+      > a {
+        //Instead of the line below you could use @include border-top-right-radius($radius)
+        border-top-right-radius: 4px;
+        //Instead of the line below you could use @include border-bottom-right-radius($radius)
+        border-bottom-right-radius: 4px;
+      }
+      > span {
+        //Instead of the line below you could use @include border-top-right-radius($radius)
+        border-top-right-radius: 4px;
+        //Instead of the line below you could use @include border-bottom-right-radius($radius)
+        border-bottom-right-radius: 4px;
+      }
+    }
+  }
+  > {
+    .active {
+      > a {
+        z-index: 3;
+        color: $white;
+        cursor: default;
+        background-color: $color_steel_blue_approx;
+        border-color: $color_steel_blue_approx;
+        &:hover {
+          z-index: 3;
+          color: $white;
+          cursor: default;
+          background-color: $color_steel_blue_approx;
+          border-color: $color_steel_blue_approx;
+        }
+        &:focus {
+          z-index: 3;
+          color: $white;
+          cursor: default;
+          background-color: $color_steel_blue_approx;
+          border-color: $color_steel_blue_approx;
+        }
+      }
+      > span {
+        z-index: 3;
+        color: $white;
+        cursor: default;
+        background-color: $color_steel_blue_approx;
+        border-color: $color_steel_blue_approx;
+        &:hover {
+          z-index: 3;
+          color: $white;
+          cursor: default;
+          background-color: $color_steel_blue_approx;
+          border-color: $color_steel_blue_approx;
+        }
+        &:focus {
+          z-index: 3;
+          color: $white;
+          cursor: default;
+          background-color: $color_steel_blue_approx;
+          border-color: $color_steel_blue_approx;
+        }
+      }
+    }
+    .disabled {
+      > span {
+        color: $color_tapa_approx;
+        cursor: not-allowed;
+        background-color: $white;
+        border-color: $color_alto_approx;
+        &:hover {
+          color: $color_tapa_approx;
+          cursor: not-allowed;
+          background-color: $white;
+          border-color: $color_alto_approx;
+        }
+        &:focus {
+          color: $color_tapa_approx;
+          cursor: not-allowed;
+          background-color: $white;
+          border-color: $color_alto_approx;
+        }
+      }
+      > a {
+        color: $color_tapa_approx;
+        cursor: not-allowed;
+        background-color: $white;
+        border-color: $color_alto_approx;
+        &:hover {
+          color: $color_tapa_approx;
+          cursor: not-allowed;
+          background-color: $white;
+          border-color: $color_alto_approx;
+        }
+        &:focus {
+          color: $color_tapa_approx;
+          cursor: not-allowed;
+          background-color: $white;
+          border-color: $color_alto_approx;
+        }
+      }
+    }
+  }
+}
+.pagination-lg > li {
+  > a {
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+  }
+  > span {
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+  }
+  &:first-child {
+    > a {
+      //Instead of the line below you could use @include border-top-left-radius($radius)
+      border-top-left-radius: 6px;
+      //Instead of the line below you could use @include border-bottom-left-radius($radius)
+      border-bottom-left-radius: 6px;
+    }
+    > span {
+      //Instead of the line below you could use @include border-top-left-radius($radius)
+      border-top-left-radius: 6px;
+      //Instead of the line below you could use @include border-bottom-left-radius($radius)
+      border-bottom-left-radius: 6px;
+    }
+  }
+  &:last-child {
+    > a {
+      //Instead of the line below you could use @include border-top-right-radius($radius)
+      border-top-right-radius: 6px;
+      //Instead of the line below you could use @include border-bottom-right-radius($radius)
+      border-bottom-right-radius: 6px;
+    }
+    > span {
+      //Instead of the line below you could use @include border-top-right-radius($radius)
+      border-top-right-radius: 6px;
+      //Instead of the line below you could use @include border-bottom-right-radius($radius)
+      border-bottom-right-radius: 6px;
+    }
+  }
+}
+.pagination-sm > li {
+  > a {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  > span {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  &:first-child {
+    > a {
+      //Instead of the line below you could use @include border-top-left-radius($radius)
+      border-top-left-radius: 3px;
+      //Instead of the line below you could use @include border-bottom-left-radius($radius)
+      border-bottom-left-radius: 3px;
+    }
+    > span {
+      //Instead of the line below you could use @include border-top-left-radius($radius)
+      border-top-left-radius: 3px;
+      //Instead of the line below you could use @include border-bottom-left-radius($radius)
+      border-bottom-left-radius: 3px;
+    }
+  }
+  &:last-child {
+    > a {
+      //Instead of the line below you could use @include border-top-right-radius($radius)
+      border-top-right-radius: 3px;
+      //Instead of the line below you could use @include border-bottom-right-radius($radius)
+      border-bottom-right-radius: 3px;
+    }
+    > span {
+      //Instead of the line below you could use @include border-top-right-radius($radius)
+      border-top-right-radius: 3px;
+      //Instead of the line below you could use @include border-bottom-right-radius($radius)
+      border-bottom-right-radius: 3px;
+    }
+  }
+}
