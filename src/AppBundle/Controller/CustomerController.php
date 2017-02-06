@@ -32,7 +32,9 @@ class CustomerController extends BaseController
         }
 
         return $this->render('customer/customerAdd.html.twig',array(
-            'form' =>$form->createView()
+            'form' =>$form->createView(),
+            'tab' =>$this->customer,
+            'subTab'=>$this->customerAdd
         ));
     }
 
@@ -68,7 +70,8 @@ class CustomerController extends BaseController
         }
 
         return $this->render('customer/customerEdit.html.twig',array(
-            'form' =>$form->createView()
+            'form' =>$form->createView(),
+            'tab' =>$this->customer
         ));
     }
 
@@ -105,7 +108,9 @@ class CustomerController extends BaseController
             'address'=>$address,
             'nic'=>$nic,
             'mobile'=>$mobile,
-            'fixed'=>$fixed
+            'fixed'=>$fixed,
+            'tab' =>$this->customer,
+            'subTab'=>$this->customerList
         ));
     }
 

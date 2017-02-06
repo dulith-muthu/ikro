@@ -9,6 +9,22 @@ use Symfony\Component\HttpFoundation\Response;
 
 class BaseController extends Controller
 {
+    public $expense = 'expense';
+    public $bill = 'bill';
+    public $stock = 'stock';
+    public $customer = 'customer';
+    public $purchaseBill = 'purchaseBill';
+    public $item = 'item';
+
+
+
+
+    public $customerAdd = 'customerAdd';
+    public $customerList = 'customerList';
+
+    public $expenseAdd = 'expenseAdd';
+    public $expenseList = 'expenseList';
+
 
     protected function getRepository($class)
     {

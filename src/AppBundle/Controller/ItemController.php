@@ -33,7 +33,8 @@ class ItemController extends BaseController
         }
 
         return $this->render('item/itemAdd.html.twig',array(
-            'form' =>$form->createView()
+            'form' =>$form->createView(),
+            'tab'=>$this->item
         ));
     }
 
@@ -69,7 +70,8 @@ class ItemController extends BaseController
         }
 
         return $this->render('item/itemEdit.html.twig',array(
-            'form' =>$form->createView()
+            'form' =>$form->createView(),
+            'tab'=>$this->item
         ));
     }
 

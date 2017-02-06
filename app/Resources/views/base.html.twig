@@ -34,14 +34,17 @@
             <!-- Navigation. We hide it in small screens. -->
             <nav class="mdl-navigation mdl-layout--large-screen-only">
 
-
-                <a href="" class="is-active mdl-navigation__link">BILLING</a>
+                <a href="{{ url('adminBill') }}"
+                   class="{% if(tab == 'bill') %}is-active {% endif %}mdl-navigation__link">BILLING</a>
                 <a href="" class="mdl-navigation__link">DEBTS</a>
-                <a href="" class="mdl-navigation__link">STOCK</a>
+                <a href="{{ url('adminStock') }}"
+                   class="{% if(tab == 'stock') %}is-active {% endif %}mdl-navigation__link">STOCK</a>
                 <a href="" class="mdl-navigation__link">REPORTS</a>
                 <a href="" class="mdl-navigation__link">LOG</a>
-                <a href="" class="mdl-navigation__link">EXPENSES</a>
-                <a href="" class="mdl-navigation__link">CUSTOMERS</a>
+                <a href="{{ url('expenseList') }}"
+                   class="{% if(tab == 'expense') %}is-active {% endif %}mdl-navigation__link">EXPENSES</a>
+                <a href="{{ url('customerList') }}"
+                   class="{% if(tab == 'customer') %}is-active {% endif %}mdl-navigation__link">CUSTOMERS</a>
                 <a href="" class="mdl-navigation__link">SETTINGS</a>
                 {#<a href="{{ url('logout') }}">Logout</a>#}
                 <!-- Right aligned menu below button -->
@@ -53,12 +56,14 @@
                 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect ul-user-menu"
                     for="demo-menu-lower-right">
                     <li class="mdl-menu__item">My Account</li>
-                    <a href="{{ url('logout') }}">  <li class="mdl-menu__item">Logout</li></a>
+                    <a href="{{ url('logout') }}">
+                        <li class="mdl-menu__item">Logout</li>
+                    </a>
                 </ul>
             </nav>
         </div>
     </header>
-    {% if app.request.attributes.get('_route')=='bill' %}
+    {% if tab=='bill' or tab=='stock' %}
         <div class="mdl-layout__drawer">
             <span class="mdl-layout-title">Customer Details</span>
             <nav class="mdl-navigation">
@@ -113,33 +118,42 @@
 
 
             <div class="mdl-grid">
-                {% if app.request.attributes.get('_route')!='bill' %}
-                    <div class="mdl-cell mdl-cell--2-col mdl-card mdl-shadow--2dp ikro-sidebar-div">
-                        <!-- Icon List -->
 
 
-                        <ul class="main-sidebar mdl-list">
-                            <li class="mdl-list__item active"><span class="mdl-list__item-primary-content"> <i
-                                            class="material-icons mdl-list__item-icon">person  </i>
+                {% if tab!='bill' and tab!='stock' %}
+                    {% block sideBar %}
+                        <div class="mdl-cell mdl-cell--2-col mdl-card mdl-shadow--2dp ikro-sidebar-div">
+                            <!-- Icon List -->
+
+
+                            <ul class="main-sidebar mdl-list">
+                                <li class="mdl-list__item active"><span class="mdl-list__item-primary-content"> <i
+                                                class="material-icons mdl-list__item-icon">person  </i>
     Bryan Cranston
 </span>
-                            </li>
-                            <li class="mdl-list__item"><span class="mdl-list__item-primary-content"> <i
-                                            class="material-icons mdl-list__item-icon">person</i>
+                                </li>
+                                <li class="mdl-list__item"><span class="mdl-list__item-primary-content"> <i
+                                                class="material-icons mdl-list__item-icon">person</i>
     Aaron Paul
   </span>
-                            </li>
-                            <li class="mdl-list__item"><span class="mdl-list__item-primary-content"> <i
-                                            class="material-icons mdl-list__item-icon">person</i>
+                                </li>
+
+                                <li class="mdl-list__item"><span class="mdl-list__item-primary-content"> <i
+                                                class="material-icons mdl-list__item-icon">person</i>
     Bob Odenkirk
   </span>
-                            </li>
-                        </ul>
+                                </li>
 
-                    </div>
+
+                            </ul>
+
+                        </div>
+
+                    {% endblock %}
                 {% endif %}
+
                 <div class="mdl-cell mdl-card mdl-shadow--2dp ikro-main-div
-{{ app.request.attributes.get('_route')=='bill'?"mdl-cell--12-col":"mdl-cell--10-col" }}">
+{{ (tab=='bill' or tab=='stock')?"mdl-cell--12-col":"mdl-cell--10-col" }}">
                     {% block body %}{% endblock %}
                 </div>
 

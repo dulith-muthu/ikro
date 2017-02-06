@@ -1,0 +1,25 @@
+<div class="mdl-cell mdl-cell--2-col mdl-card mdl-shadow--2dp ikro-sidebar-div">
+    <!-- Icon List -->
+
+
+    <ul class="main-sidebar mdl-list">
+        <a href="{{ url('expenseAdd') }}" style="text-decoration: none">
+            <li class="mdl-list__item {% if(subTab == 'expenseAdd') %}active {% endif %}"><span class="mdl-list__item-primary-content"> <i
+                            class="material-icons mdl-list__item-icon">person  </i>
+    Expense Add
+</span>
+            </li>
+        </a>
+
+        <a href="{{ url('expenseList') }}" style="text-decoration: none">
+            <li class="mdl-list__item {% if(subTab == 'expenseList') %}active {% endif %}"><span class="mdl-list__item-primary-content"> <i
+                            class="material-icons mdl-list__item-icon">person</i>
+    Expense List
+  </span>
+            </li>
+        </a>
+
+
+    </ul>
+
+</div>
