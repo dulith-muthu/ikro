@@ -69,8 +69,11 @@ $brand-null: rgba(158, 158, 158, .2);
   transition: background 0.2s;
   &:hover {
     background-color: lighten($brand-second, 0%);
-    color: white;
+    &,* {
+      color: white;
+    }
   }
+
 }
 
 #btnRemoveAll {
@@ -87,4 +90,10 @@ $brand-null: rgba(158, 158, 158, .2);
     background-color: lighten($brand-danger, 0%);
     color: white;
   }
+}
+
+// Dulith......
+
+.text-remove-deco {
+  text-decoration: none;
 }
