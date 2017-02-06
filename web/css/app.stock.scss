@@ -1,0 +1,64 @@
+@import "variables";
+
+.mdl-navigation {
+  .mdl-navigation__link {
+    &.is-active {
+
+      background: $brand-second;
+      opacity: 1;
+    }
+    &:hover {
+      background: lighten($brand-primary, 10%);
+      color: white;
+    }
+  }
+  .ul-user-menu{
+    li,a{
+      text-decoration: none;
+    }
+  }
+}
+
+footer.mdl-mini-footer {
+  padding: 0 20px;
+}
+
+.ikro-sidebar-div {
+  .mdl-list {
+    .mdl-list__item {
+      transition: background 0.3s;
+
+      &.active {
+        background: lighten($brand-second, 0%);
+        & * {
+          color: white;
+        }
+      }
+      &:hover {
+        background: grey;
+        cursor: pointer;
+        & * {
+          color: white;
+        }
+        &.active {
+          background: lighten($brand-second, 0%);
+
+        }
+
+      }
+
+    }
+  }
+}
+
+.ikro-main-div {
+  padding: 30px;
+  min-height: 800px;
+}
+
+//================================ FORM =================================
+.wide-form {
+  .mdl-textfield.mdl-js-textfield {
+    width: 100%;
+  }
+}
