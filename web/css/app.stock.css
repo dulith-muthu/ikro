@@ -50,9 +50,8 @@
   font-size: 15px;
   transition: background 0.2s; }
   .btnEdit:hover {
-    background-color: #ff9800; }
-    .btnEdit:hover, .btnEdit:hover * {
-      color: white; }
+    background-color: #ff9800;
+    color: white; }
 
 #btnRemoveAll {
   height: 32px;
@@ -65,9 +64,6 @@
   #btnRemoveAll:hover {
     background-color: #e74c3c;
     color: white; }
-
-.text-remove-deco {
-  text-decoration: none; }
 
 .sidebar-customer {
   width: 100%; }
@@ -104,7 +100,7 @@
   padding: 20px; }
   .ikro-product-row table.two td {
     padding-right: 30px; }
-    .ikro-product-row table.two td #priceSelect {
+    .ikro-product-row table.two td #priceSelect, .ikro-product-row table.two td #oldPriceSelect {
       width: 150px; }
   .ikro-product-row table th {
     text-align: left; }
@@ -123,4 +119,4 @@
     float: right;
     margin-left: 6px; }
 
-/*# sourceMappingURL=app.billing.css.map */
+/*# sourceMappingURL=app.stock.css.map */

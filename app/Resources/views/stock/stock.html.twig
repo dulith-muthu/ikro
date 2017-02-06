@@ -3,8 +3,9 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.billing.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.stock.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('bower/jquery-ui/themes/base/jquery-ui.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/tools/sumoselect.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('js/tools/mdl-jquery-modal-dialog.css') }}">
 
 
@@ -15,9 +16,9 @@
 
         <input type="text" name="searchProduct" id="searchProduct" data-tabbic="1"
 
-               placeholder="Seach product"> <a class="shortcuts">Keyboard Shortcuts</a>
+               placeholder="Seach Product"> <a class="shortcuts">Keyboard Shortcuts</a>
     </div>
-    <div class="mdl-card mdl-shadow--2dp ikro-product-row" style="display: none">
+    <div class="mdl-card mdl-shadow--2dp ikro-product-row" style="display: none; overflow: visible;">
         <table class="one" width="100%">
             <thead>
             <tr>
@@ -40,9 +41,6 @@
                 <td class="manufacturer">-</td>
 
 
-
-
-
             </tr>
 
             </tbody>
@@ -53,9 +51,9 @@
             <tr>
 
                 <th id="unitPriceCaption">Unit Price</th>
-
                 <th>Quantity</th>
-                <th>Discount %</th>
+                <th>Old Prices</th>
+                <th>New Price</th>
                 <th></th>
             </tr>
             </thead>
@@ -69,15 +67,16 @@
 
 
                 <td><input name="qtyInput" class="" id="qtyInput" type="number" value="1" data-tabbic="1"></td>
-                <td><input name="discInput" class="" id="discInput" type="number" value="0" data-tabbic="1">
-
-                    <select name="discountSelect" id="discountSelect" data-tabbic="1">
-                        <option value="1">%</option>
-                        <option value="2">Rs.</option>
-
+                <td><select name="oldPriceSelect" class="" id="oldPriceSelect" multiple="multiple" tabindex="-1">
+                        <option value="1">400</option>
+                        <option value="2">500</option>
+                        <option value="3">600</option>
+                        <option value="4">700</option>
                     </select>
-                </td>
 
+                </td>
+                <td><input name="newPriceInput" class="" id="newPriceInput" type="number" value="1" data-tabbic="1">
+                </td>
                 <td>
                     <button name="btnAdd" class="flat-button" id="btnAdd" type="button" onclick="insertRow()"
                             data-tabbic="1">Add
@@ -94,17 +93,16 @@
             </tbody>
         </table>
     </div>
-    <table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp ikro-bill-table" width="100%">
+    <table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp ikro-stock-table" width="100%">
         <thead>
         <tr>
             <th>#</th>
             <th>Item Code</th>
             <th>Item Type</th>
             <th>Item Name</th>
-            <th>Unit Price</th>
+            <th>Unit Cost</th>
             <th>Quantity</th>
-            <th>Discount %</th>
-            <th>Discount Rs.</th>
+            <th>Retail Price</th>
             <th>Sub Total</th>
             <th>
                 <button class="" name="btnRemoveAll" id="btnRemoveAll" onclick="removeAll()" data-tabbic="1">
@@ -238,16 +236,13 @@
 
     <div class="main-buttons-row">
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent main-buttons"
-                id="btnCashPayment" type="button" onclick="purchaseSubmit();" data-tabbic="1"><i class="material-icons">attach_money</i>&nbsp;Cash Payment
+                id="btnCashPayment" type="button" onclick="purchaseSubmit();" data-tabbic="1"><i class="material-icons">add</i>&nbsp;Add
+            to Stock
         </button>
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
-                id="btnMonthlyPlan" type="button" data-tabbic="1"><i class="material-icons">date_range</i>&nbsp;Monthly Plan
-        </button>
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
-                id="btnQuotation" type="button" data-tabbic="1"><i class="material-icons">list</i>&nbsp;Quotation
-        </button>
+
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  main-buttons"
-                id="btnCancel" type="button" data-tabbic="1" onclick="resetAll()"><i class="material-icons">clear</i>&nbsp;Reset All
+                id="btnCancel" type="button" data-tabbic="1" onclick="resetAll()"><i class="material-icons">clear</i>&nbsp;Reset
+            All
         </button>
 
 
@@ -262,14 +257,21 @@
      <script src="{{ asset('bower/mousetrap/mousetrap.min.js') }}"></script>
      <script src="{{ asset('bower/mousetrap/plugins/global-bind/mousetrap-global-bind.min.js') }}"></script>
      <script src="{{ asset('js/tools/mdl-jquery-modal-dialog.js') }}"></script>
+     <script src="{{ asset('bower/sumoselect/jquery.sumoselect.min.js') }}"></script>
 
-     <script src="{{ asset('js/app.billing.operation.js') }}"></script>
-     <script src="{{ asset('js/app.billing.validation.js') }}"></script>
-     <script src="{{ asset('js/app.billing.submission.js') }}"></script>
-     <script src="{{ asset('js/app.billing.customer.js') }}"></script>
-     <script src="{{ asset('js/app.billing.hotkeys.js') }}"></script>
+     <script src="{{ asset('js/stock/app.stock.operation.js') }}"></script>
+     <script src="{{ asset('js/stock/app.stock.validation.js') }}"></script>
+     <script src="{{ asset('js/stock/app.stock.submission.js') }}"></script>
+     <script src="{{ asset('js/stock/app.stock.customer.js') }}"></script>
+     <script src="{{ asset('js/stock/app.stock.hotkeys.js') }}"></script>
 
-
+     <script>
+         $(function () {
+             $('#oldPriceSelect').SumoSelect({
+                 placeholder:"No Prices"
+             });
+         })
+     </script>
 
  {% endblock %}
 
