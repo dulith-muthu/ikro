@@ -47,7 +47,7 @@
                 <button type="submit">Search</button>
 
             </form>
-            <a href="../customer/add">bsafjhsdfh</a>
+
             <table>
                 <thead>
                 <th>Action</th>
@@ -63,7 +63,7 @@
                         <td>{{ log.type.name }}</td>
                         <td>{{ log.description }}</td>
                         <td>{{ log.dateTime|date('F j, Y, g:i a') }}</td>
-                        <td>{{ log.loggedId }}</td>
+                        <td><a href="{{ url(log.type.url,{id:log.loggedId}) }}" class="text-remove-deco"> ✎ </a></td>
                         <td>{{ log.user_id.username }}</td>
                     </tr>
 
