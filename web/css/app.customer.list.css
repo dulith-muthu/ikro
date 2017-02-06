@@ -65,37 +65,25 @@
 .text-remove-deco {
   text-decoration: none; }
 
-.mdl-navigation .mdl-navigation__link.is-active {
-  background: #ff9800;
-  opacity: 1; }
-.mdl-navigation .mdl-navigation__link:hover {
-  background: #606fc7;
-  color: white; }
-.mdl-navigation .ul-user-menu li, .mdl-navigation .ul-user-menu a {
-  text-decoration: none; }
+.customer-search {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 20px;
+  margin-bottom: 15px; }
+  .customer-search th {
+    font-weight: 500; }
 
-footer.mdl-mini-footer {
-  padding: 0 20px; }
+.truncate {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
 
-.ikro-sidebar-div .mdl-list .mdl-list__item {
-  transition: background 0.3s; }
-  .ikro-sidebar-div .mdl-list .mdl-list__item.active {
-    background: #ff9800; }
-    .ikro-sidebar-div .mdl-list .mdl-list__item.active * {
-      color: white; }
-  .ikro-sidebar-div .mdl-list .mdl-list__item:hover {
-    background: grey;
-    cursor: pointer; }
-    .ikro-sidebar-div .mdl-list .mdl-list__item:hover * {
-      color: white; }
-    .ikro-sidebar-div .mdl-list .mdl-list__item:hover.active {
-      background: #ff9800; }
+.search-input {
+  border: 1px solid darkgrey;
+  font-size: 15px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-top: 3px;
+  margin-right: 5px; }
 
-.ikro-main-div {
-  padding: 30px;
-  min-height: 800px; }
-
-.wide-form .mdl-textfield.mdl-js-textfield {
-  width: 100%; }
-
-/*# sourceMappingURL=app.base.css.map */
+/*# sourceMappingURL=app.customer.list.css.map */

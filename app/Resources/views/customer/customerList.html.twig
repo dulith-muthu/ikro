@@ -1,14 +1,22 @@
 {% extends 'base.html.twig' %}
 
 
+
 {% block sideBar %}
     {% include 'customerSideBar.html.twig' %}
 
 {% endblock %}
 
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.customer.list.css') }}">
+
+{% endblock %}
+
 {% block body %}
     <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--6-col">
+        <div class="mdl-cell mdl-cell--12-col">
             <h3>Customer List</h3>
             {% for flash_message in app.session.flashBag.get('error') %}
                 <div class="alert alert-danger" style="text-align: center">
@@ -23,36 +31,85 @@
 
             <form>
 
-                <input name="name" value="{{ name }}">
-                <input name="address" value="{{ address }}">
-                <input name="nic" value="{{ nic }}">
-                <input name="mobile" value="{{ mobile }}">
-                <input name="fixed" value="{{ fixed }}">
-                <button type="submit">Search</button>
+                <div class="customer-search mdl-shadow--2dp">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>NIC</th>
+                            <th>Mobile</th>
+                            <th>Fixed</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <td><input name="name" value="{{ name }}" class="search-input"></td>
+                        <td><input name="address" value="{{ address }}" class="search-input"></td>
+                        <td><input name="nic" value="{{ nic }}" class="search-input"></td>
+                        <td><input name="mobile" value="{{ mobile }}" class="search-input"></td>
+                        <td><input name="fixed" value="{{ fixed }}" class="search-input"></td>
+                        <td>
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent main-buttons"
+                                    id="btnCashPayment" type="submit"><i class="material-icons">search</i>
+                            </button>
+                        </td>
+                        </tbody>
+                    </table>
+                </div>
 
             </form>
-            <table>
+            {#<table>#}
+            {#<thead>#}
+            {#<th>Name</th>#}
+            {#<th>Address</th>#}
+            {#<th>NIC</th>#}
+            {#<th>Mobile</th>#}
+            {#<th>Fixed</th>#}
+            {#<td>Edit</td>#}
+            {#</thead>#}
+            {#{% for customer in customers %}#}
+            {#<tr>#}
+            {#<td>{{ customer.name }}</td>#}
+            {#<td>{{ customer.address }}</td>#}
+            {#<td>{{ customer.nic }}</td>#}
+            {#<td>{{ customer.mobile }}</td>#}
+            {#<td>{{ customer.fixed }}</td>#}
+            {#<td><a href="{{ url('customerEdit',{id:customer.id}) }}">Edit</a></td>#}
+            {#</tr>#}
+
+            {#{% endfor %}#}
+            {#</table>#}
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width: 100%">
                 <thead>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>NIC</th>
-                    <th>Mobile</th>
-                    <th>Fixed</th>
-                    <td>Edit</td>
-                </thead>
-            {% for customer in customers %}
                 <tr>
-                    <td>{{ customer.name }}</td>
-                    <td>{{ customer.address }}</td>
-                    <td>{{ customer.nic }}</td>
-                    <td>{{ customer.mobile }}</td>
-                    <td>{{ customer.fixed }}</td>
-                    <td><a href="{{ url('customerEdit',{id:customer.id}) }}">Edit</a></td>
+                    <th class="mdl-data-table__cell--non-numeric">Name</th>
+                    <th class="mdl-data-table__cell--non-numeric">Address</th>
+                    <th class="mdl-data-table__cell--non-numeric">NIC</th>
+                    <th class="mdl-data-table__cell--non-numeric">Mobile</th>
+                    <th class="mdl-data-table__cell--non-numeric">Fixed</th>
+                    <th>#</th>
                 </tr>
+                </thead>
+                <tbody>
+                {% for customer in customers %}
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">{{ customer.name }}</td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            <div class="truncate">{{ customer.address }}</div>
+                        </td>
+                        <td class="mdl-data-table__cell--non-numeric">{{ customer.nic }}</td>
+                        <td class="mdl-data-table__cell--non-numeric">{{ customer.mobile }}</td>
+                        <td class="mdl-data-table__cell--non-numeric">{{ customer.fixed }}</td>
+                        <td>
+                            <button data-id='' class='btnEdit' name='btnEdit'>
+                                <a href="{{ url('customerEdit',{id:customer.id}) }}" class="text-remove-deco"> ✎ </a>
+                            </button>
+                        </td>
+                    </tr>
 
                 {% endfor %}
+                </tbody>
             </table>
-
             <div class="navigation">
                 {{ knp_pagination_render(customers) }}
             </div>

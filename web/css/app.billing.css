@@ -46,8 +46,9 @@
   font-size: 15px;
   transition: background 0.2s; }
   .btnEdit:hover {
-    background-color: #ff9800;
-    color: white; }
+    background-color: #ff9800; }
+    .btnEdit:hover, .btnEdit:hover * {
+      color: white; }
 
 #btnRemoveAll {
   height: 32px;
@@ -60,6 +61,9 @@
   #btnRemoveAll:hover {
     background-color: #e74c3c;
     color: white; }
+
+.text-remove-deco {
+  text-decoration: none; }
 
 .sidebar-customer {
   width: 100%; }

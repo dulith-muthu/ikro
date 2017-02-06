@@ -1,0 +1,27 @@
+@import "variables";
+
+.customer-search {
+  border: 1px solid rgba(0,0,0,.12);
+  padding: 20px;
+  margin-bottom: 15px;
+  th {
+    font-weight: 500;
+  }
+}
+
+.truncate {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-input{
+  border: 1px solid darkgrey;
+  font-size: 15px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-top: 3px;
+  margin-right: 5px;
+}
+

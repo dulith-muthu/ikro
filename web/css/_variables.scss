@@ -63,8 +63,11 @@ $brand-danger: #e74c3c;
   transition: background 0.2s;
   &:hover {
     background-color: lighten($brand-second, 0%);
-    color: white;
+    &,* {
+      color: white;
+    }
   }
+
 }
 
 #btnRemoveAll {
@@ -81,4 +84,10 @@ $brand-danger: #e74c3c;
     background-color: lighten($brand-danger, 0%);
     color: white;
   }
+}
+
+// Dulith......
+
+.text-remove-deco {
+  text-decoration: none;
 }
