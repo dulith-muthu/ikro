@@ -2,8 +2,9 @@
 $brand-primary: rgb(63, 81, 181);
 //$brand-second:rgb(255, 193, 7);
 $brand-second: rgb(255, 152, 0);
+$brand-second-dull: rgb(255, 171, 64);
 $brand-danger: #e74c3c;
-
+$brand-null: rgba(158, 158, 158, .2);
 //============== FLAT BUTTON STYLES =========================
 /* #Belize Hole Sea Flat Button
 ==================================================*/
@@ -13,16 +14,21 @@ $brand-danger: #e74c3c;
   //width: 100%;
   //height:30px;
   padding: 10px;
-  font-size: 16px;
-  color: white;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  color: #000;
   text-align: center;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-  background: $brand-second;
+
+  background: $brand-second-dull;
   border: 0;
   cursor: pointer;
   border-radius: 2px;
+  text-shadow: none;
   &.red {
-    background: $brand-danger;
+    background: $brand-null;
 
   }
 

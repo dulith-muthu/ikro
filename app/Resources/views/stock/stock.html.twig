@@ -67,7 +67,7 @@
 
 
                 <td><input name="qtyInput" class="" id="qtyInput" type="number" value="1" data-tabbic="1"></td>
-                <td><select name="oldPriceSelect" class="" id="oldPriceSelect" data-tabbic="1" multiple="multiple">
+                <td><select name="oldPriceSelect" class="" id="oldPriceSelect" multiple="multiple" tabindex="-1">
                         <option value="1">400</option>
                         <option value="2">500</option>
                         <option value="3">600</option>
@@ -100,10 +100,9 @@
             <th>Item Code</th>
             <th>Item Type</th>
             <th>Item Name</th>
-            <th>Unit Price</th>
+            <th>Unit Cost</th>
             <th>Quantity</th>
-            <th>Discount %</th>
-            <th>Discount Rs.</th>
+            <th>Retail Price</th>
             <th>Sub Total</th>
             <th>
                 <button class="" name="btnRemoveAll" id="btnRemoveAll" onclick="removeAll()" data-tabbic="1">
@@ -237,16 +236,10 @@
 
     <div class="main-buttons-row">
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent main-buttons"
-                id="btnCashPayment" type="button" onclick="purchaseSubmit();" data-tabbic="1"><i class="material-icons">attach_money</i>&nbsp;Cash
-            Payment
+                id="btnCashPayment" type="button" onclick="purchaseSubmit();" data-tabbic="1"><i class="material-icons">add</i>&nbsp;Add
+            to Stock
         </button>
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
-                id="btnMonthlyPlan" type="button" data-tabbic="1"><i class="material-icons">date_range</i>&nbsp;Monthly
-            Plan
-        </button>
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
-                id="btnQuotation" type="button" data-tabbic="1"><i class="material-icons">list</i>&nbsp;Quotation
-        </button>
+
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  main-buttons"
                 id="btnCancel" type="button" data-tabbic="1" onclick="resetAll()"><i class="material-icons">clear</i>&nbsp;Reset
             All
@@ -266,11 +259,11 @@
      <script src="{{ asset('js/tools/mdl-jquery-modal-dialog.js') }}"></script>
      <script src="{{ asset('bower/sumoselect/jquery.sumoselect.min.js') }}"></script>
 
-     <script src="{{ asset('js/app.stock.operation.js') }}"></script>
-     <script src="{{ asset('js/app.billing.validation.js') }}"></script>
-     <script src="{{ asset('js/app.billing.submission.js') }}"></script>
-     <script src="{{ asset('js/app.billing.customer.js') }}"></script>
-     <script src="{{ asset('js/app.billing.hotkeys.js') }}"></script>
+     <script src="{{ asset('js/stock/app.stock.operation.js') }}"></script>
+     <script src="{{ asset('js/stock/app.stock.validation.js') }}"></script>
+     <script src="{{ asset('js/stock/app.stock.submission.js') }}"></script>
+     <script src="{{ asset('js/stock/app.stock.customer.js') }}"></script>
+     <script src="{{ asset('js/stock/app.stock.hotkeys.js') }}"></script>
 
      <script>
          $(function () {
