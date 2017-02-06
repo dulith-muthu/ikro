@@ -13,5 +13,16 @@ use Symfony\Component\HttpFoundation\Request;
 
 class StockController extends BaseController
 {
+    /**
+     * @Route("/admin/stock", name="adminStock")
+     */
+
+    public function stockAction(Request $request)
+    {
+        return $this->render('stock/stock.html.twig', array(
+            'tab' => $this->stock
+        ));
+
+    }
 
 }

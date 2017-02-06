@@ -11,6 +11,7 @@ class BaseController extends Controller
 {
     public $expense = 'expense';
     public $bill = 'bill';
+    public $stock = 'stock';
     public $customer = 'customer';
 
 
