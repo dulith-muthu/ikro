@@ -28,10 +28,8 @@ class MainController extends BaseController
         $user = $token->getUser();
 
 
-
         $isRoleAdmin = $auth_checker->isGranted('ROLE_ADMIN');
-        if($isRoleAdmin)
-        {
+        if ($isRoleAdmin) {
             return $this->redirect(
                 $this->generateUrl("adminDashboard")
             );
@@ -40,11 +38,11 @@ class MainController extends BaseController
 
         $authenticationUtils = $this->get('security.authentication_utils');
 
-        $error =$authenticationUtils->getLastAuthenticationError();
+        $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUserName();
-        return $this->render('default/login.html.twig',array(
-            'last_username' =>$lastUsername,
-            'error'=>$error
+        return $this->render('default/login.html.twig', array(
+            'last_username' => $lastUsername,
+            'error' => $error
         ));
     }
 
@@ -54,7 +52,10 @@ class MainController extends BaseController
     public function dashboardAction(Request $request)
     {
         // replace this example code with whatever you need
-        return $this->render('default/index.html.twig');
+        return $this->render('default/index.html.twig', array(
+
+            'tab' => $this->dashboard
+        ));
     }
 
 
@@ -68,11 +69,11 @@ class MainController extends BaseController
         $customers = $this->getRepository('Customer')->getSuggestions($nic);
         $dataArray = [];
 
-        if(count($customers)!= 0){
-            foreach ($customers as $customer){
+        if (count($customers) != 0) {
+            foreach ($customers as $customer) {
                 $tempObject = new \stdClass();
                 $tempObject->name = $customer->getName();
-                $tempObject->label = $customer->getNic()."-".$customer->getName();
+                $tempObject->label = $customer->getNic() . "-" . $customer->getName();
                 $tempObject->value = $customer->getNic();
                 $tempObject->address = $customer->getAddress();
                 $tempObject->nic = $customer->getNic();
@@ -80,7 +81,7 @@ class MainController extends BaseController
                 $tempObject->fixed = $customer->getFixed();
                 $dataArray[] = $tempObject;
             }
-        }else{
+        } else {
 
         }
 

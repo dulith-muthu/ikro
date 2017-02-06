@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACE,iBAAG;EACD,MAAM,EAAE,GAAG;AAEb,sCAAwB;EACtB,gBAAgB,EAAE,IAAI;EACtB,WAAW,EAAE,GAAG;AAGhB,8CAAW;EACT,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,GAAG;EAChB,WAAW,EAAC,IAAI",
+"sources": ["app.purchase.scss"],
+"names": [],
+"file": "app.purchase.css"
+}
