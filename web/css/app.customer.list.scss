@@ -9,12 +9,6 @@
   }
 }
 
-.truncate {
-  width: 250px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 
 .search-input{
   border: 1px solid darkgrey;
@@ -23,5 +17,6 @@
   padding-bottom: 8px;
   margin-top: 3px;
   margin-right: 5px;
+  width: 60px;
 }
 
