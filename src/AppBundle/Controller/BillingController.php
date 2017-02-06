@@ -34,8 +34,6 @@ class BillingController extends BaseController
         $invoice = [];
 
         $customer = $data->customer;
-        var_dump($customer);
-
         foreach ($data->data as $row){
             $tempObj = new \stdClass();
             $tempObj->itemCode = $row->itemCode;

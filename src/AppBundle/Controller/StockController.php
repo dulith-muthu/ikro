@@ -25,4 +25,11 @@ class StockController extends BaseController
 
     }
 
+    /**
+     * @Route("/admin/stock/getItemsByCode", name="stockGetItemsByCode")
+     */
+    public function stockGetItemsByCode(Request $request){
+        return $this->redirectToRoute('getItemByCode');
+    }
+
 }
