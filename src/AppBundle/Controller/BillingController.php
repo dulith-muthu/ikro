@@ -30,7 +30,35 @@ class BillingController extends BaseController
      */
 
     public function billingPurchaseAction(Request $request){
-        $data = $this->objectDeserialize($request->get('bill'));
+
+        $dataArray = $this->generateInvoice($request->get('data'));
+
+
+        return $this->render('billing/invoicePrintPurchase.html.twig',array(
+            'customer' =>$dataArray[0],
+            'invoice' =>$dataArray[1],
+            'tab'=>$this->bill
+        ));
+    }
+
+    /**
+     * @Route("/admin/bill/quotation", name="billQuotation")
+     */
+
+    public function billingQuotationAction(Request $request){
+
+        $dataArray = $this->generateInvoice($request->get('data'));
+
+        return $this->render('billing/invoicePrintQuotation.html.twig',array(
+           'customer' =>$dataArray[0],
+            'invoice' =>$dataArray[1],
+            'tab'=>$this->bill
+        ));
+
+    }
+
+    private function generateInvoice($data){
+        $data = $this->objectDeserialize($data);
         $invoice = [];
 
         $customer = $data->customer;
@@ -57,11 +85,7 @@ class BillingController extends BaseController
 
         }
 
-        return $this->render('billing/invoicePrintPurchase.html.twig',array(
-            'customer' =>$customer,
-            'invoice' =>$invoice,
-            'tab'=>$this->bill
-        ));
+        return array($customer,$invoice);
     }
 
 }

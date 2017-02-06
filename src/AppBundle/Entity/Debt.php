@@ -42,6 +42,19 @@ class Debt
      */
     private $interest;
 
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="isClosed", type="integer")
+     */
+    private $isClosed;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Installment", mappedBy="dept")
+     */
+
+    private $installment;
+
 
     /**
      * Get id
@@ -120,5 +133,68 @@ class Debt
     public function getInterest()
     {
         return $this->interest;
+    }
+
+    /**
+     * Set isClosed
+     *
+     * @param integer $isClosed
+     * @return Debt
+     */
+    public function setIsClosed($isClosed)
+    {
+        $this->isClosed = $isClosed;
+
+        return $this;
+    }
+
+    /**
+     * Get isClosed
+     *
+     * @return integer 
+     */
+    public function getIsClosed()
+    {
+        return $this->isClosed;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->installment = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add installment
+     *
+     * @param \AppBundle\Entity\Installment $installment
+     * @return Debt
+     */
+    public function addInstallment(\AppBundle\Entity\Installment $installment)
+    {
+        $this->installment[] = $installment;
+
+        return $this;
+    }
+
+    /**
+     * Remove installment
+     *
+     * @param \AppBundle\Entity\Installment $installment
+     */
+    public function removeInstallment(\AppBundle\Entity\Installment $installment)
+    {
+        $this->installment->removeElement($installment);
+    }
+
+    /**
+     * Get installment
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInstallment()
+    {
+        return $this->installment;
     }
 }
