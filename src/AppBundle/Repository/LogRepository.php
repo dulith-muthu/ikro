@@ -12,4 +12,44 @@ use Doctrine\ORM\EntityRepository;
  */
 class LogRepository extends EntityRepository
 {
+    public function search($action,$type,$user,$startDate,$endDate)
+    {
+        $qb = $this->createQueryBuilder('o');
+
+        $qb->select('o');
+
+        if($action != null & $action != ""){
+            $qb->andWhere('o.action = :action')
+                ->setParameter('action',$action)
+            ;
+        }
+
+        if($type != null & $type != ""){
+            $qb->andWhere('o.type = :type')
+                ->setParameter('type',$type)
+            ;
+        }
+
+        if($user != null & $user != ""){
+            $qb->andWhere('o.user_id = :user_id')
+                ->setParameter('user_id',$user)
+            ;
+        }
+
+        if($startDate != null & $startDate != ""){
+            $qb->andWhere('o.dateTime >= :startDate')
+                ->setParameter('startDate',$startDate)
+            ;
+        }
+
+        if($endDate != null & $endDate != ""){
+            $qb->andWhere('o.dateTime <= :endDate')
+                ->setParameter('endDate',$endDate)
+            ;
+        }
+
+
+        ;
+        return $qb->getQuery()->getResult();
+    }
 }

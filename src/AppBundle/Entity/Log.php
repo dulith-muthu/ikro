@@ -54,6 +54,11 @@ class Log
      */
     private $loggedId;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Users", inversedBy="log")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user_id;
 
     /**
      * Get id
@@ -178,5 +183,30 @@ class Log
     public function getType()
     {
         return $this->type;
+    }
+
+    
+
+    /**
+     * Set user_id
+     *
+     * @param \AppBundle\Entity\Users $userId
+     * @return Log
+     */
+    public function setuser_Id(\AppBundle\Entity\Users $userId = null)
+    {
+        $this->user_id = $userId;
+
+        return $this;
+    }
+
+    /**
+     * Get user_id
+     *
+     * @return \AppBundle\Entity\Users 
+     */
+    public function getuser_Id()
+    {
+        return $this->user_id;
     }
 }
