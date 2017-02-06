@@ -60,7 +60,7 @@ class BillingController extends BaseController
         return $this->render('billing/invoicePrintPurchase.html.twig',array(
             'customer' =>$customer,
             'invoice' =>$invoice,
-            'tab'=>$this->purchaseBill
+            'tab'=>$this->bill
         ));
     }
 
