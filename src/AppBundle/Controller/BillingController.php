@@ -31,7 +31,9 @@ class BillingController extends BaseController
 
     public function billingPurchaseAction(Request $request){
 
+
 //        $dataArray = $this->generateInvoice($request->get('data'));
+
 
 
         return $this->render('billing/invoicePrintPurchase.html.twig',array(
@@ -47,7 +49,7 @@ class BillingController extends BaseController
 
     public function billingQuotationAction(Request $request){
 
-        $dataArray = $this->generateInvoice($request->get('data'));
+        $dataArray = $this->generateInvoice($request->get('bill'));
 
         return $this->render('billing/invoicePrintQuotation.html.twig',array(
            'customer' =>$dataArray[0],
@@ -61,6 +63,7 @@ class BillingController extends BaseController
     private function generateInvoice($data){
         $data = $this->objectDeserialize($data);
         $invoice = [];
+        var_dump($data);
 
         $customer = $data->customer;
         foreach ($data->data as $row){

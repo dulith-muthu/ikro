@@ -23,30 +23,30 @@
 
             {{ form_start(form,{'attr':{'class':'form wide-form'}}) }}
 
-            <div class="mdl-textfield mdl-js-textfield">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 
                 {{ form_widget(form.name,{'attr':{'class':'mdl-textfield__input'}}) }}
                 {{ form_label(form.name,null,{'label_attr':{'class':'mdl-textfield__label'}}) }}
                 {{ form_errors(form.name) }}
             </div>
-            <div class="mdl-textfield mdl-js-textfield">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 {{ form_errors(form.address) }}
                 {{ form_widget(form.address,{'attr':{'class':'mdl-textfield__input'}}) }}
                 {{ form_label(form.address,null,{'label_attr':{'class':'mdl-textfield__label'}}) }}
             </div>
-            <div class="mdl-textfield mdl-js-textfield">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 {{ form_errors(form.nic) }}
                 {{ form_widget(form.nic,{'attr':{'class':'mdl-textfield__input'}}) }}
                 {{ form_label(form.nic,null,{'label_attr':{'class':'mdl-textfield__label'}}) }}
             </div>
 
-            <div class="mdl-textfield mdl-js-textfield">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 {{ form_errors(form.mobile) }}
                 {{ form_widget(form.mobile,{'attr':{'class':'mdl-textfield__input'}}) }}
                 {{ form_label(form.mobile,null,{'label_attr':{'class':'mdl-textfield__label'}}) }}
             </div>
 
-            <div class="mdl-textfield mdl-js-textfield">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 {{ form_errors(form.fixed) }}
                 {{ form_widget(form.fixed,{'attr':{'class':'mdl-textfield__input'}}) }}
                 {{ form_label(form.fixed,null,{'label_attr':{'class':'mdl-textfield__label'}}) }}
@@ -58,4 +58,14 @@
             {{ form_end(form) }}
         </div>
     </div>
+    <script src="{{ asset('bower/jquery/dist/jquery.min.js') }}"></script>
+    <script>
+        $(function () {
+            removeInvalid()
+            setTimeout(removeInvalid,500)
+        })
+        function removeInvalid() {
+            $(".is-invalid").removeClass("is-invalid")
+        }
+    </script>
 {% endblock %}

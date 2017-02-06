@@ -4,10 +4,15 @@
     {% include 'expenseSideBar.html.twig' %}
 {% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.expense.list.css') }}">
+{% endblock %}
+
 {% block body %}
 
     <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--6-col">
+        <div class="mdl-cell mdl-cell--12-col">
             <h3>Expense List</h3>
             {% for flash_message in app.session.flashBag.get('error') %}
                 <div class="alert alert-danger" style="text-align: center">
@@ -21,32 +26,67 @@
             {% endfor %}
 
             <form>
-
-                <input name="description" value="{{ description }}">
-                <input name="amount" value="{{ amount }}">
-                <input name="startDate" value="{{ startDate }}">
-                <input name="endDate" value="{{ endDate }}">
-                <button type="submit">Search</button>
+                <div class="expense-search mdl-shadow--2dp">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <th><input name="description" value="{{ description }}" class="search-input"></th>
+                        <th><input name="amount" value="{{ amount }}" class="search-input"></th>
+                        <th><input name="startDate" value="{{ startDate }}" class="search-input"></th>
+                        <th><input name="endDate" value="{{ endDate }}" class="search-input"></th>
+                        <th>
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent main-buttons"
+                                    id="btnCashPayment" type="submit"><i class="material-icons">search</i>
+                            </button>
+                        </th>
+                        </tbody>
+                    </table>
+                </div>
 
             </form>
-            <table>
+
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
                 <thead>
-                <th>Type</th>
-                <th>Time</th>
-                <th>Description</th>
-                <th>Amount</th>
-                <th>Edit</th>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric">Type</th>
+                    <th class="mdl-data-table__cell--non-numeric">Time</th>
+                    <th class="mdl-data-table__cell--non-numeric"><div class="truncate">Description</div></th>
+                    <th class="mdl-data-table__cell--non-numeric">Amount</th>
+                    <th>#</th>
+                </tr>
                 </thead>
                 {% for expense in expenses %}
                     <tr>
-                        <td>{{ expense.type.name }}</td>
-                        <td>{{ expense.dateTime | date('Y-m-d H:i:s') }}</td>
-                        <td>{{ expense.description }}</td>
-                        <td>{{ expense.amount }}</td>
-                        <td><a href="{{ url('expenseEdit',{id:expense.id}) }}">Edit</a></td>
+                        <td class="mdl-data-table__cell--non-numeric">{{ expense.type.name }}</td>
+                        <td class="mdl-data-table__cell--non-numeric">{{ expense.dateTime | date('Y-m-d H:i:s') }}</td>
+                        <td class="mdl-data-table__cell--non-numeric">{{ expense.description }}</td>
+                        <td class="mdl-data-table__cell--non-numeric">{{ expense.amount }}</td>
+                        <td>
+                            <button data-id='' class='btnEdit' name='btnEdit'>
+                                <a href="{{ url('expenseEdit',{id:expense.id}) }}" class="text-remove-deco"> ✎ </a>
+                            </button>
+                        </td>
                     </tr>
 
                 {% endfor %}
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">fbh</td>
+                    <td class="mdl-data-table__cell--non-numeric">bdhsjgb</td>
+                    <td class="mdl-data-table__cell--non-numeric">sdsghfgsdhgfjgsjkgfkjsd</td>
+                    <td class="mdl-data-table__cell--non-numeric">ndjksgfkj</td>
+                    <td>
+                        <button data-id='' class='btnEdit' name='btnEdit'>
+                            <a href="" class="text-remove-deco"> ✎ </a>
+                        </button>
+                    </td>
+                </tr>
             </table>
 
             <div class="navigation">

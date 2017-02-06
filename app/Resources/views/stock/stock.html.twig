@@ -67,7 +67,9 @@
 
 
                 <td><input name="qtyInput" class="" id="qtyInput" type="number" value="1" data-tabbic="1"></td>
+
                 <td><select name="oldPriceSelect" class="" id="oldPriceSelect" multiple="multiple" tabindex="-1">
+
                         <option value="1">400</option>
                         <option value="2">500</option>
                         <option value="3">600</option>
@@ -236,8 +238,10 @@
 
     <div class="main-buttons-row">
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent main-buttons"
+
                 id="btnCashPayment" type="button" onclick="purchaseSubmit();" data-tabbic="1"><i class="material-icons">add</i>&nbsp;Add
             to Stock
+
         </button>
 
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  main-buttons"
@@ -259,6 +263,7 @@
      <script src="{{ asset('js/tools/mdl-jquery-modal-dialog.js') }}"></script>
      <script src="{{ asset('bower/sumoselect/jquery.sumoselect.min.js') }}"></script>
 
+
      <script src="{{ asset('js/stock/app.stock.operation.js') }}"></script>
      <script src="{{ asset('js/stock/app.stock.validation.js') }}"></script>
      <script src="{{ asset('js/stock/app.stock.submission.js') }}"></script>
@@ -270,6 +275,7 @@
              $('#oldPriceSelect').SumoSelect({
                  placeholder:"No Prices"
              });
+
          })
      </script>
 
