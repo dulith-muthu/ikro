@@ -61,37 +61,58 @@
     background-color: #e74c3c;
     color: white; }
 
-.mdl-navigation .mdl-navigation__link.is-active {
-  background: #ff9800;
-  opacity: 1; }
-.mdl-navigation .mdl-navigation__link:hover {
-  background: #606fc7;
-  color: white; }
-.mdl-navigation .ul-user-menu li, .mdl-navigation .ul-user-menu a {
-  text-decoration: none; }
-
-footer.mdl-mini-footer {
-  padding: 0 20px; }
-
-.ikro-sidebar-div .mdl-list .mdl-list__item {
-  transition: background 0.3s; }
-  .ikro-sidebar-div .mdl-list .mdl-list__item.active {
-    background: #ff9800; }
-    .ikro-sidebar-div .mdl-list .mdl-list__item.active * {
-      color: white; }
-  .ikro-sidebar-div .mdl-list .mdl-list__item:hover {
-    background: grey;
-    cursor: pointer; }
-    .ikro-sidebar-div .mdl-list .mdl-list__item:hover * {
-      color: white; }
-    .ikro-sidebar-div .mdl-list .mdl-list__item:hover.active {
-      background: #ff9800; }
-
-.ikro-main-div {
-  padding: 30px;
-  min-height: 800px; }
-
-.wide-form .mdl-textfield.mdl-js-textfield {
+.sidebar-customer {
   width: 100%; }
+  .sidebar-customer .field-group {
+    margin: 15px 15px; }
+    .sidebar-customer .field-group input, .sidebar-customer .field-group textarea {
+      display: block;
+      margin: 8px -2px;
+      width: 100%;
+      padding-top: 8px;
+      padding-bottom: 8px; }
+
+.product-search-row {
+  margin-bottom: 20px;
+  width: 100%; }
+  .product-search-row .shortcuts {
+    float: right;
+    cursor: pointer;
+    padding-top: 10px; }
+  .product-search-row #searchProduct {
+    width: 50%;
+    line-height: 32px;
+    padding-left: 12px;
+    font-size: 20px;
+    border: 1px solid darkgrey; }
+    .product-search-row #searchProduct.ui-autocomplete-input.ui-autocomplete-loading {
+      border: 1px solid darkgrey;
+      background: url("../img/billing.img/loading.gif") no-repeat right; }
+
+.ikro-product-row {
+  width: 100%;
+  min-height: 0;
+  margin: 0 0 20px 0;
+  padding: 20px; }
+  .ikro-product-row table.two td {
+    padding-right: 30px; }
+    .ikro-product-row table.two td #priceSelect, .ikro-product-row table.two td #oldPriceSelect {
+      width: 150px; }
+  .ikro-product-row table th {
+    text-align: left; }
+  .ikro-product-row table input[type='number'] {
+    line-height: 25px;
+    padding-left: 10px; }
+    .ikro-product-row table input[type='number'].error {
+      border: 2px solid #e74c3c; }
+  .ikro-product-row table select {
+    height: 30px; }
+
+.main-buttons-row {
+  margin: 30px auto;
+  width: 100%; }
+  .main-buttons-row .main-buttons {
+    float: right;
+    margin-left: 6px; }
 
 /*# sourceMappingURL=app.stock.css.map */

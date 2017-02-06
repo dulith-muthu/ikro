@@ -1,0 +1,451 @@
+//colors
+$color_danube_approx: #7799d0;
+$color_delta_approx: #a4a4a4;
+$white: #fff;
+$color_celeste_approx: #ccc;
+$color_alto_approx: #ddd;
+$black_11: rgba(0, 0, 0, 0.11);
+$color_chicago_approx: #595959;
+$color_wild_sand_approx: #f5f5f5;
+$color_mercury_approx: #e4e4e4;
+$color_perano_approx: #a1c0e4;
+$color_silver_chalice_approx: #aeaeae;
+$black_15: rgba(0, 0, 0, 0.15);
+$black_13: rgba(0, 0, 0, 0.13);
+$seashell: #f1f1f1;
+$alto: #dbdbdb;
+$color_forest_green_approx: rgb(17, 169, 17);
+
+//data-uris
+$data_uri_0: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6+R8AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wMdBhAJ/fwnjwAAAGFJREFUKM9jYBh+gBFKuzEwMKQwMDB8xaOWlYGB4T4DA0MrsuapDAwM//HgNwwMDDbYTJuGQ8MHBgYGJ1xOYGNgYJiBpuEpAwODHSF/siDZ+ISBgcGClEDqZ2Bg8B6CkQsAPRga0cpRtDEAAAAASUVORK5CYII=";
+$data_uri_1: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAYAAAD+Bd/7AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAABMSURBVAiZfc0xDkAAFIPhd2Kr1WRjcAExuIgzGUTIZ/AkImjSofnbNBAfHvzAHjOKNzhiQ42IDFXCDivaaxAJd0xYshT3QqBxqnxeHvhunpu23xnmAAAAAElFTkSuQmCC";
+
+.SumoSelect {
+  width: 200px;
+  display: inline-block;
+  position: relative;
+  outline: none;
+  p {
+    margin: 0;
+  }
+  .hidden {
+    display: none;
+  }
+  .search-txt {
+    display: none;
+    outline: none;
+  }
+  .no-match {
+    display: none;
+    padding: 6px;
+  }
+  &.open {
+    .search-txt {
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      margin: 0;
+      padding: 5px 8px;
+      border: none;
+      //Instead of the line below you could use @include box-sizing($bs)
+      box-sizing: border-box;
+      //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+      border-radius: 5px;
+    }
+    > {
+      .search {
+        > span {
+          visibility: hidden;
+        }
+        > label {
+          visibility: hidden;
+        }
+      }
+      .CaptionCont {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 0 0 2px $color_danube_approx;
+        border-color: $color_danube_approx;
+      }
+      .optWrapper {
+        top: 35px;
+        display: block;
+        &.up {
+          top: auto;
+          bottom: 100%;
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+  > {
+    .optWrapper {
+      display: none;
+      z-index: 1000;
+      top: 30px;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      //Instead of the line below you could use @include box-sizing($bs)
+      box-sizing: border-box;
+      background: $white;
+      border: 1px solid $color_alto_approx;
+      //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+      box-shadow: 2px 3px 3px $black_11;
+      //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+      border-radius: 3px;
+      overflow: hidden;
+      > {
+        .options {
+          //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+          border-radius: 2px;
+          position: relative;
+          max-height: 250px;
+          li {
+            &.opt {
+              padding: 6px;
+              position: relative;
+              border-bottom: 1px solid $color_wild_sand_approx;
+              label {
+                //Instead of the line below you could use @include user-select($select)
+                user-select: none;
+              }
+              &:hover {
+                background-color: $color_mercury_approx;
+              }
+              &.sel {
+                background-color: $color_perano_approx;
+                border-bottom: 1px solid $color_perano_approx;
+              }
+              &.disabled {
+                background-color: inherit;
+                pointer-events: none;
+                * {
+                  filter: alpha(opacity=50);
+                  opacity: 0.5;
+                }
+              }
+            }
+            &.group {
+              > label {
+                cursor: default;
+                padding: 8px 6px;
+                font-weight: bold;
+              }
+              &.disabled > label {
+                opacity: 0.5;
+              }
+            }
+            label {
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              overflow: hidden;
+              display: block;
+              cursor: pointer;
+            }
+            span {
+              display: none;
+            }
+            &.optGroup {
+              padding-left: 5px;
+              text-decoration: underline;
+            }
+            ul li.opt {
+              padding-left: 22px;
+            }
+          }
+          > li.opt {
+            &:first-child {
+              //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+              border-radius: 2px 2px 0 0;
+            }
+            &:last-child {
+              //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+              border-radius: 0 0 2px 2px;
+              border-bottom: none;
+            }
+          }
+        }
+        .MultiControls {
+          display: none;
+          border-top: 1px solid $color_alto_approx;
+          background-color: $white;
+          //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+          box-shadow: 0 0 2px $black_13;
+          //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+          border-radius: 0 0 3px 3px;
+        }
+      }
+      ul {
+        list-style: none;
+        display: block;
+        padding: 0;
+        margin: 0;
+        overflow: auto;
+      }
+      &.multiple {
+        > {
+          .options li {
+            &.opt {
+              padding-left: 35px;
+              cursor: pointer;
+              span {
+                position: absolute;
+                display: block;
+                width: 30px;
+                top: 0;
+                bottom: 0;
+                margin-left: -35px;
+                i {
+                  position: absolute;
+                  margin: auto;
+                  left: 0;
+                  right: 0;
+                  top: 0;
+                  bottom: 0;
+                  width: 14px;
+                  height: 14px;
+                  border: 1px solid $color_silver_chalice_approx;
+                  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+                  border-radius: 2px;
+                  //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+                  box-shadow: inset 0 1px 3px $black_15;
+                  background-color: $white;
+                }
+              }
+              &.selected span i {
+                background-color: $color_forest_green_approx;
+                //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+                box-shadow: none;
+                border-color: transparent;
+                background-image: url($data_uri_1);
+                background-repeat: no-repeat;
+                background-position: center center;
+              }
+            }
+            ul li.opt {
+              padding-left: 50px;
+            }
+          }
+          .MultiControls > p {
+            display: inline-block;
+            cursor: pointer;
+            padding: 12px;
+            width: 50%;
+            //Instead of the line below you could use @include box-sizing($bs)
+            box-sizing: border-box;
+            text-align: center;
+            &:hover {
+              background-color: $seashell;
+            }
+            &.btnOk {
+              border-right: 1px solid $alto;
+              //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+              border-radius: 0 0 0 3px;
+            }
+            &.btnCancel {
+              //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+              border-radius: 0 0 3px 0;
+            }
+          }
+        }
+        &.isFloating {
+          padding-bottom: 43px;
+          > {
+            .MultiControls {
+              display: block;
+              margin-top: 5px;
+              position: absolute;
+              bottom: 0;
+              width: 100%;
+            }
+            .options li.opt {
+              padding-left: 35px;
+            }
+          }
+        }
+        &.okCancelInMulti > .MultiControls {
+          display: block;
+          > p {
+            padding: 6px;
+          }
+        }
+      }
+      &.isFloating {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 90%;
+        bottom: 0;
+        margin: auto;
+        max-height: 90%;
+        > .options {
+          max-height: 100%;
+          //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+          box-shadow: 0 0 100px $color_chicago_approx;
+          li.opt {
+            padding: 12px 6px;
+          }
+        }
+      }
+    }
+    .CaptionCont {
+      //Instead of the line below you could use @include user-select($select)
+      user-select: none;
+      position: relative;
+      border: 1px solid $color_delta_approx;
+      min-height: 14px;
+      background-color: $white;
+      //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+      border-radius: 2px;
+      margin: 0;
+      > span {
+        display: block;
+        padding-right: 30px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        cursor: default;
+        &.placeholder {
+          color: $color_celeste_approx;
+          font-style: italic;
+        }
+      }
+      > label {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 30px;
+        > i {
+          background-image: url($data_uri_0);
+          background-position: center center;
+          width: 16px;
+          height: 16px;
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          margin: auto;
+          background-repeat: no-repeat;
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+  .select-all {
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 3px 3px 0 0;
+    position: relative;
+    border-bottom: 1px solid $color_alto_approx;
+    background-color: $white;
+    padding: 8px 0 3px 35px;
+    height: 20px;
+    cursor: pointer;
+    > label {
+      //Instead of the line below you could use @include user-select($select)
+      user-select: none;
+      cursor: pointer;
+    }
+    > span {
+      position: absolute;
+      display: block;
+      width: 30px;
+      top: 0;
+      bottom: 0;
+      margin-left: -35px;
+      i {
+        position: absolute;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 14px;
+        height: 14px;
+        border: 1px solid $color_silver_chalice_approx;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 2px;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: inset 0 1px 3px $black_15;
+        background-color: $white;
+        cursor: pointer;
+      }
+    }
+    &.selected > span i {
+      background-color: $color_forest_green_approx;
+      //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+      box-shadow: none;
+      border-color: transparent;
+      background-image: url($data_uri_1);
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+    &.partial > span i {
+      background-color: $color_forest_green_approx;
+      //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+      box-shadow: none;
+      border-color: transparent;
+      background-image: url($data_uri_1);
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-color: $color_celeste_approx;
+    }
+  }
+  &.disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    > .CaptionCont {
+      border-color: $color_celeste_approx;
+      //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+      box-shadow: none;
+    }
+  }
+  &:focus > .CaptionCont {
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: 0 0 2px $color_danube_approx;
+    border-color: $color_danube_approx;
+  }
+  &:hover > .CaptionCont {
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: 0 0 2px $color_danube_approx;
+    border-color: $color_danube_approx;
+  }
+}
+.SelectBox {
+  padding: 5px 8px;
+}
+.sumoStopScroll {
+  overflow: hidden;
+}
+.SelectClass {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  border: none;
+  //Instead of the line below you could use @include box-sizing($bs)
+  box-sizing: border-box;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  z-index: 1;
+}
+.SumoUnder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  border: none;
+  //Instead of the line below you could use @include box-sizing($bs)
+  box-sizing: border-box;
+  filter: alpha(opacity=0);
+  opacity: 0;
+}

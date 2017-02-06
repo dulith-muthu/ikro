@@ -1,64 +1,90 @@
 @import "variables";
+//============================================================
+.sidebar-customer {
+  width: 100%;
+  .field-group {
+    margin: 15px 15px;
+    input, textarea {
+      display: block;
+      margin: 8px -2px;
+      width: 100%;
+      padding-top: 8px;
+      padding-bottom: 8px;
 
-.mdl-navigation {
-  .mdl-navigation__link {
-    &.is-active {
-
-      background: $brand-second;
-      opacity: 1;
-    }
-    &:hover {
-      background: lighten($brand-primary, 10%);
-      color: white;
-    }
-  }
-  .ul-user-menu{
-    li,a{
-      text-decoration: none;
     }
   }
 }
 
-footer.mdl-mini-footer {
-  padding: 0 20px;
+.product-search-row {
+
+  margin-bottom: 20px;
+  width: 100%;
+  .shortcuts {
+    float: right;
+    cursor: pointer;
+    padding-top: 10px;
+  }
+  #searchProduct {
+    width: 50%;
+    line-height: 32px;
+    padding-left: 12px;
+    font-size: 20px;
+    border: 1px solid darkgrey;
+    &.ui-autocomplete-input.ui-autocomplete-loading {
+      border: 1px solid darkgrey;
+
+      background: url("../img/billing.img/loading.gif") no-repeat right;
+
+    }
+  }
 }
 
-.ikro-sidebar-div {
-  .mdl-list {
-    .mdl-list__item {
-      transition: background 0.3s;
+//========================================
 
-      &.active {
-        background: lighten($brand-second, 0%);
-        & * {
-          color: white;
-        }
+.ikro-product-row {
+  width: 100%;
+  min-height: 0;
+  margin: 0 0 20px 0;
+  padding: 20px;
+  table {
+    &.two td {
+      padding-right: 30px;
+      #priceSelect,#oldPriceSelect{
+        width: 150px;
       }
-      &:hover {
-        background: grey;
-        cursor: pointer;
-        & * {
-          color: white;
-        }
-        &.active {
-          background: lighten($brand-second, 0%);
-
-        }
-
-      }
-
     }
+    th {
+      text-align: left;
+    }
+
+    input[type='number'] {
+      line-height: 25px;
+      padding-left: 10px;
+      &.error {
+        border: 2px solid $brand-danger;
+      }
+    }
+    select {
+      height: 30px;
+    }
+
   }
 }
 
-.ikro-main-div {
-  padding: 30px;
-  min-height: 800px;
-}
+.main-buttons-row {
+  margin: 30px auto;
+  width: 100%;
+  .main-buttons {
+    float: right;
+    margin-left: 6px;
 
-//================================ FORM =================================
-.wide-form {
-  .mdl-textfield.mdl-js-textfield {
-    width: 100%;
+  }
+  #btnCashPayment {
+
   }
 }
+
+.ikro-bill-table {
+
+}
+

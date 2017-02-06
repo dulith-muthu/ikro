@@ -3,8 +3,9 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.billing.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.stock.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('bower/jquery-ui/themes/base/jquery-ui.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/tools/sumoselect.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('js/tools/mdl-jquery-modal-dialog.css') }}">
 
 
@@ -17,7 +18,7 @@
 
                placeholder="Seach Product"> <a class="shortcuts">Keyboard Shortcuts</a>
     </div>
-    <div class="mdl-card mdl-shadow--2dp ikro-product-row" style="display: none">
+    <div class="mdl-card mdl-shadow--2dp ikro-product-row" style="display: none; overflow: visible;">
         <table class="one" width="100%">
             <thead>
             <tr>
@@ -38,9 +39,6 @@
 
                 <td class="availableQty">-</td>
                 <td class="manufacturer">-</td>
-
-
-
 
 
             </tr>
@@ -69,13 +67,16 @@
 
 
                 <td><input name="qtyInput" class="" id="qtyInput" type="number" value="1" data-tabbic="1"></td>
-                <td><select name="oldPriceSelect" class="" id="oldPriceSelect" data-tabbic="1">
+                <td><select name="oldPriceSelect" class="" id="oldPriceSelect" data-tabbic="1" multiple="multiple">
                         <option value="1">400</option>
                         <option value="2">500</option>
+                        <option value="3">600</option>
+                        <option value="4">700</option>
                     </select>
 
                 </td>
-                <td><input name="newPriceInput" class="" id="newPriceInput" type="number" value="1" data-tabbic="1"></td>
+                <td><input name="newPriceInput" class="" id="newPriceInput" type="number" value="1" data-tabbic="1">
+                </td>
                 <td>
                     <button name="btnAdd" class="flat-button" id="btnAdd" type="button" onclick="insertRow()"
                             data-tabbic="1">Add
@@ -236,16 +237,19 @@
 
     <div class="main-buttons-row">
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent main-buttons"
-                id="btnCashPayment" type="button" onclick="purchaseSubmit();" data-tabbic="1"><i class="material-icons">attach_money</i>&nbsp;Cash Payment
+                id="btnCashPayment" type="button" onclick="purchaseSubmit();" data-tabbic="1"><i class="material-icons">attach_money</i>&nbsp;Cash
+            Payment
         </button>
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
-                id="btnMonthlyPlan" type="button" data-tabbic="1"><i class="material-icons">date_range</i>&nbsp;Monthly Plan
+                id="btnMonthlyPlan" type="button" data-tabbic="1"><i class="material-icons">date_range</i>&nbsp;Monthly
+            Plan
         </button>
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary main-buttons"
                 id="btnQuotation" type="button" data-tabbic="1"><i class="material-icons">list</i>&nbsp;Quotation
         </button>
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  main-buttons"
-                id="btnCancel" type="button" data-tabbic="1" onclick="resetAll()"><i class="material-icons">clear</i>&nbsp;Reset All
+                id="btnCancel" type="button" data-tabbic="1" onclick="resetAll()"><i class="material-icons">clear</i>&nbsp;Reset
+            All
         </button>
 
 
@@ -260,6 +264,7 @@
      <script src="{{ asset('bower/mousetrap/mousetrap.min.js') }}"></script>
      <script src="{{ asset('bower/mousetrap/plugins/global-bind/mousetrap-global-bind.min.js') }}"></script>
      <script src="{{ asset('js/tools/mdl-jquery-modal-dialog.js') }}"></script>
+     <script src="{{ asset('bower/sumoselect/jquery.sumoselect.min.js') }}"></script>
 
      <script src="{{ asset('js/app.stock.operation.js') }}"></script>
      <script src="{{ asset('js/app.billing.validation.js') }}"></script>
@@ -267,7 +272,11 @@
      <script src="{{ asset('js/app.billing.customer.js') }}"></script>
      <script src="{{ asset('js/app.billing.hotkeys.js') }}"></script>
 
-
+     <script>
+         $(function () {
+             $('#oldPriceSelect').SumoSelect();
+         })
+     </script>
 
  {% endblock %}
 
