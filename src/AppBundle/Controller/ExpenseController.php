@@ -42,7 +42,9 @@ class ExpenseController extends BaseController
         }
 
         return $this->render('expense/expenseAdd.html.twig',array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'tab' =>$this->expense,
+            'subTab'=>$this->expenseAdd
         ));
 
     }
@@ -76,7 +78,8 @@ class ExpenseController extends BaseController
         }
 
         return $this->render('expense/expenseEdit.html.twig',array(
-            'form' =>$form->createView()
+            'form' =>$form->createView(),
+            'tab' =>$this->expense
         ));
     }
 
@@ -109,6 +112,8 @@ class ExpenseController extends BaseController
             'amount'=>$amount,
             'startDate'=>$startDate,
             'endDate'=>$endDate,
+            'tab' =>$this->expense,
+            'subTab'=>$this->expenseList
         ));
 
     }

@@ -15,11 +15,13 @@ use Symfony\Component\HttpFoundation\Request;
 class BillingController extends BaseController
 {
     /**
-     * @Route("/admin/bill", name="bill")
+     * @Route("/admin/bill", name="adminBill")
      */
 
     public function billingAction(Request $request){
-        return $this->render('billing/billing.html.twig');
+        return $this->render('billing/billing.html.twig',array(
+            'tab'=>$this->bill
+        ));
 
     }
 

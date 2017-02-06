@@ -34,14 +34,13 @@
             <!-- Navigation. We hide it in small screens. -->
             <nav class="mdl-navigation mdl-layout--large-screen-only">
 
-
-                <a href="" class="is-active mdl-navigation__link">BILLING</a>
+                <a href="{{ url('adminBill') }}" class="{% if(tab == 'bill') %}is-active {% endif %}mdl-navigation__link">BILLING</a>
                 <a href="" class="mdl-navigation__link">DEBTS</a>
                 <a href="" class="mdl-navigation__link">STOCK</a>
                 <a href="" class="mdl-navigation__link">REPORTS</a>
                 <a href="" class="mdl-navigation__link">LOG</a>
-                <a href="" class="mdl-navigation__link">EXPENSES</a>
-                <a href="" class="mdl-navigation__link">CUSTOMERS</a>
+                <a href="{{ url('expenseList') }}" class="{% if(tab == 'expense') %}is-active {% endif %}mdl-navigation__link">EXPENSES</a>
+                <a href="{{ url('customerList') }}" class="{% if(tab == 'customer') %}is-active {% endif %}mdl-navigation__link">CUSTOMERS</a>
                 <a href="" class="mdl-navigation__link">SETTINGS</a>
                 {#<a href="{{ url('logout') }}">Logout</a>#}
                 <!-- Right aligned menu below button -->
@@ -113,7 +112,10 @@
 
 
             <div class="mdl-grid">
-                {% if app.request.attributes.get('_route')!='bill' %}
+
+
+                {% if app.request.attributes.get('_route')!='adminBill' %}
+                    {% block sideBar %}
                     <div class="mdl-cell mdl-cell--2-col mdl-card mdl-shadow--2dp ikro-sidebar-div">
                         <!-- Icon List -->
 
@@ -129,17 +131,23 @@
     Aaron Paul
   </span>
                             </li>
+
                             <li class="mdl-list__item"><span class="mdl-list__item-primary-content"> <i
                                             class="material-icons mdl-list__item-icon">person</i>
     Bob Odenkirk
   </span>
                             </li>
+
+
                         </ul>
 
                     </div>
+
+                    {% endblock %}
                 {% endif %}
+
                 <div class="mdl-cell mdl-card mdl-shadow--2dp ikro-main-div
-{{ app.request.attributes.get('_route')=='bill'?"mdl-cell--12-col":"mdl-cell--10-col" }}">
+{{ app.request.attributes.get('_route')=='adminBill'?"mdl-cell--12-col":"mdl-cell--10-col" }}">
                     {% block body %}{% endblock %}
                 </div>
 

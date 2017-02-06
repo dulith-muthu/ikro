@@ -68,6 +68,7 @@ class UserController extends BaseController
      */
     public function UserActive($id, Request $request)
     {
+        $this->getRepository('Users')->find($id);
         $InactiveUser = $this->getDoctrine()->getRepository('AppBundle:Users')->find($id);
         $InactiveUser->setIsactive(1);
         $this->insert($InactiveUser);
