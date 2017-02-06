@@ -13,6 +13,7 @@ class BaseController extends Controller
     public $bill = 'bill';
     public $stock = 'stock';
     public $customer = 'customer';
+    public $purchaseBill = 'purchaseBill';
 
 
 

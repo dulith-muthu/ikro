@@ -31,8 +31,39 @@ class BillingController extends BaseController
 
     public function billingPurchaseAction(Request $request){
         $data = $this->objectDeserialize($request->get('bill'));
-        var_dump($data);
-        exit;
+        $invoice = [];
+
+        $customer = $data->customer;
+        var_dump($customer);
+
+        foreach ($data->data as $row){
+            $tempObj = new \stdClass();
+            $tempObj->itemCode = $row->itemCode;
+            $tempObj->itemName = $row->itemName;
+            $tempObj->quantity = $row->qty;
+            $tempObj->price = $row->price;
+            $discountType = $row->discType;
+            $discount = $row->disc;
+
+            if($discountType == 1){
+                $tempObj->soldPrice = ((double)$row->price - (double)($row->price * $discount)/100);
+                $tempObj->discount = $discount." %";
+            }
+            else{
+                $tempObj->soldPrice = ($row->price - $discount);
+                $tempObj->discount = $discount;
+            }
+
+            $tempObj->totalPrice = $tempObj->soldPrice * $tempObj->quantity;
+            $invoice [] = $tempObj;
+
+        }
+
+        return $this->render('billing/invoicePrintPurchase.html.twig',array(
+            'customer' =>$customer,
+            'invoice' =>$invoice,
+            'tab'=>$this->purchaseBill
+        ));
     }
 
 }
