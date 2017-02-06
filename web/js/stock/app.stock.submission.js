@@ -8,7 +8,7 @@ function purchaseSubmit() {
        console.log(window.location);
        var path = href + "/purchase"
        console.log(JSON.stringify(dataTable))
-       post(path, {"bill": JSON.stringify(dataTable)})
+       post(path, {"stock": JSON.stringify(dataTable)})
    }else{
        dialogBillIncomplete()
    }

@@ -1,4 +1,4 @@
-var dataTable = {'count': 0, 'data': [], 'customer': {}};
+var dataTable = {'count': 0, 'data': [], 'supplier': {}};
 var currentItem = {};
 $(function () {
     initAutocomplete();
@@ -6,12 +6,12 @@ $(function () {
     bindStuff()
 })
 function bindStuff() {
-    $(".ikro-bill-table").on('click', '.btnEdit', function () {
+    $(".ikro-stock-table").on('click', '.btnEdit', function () {
         var toEditId = $(this).data('id')
 
         lodToEditEntry(toEditId)
     })
-    $(".ikro-bill-table").on('click', '.btnRemove', function () {
+    $(".ikro-stock-table").on('click', '.btnRemove', function () {
         var toRemoveId = $(this).data('id')
         console.log(toRemoveId + "-- this is the D-loaded object")
         var loadedItem = getItemFromTable(toRemoveId)[0]
@@ -75,7 +75,7 @@ function setProductBar(data, mode) {
     $('.ikro-product-row .manufacturer').html(data.manufacturer)
     $('.ikro-product-row .availableQty').html(data.availableStock)
 
-    addToSelectElement(".ikro-product-row #priceSelect", data.unitPrice)
+    addToSelectElement(".ikro-product-row #oldPriceSelect", data.unitPrice)
     if (mode == "EXISTS") { //only if loading an existing value
         $("#qtyInput").val(data.qty)
         $("#discInput").val(data.disc)
@@ -100,6 +100,7 @@ function addToSelectElement(element, selectValues) {
                 .attr("value", value)
                 .text("Rs." + value));
     });
+    $(element)[0].sumo.reload();
 }
 function setUnitPriceCount(selectValues) {
     $('#unitPriceCaption').html("Unit Price (" + selectValues.length + ")")
@@ -142,7 +143,7 @@ function insertRow() {
     }
 }
 function renderTable() {
-    var tableQuery = $('.ikro-bill-table tbody');
+    var tableQuery = $('.ikro-stock-table tbody');
     tableQuery.html("")
 
     dataTable.data.forEach(function (item, index) {

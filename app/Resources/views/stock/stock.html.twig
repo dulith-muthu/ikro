@@ -93,7 +93,7 @@
             </tbody>
         </table>
     </div>
-    <table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp ikro-bill-table" width="100%">
+    <table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp ikro-stock-table" width="100%">
         <thead>
         <tr>
             <th>#</th>
@@ -267,7 +267,9 @@
 
      <script>
          $(function () {
-             $('#oldPriceSelect').SumoSelect();
+             $('#oldPriceSelect').SumoSelect({
+                 placeholder:"No Prices"
+             });
          })
      </script>
 
