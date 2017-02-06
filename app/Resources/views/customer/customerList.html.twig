@@ -80,7 +80,7 @@
 
             {#{% endfor %}#}
             {#</table>#}
-            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width: 100%">
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
                 <thead>
                 <tr>
                     <th class="mdl-data-table__cell--non-numeric">Name</th>
@@ -95,9 +95,7 @@
                 {% for customer in customers %}
                     <tr>
                         <td class="mdl-data-table__cell--non-numeric">{{ customer.name }}</td>
-                        <td class="mdl-data-table__cell--non-numeric">
-                            <div class="truncate">{{ customer.address }}</div>
-                        </td>
+                        <td class="mdl-data-table__cell--non-numeric">{{ customer.address }}</td>
                         <td class="mdl-data-table__cell--non-numeric">{{ customer.nic }}</td>
                         <td class="mdl-data-table__cell--non-numeric">{{ customer.mobile }}</td>
                         <td class="mdl-data-table__cell--non-numeric">{{ customer.fixed }}</td>
