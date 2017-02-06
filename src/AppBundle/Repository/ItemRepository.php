@@ -26,4 +26,37 @@ class ItemRepository extends EntityRepository
         return $qb->getQuery()->getResult();
 
     }
+
+    public function search($itemCode,$itemName,$itemType,$itemCount)
+    {
+        $qb = $this->createQueryBuilder('o');
+
+        $qb->select('o');
+
+        if($itemCode != null & $itemCode != ""){
+            $qb->andWhere('o.itemCode LIKE :itemCode')
+                ->setParameter('itemCode',$itemCode)
+            ;
+        }
+
+        if($itemName != null & $itemName != ""){
+            $qb->andWhere('o.name LIKE :name')
+                ->setParameter('name',$itemType)
+            ;
+        }
+
+        if($itemType != null & $itemType != ""){
+            $qb->andWhere('o.type = :type')
+                ->setParameter('type',$itemType)
+            ;
+        }
+
+        if($itemCount != null & $itemCount != ""){
+            $qb->andWhere('o.availableStock <= :itemCount')
+                ->setParameter('itemCount',$itemCount)
+            ;
+        }
+        ;
+        return $qb->getQuery()->getResult();
+    }
 }

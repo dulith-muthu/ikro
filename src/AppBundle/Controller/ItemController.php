@@ -82,7 +82,38 @@ class ItemController extends BaseController
 
     public function itemListAction(Request $request)
     {
-        return new Response('Item List');
+        $itemCodeReceived = $request->get('itemCode');
+        //$logType = $this->getRepository('Item')->findOneBy(array('metacode'=>$logTypeReceived));
+        $itemNameReceived = $request->get('itemName');
+        $itemTypeReceived = $request->get('itemType');
+        $itemType = $this->getRepository('ItemType')->findOneBy(array('metacode'=>$itemTypeReceived));
+        $itemCountReceived = $request->get('itemCountLessThan');
+
+
+        if($itemCodeReceived != null || $itemNameReceived!= null || $itemType!= null || $itemCountReceived!= null){
+            $items = $this->getRepository('Item')->search($itemCodeReceived,$itemNameReceived,$itemType,$itemCountReceived);
+        }
+        else{
+            $items = $this->getRepository('Item')->findAll();
+        }
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $items, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
+
+
+        return $this->render('item/itemList.html.twig',array(
+            'items'=>$pagination,
+            'itemTypes'=>($this->getRepository('ItemType')->findAll()),
+            'selectedItemCode'=>$itemCodeReceived,
+            'selectedItemName'=>$itemNameReceived,
+            'selectedItemCount'=>$itemCountReceived,
+            'selectedItemType'=>$itemTypeReceived,
+            'tab'=>'ITEM'
+        ));
     }
 
     /**

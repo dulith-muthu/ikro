@@ -59,7 +59,8 @@ class LogController extends BaseController
             'userList'=>($this->getRepository('Users')->findAll()),
             'selectedStartDate'=>$startDateReceived,
             'selectedEndDate'=>$endDateReceived,
-            'selectedUser'=>$userReceived
+            'selectedUser'=>$userReceived,
+            'tab'=>'LOG'
         ));
     }
 }
