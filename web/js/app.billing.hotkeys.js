@@ -17,7 +17,14 @@ $(function () {
     });
     Mousetrap.bindGlobal('ctrl+home', function (e) {
         preventKey(e)
-        $("#btnRemoveAll").click()
+        resetAll()
+    });
+    Mousetrap.bindGlobal(['ctrl+right', 'ctrl+left'], function (e) {
+        preventKey(e)
+
+        toggleSidebar()
+
+        $(".mdl-layout__drawer-button").click()
     });
     Mousetrap.bindGlobal('*', function (e) {
         preventKey(e)
@@ -31,17 +38,30 @@ $(function () {
     });
 
 })
+function resetAll() {
+    $("#btnRemoveAll").click()
+    clearProductRow();
+    sidebarClear()
+}
 function cycleFocus(step) {
-    var tabicList = $("[data-tabbic='1']:visible")
+    var tabicList
+    if (!isSidebar) {
+        tabicList = $("[data-tabbic='1']:visible").not(".sidebar")
+
+
+    } else {
+        tabicList = $(".sidebar[data-tabbic='1']:visible")
+    }
+
     var focused = $(':focus')[0];
-    // console.log(tabicList)
+    console.log(tabicList)
     var focusedEelementId = $.inArray(focused, tabicList)
     console.log("focusedEelementId = " + focusedEelementId)
     if (focusedEelementId == -1) {
         tabicList[0].select()
     } else {
         var nextElement = $(tabicList[focusedEelementId + step])
-        if (nextElement.is("input")) {
+        if (nextElement.is("input,textarea")) {
             nextElement.select()
 
         } else {

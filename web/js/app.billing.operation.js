@@ -1,4 +1,4 @@
-var dataTable = {'count': 0, 'data': []};
+var dataTable = {'count': 0, 'data': [], 'customer': {}};
 var currentItem = {};
 $(function () {
     initAutocomplete();
@@ -67,7 +67,7 @@ function initAutocomplete() {
     });
 }
 function setProductBar(data, mode) {
-
+//TODO use data from API to auto select best price from list
     allowSubmission = false;
     $('.ikro-product-row .itemCode').html(data.itemCode)
     $('.ikro-product-row .itemType').html(data.itemType)
@@ -158,6 +158,7 @@ function focusSearchBox() {
 function clearProductRow() {
     //currentItem = {}
     $(".ikro-product-row").slideUp(60)
+
     $('.ikro-product-row .itemCode').html("-")
     $('.ikro-product-row .itemType').html("-")
     $('.ikro-product-row .itemName').html("-")
@@ -166,7 +167,8 @@ function clearProductRow() {
     $("#qtyInput").val(1)
     $("#discInput").val(0)
     $("#discountSelect").val(1)
-
+    $("#searchProduct").val("")
+    $("#searchProduct").select()
     $(".ikro-product-row #priceSelect").html("<option value=''>&nbsp;&nbsp;-&nbsp;&nbsp;</option>")
 }
 function isExistInTable(itemCode) {
@@ -184,6 +186,6 @@ function getItemFromTable(itemCode) {
 
 }
 function removeAll() {
-    dataTable = {'count': 0, 'data': []};
+    dataTable = {'count': 0, 'data': [], 'customer': {}};
     renderTable()
 }
