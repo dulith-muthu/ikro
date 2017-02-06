@@ -1,8 +1,16 @@
 {% extends 'base.html.twig' %}
 
+
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.customer.list.css') }}">
+
+{% endblock %}
+
+
+
+{% block sideBar %}
+    {% include 'customerSideBar.html.twig' %}
 
 {% endblock %}
 
@@ -109,3 +117,4 @@
         </div>
     </div>
 {% endblock %}
+

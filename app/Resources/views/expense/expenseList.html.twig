@@ -1,10 +1,14 @@
 {% extends 'base.html.twig' %}
 
+{% block sideBar %}
+    {% include 'expenseSideBar.html.twig' %}
+{% endblock %}
+
 {% block body %}
 
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--6-col">
-            <h3>Customer List</h3>
+            <h3>Expense List</h3>
             {% for flash_message in app.session.flashBag.get('error') %}
                 <div class="alert alert-danger" style="text-align: center">
                     {{ flash_message }}
