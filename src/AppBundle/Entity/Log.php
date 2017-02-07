@@ -209,4 +209,27 @@ class Log
     {
         return $this->user_id;
     }
+
+    /**
+     * Set user_id
+     *
+     * @param \AppBundle\Entity\Users $userId
+     * @return Log
+     */
+    public function setUserId(\AppBundle\Entity\Users $userId = null)
+    {
+        $this->user_id = $userId;
+
+        return $this;
+    }
+
+    /**
+     * Get user_id
+     *
+     * @return \AppBundle\Entity\Users 
+     */
+    public function getUserId()
+    {
+        return $this->user_id;
+    }
 }

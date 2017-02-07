@@ -68,6 +68,11 @@ class Item
 
     private $sale;
 
+    /**
+     * @ORM\OneToMany(targetEntity="DebtSale", mappedBy="item")
+     */
+
+    private $debtSale;
 
     /**
      * @var string
@@ -76,18 +81,6 @@ class Item
      */
     private $manufacturer;
 
-
-    /**
-     * @ORM\OneToMany(targetEntity="Stock", mappedBy="item")
-     */
-
-    private $stock;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Sale", mappedBy="item")
-     */
-
-    private $sale;
 
 
     /**
@@ -231,7 +224,6 @@ class Item
     {
         return $this->stock;
     }
-<<<<<<< HEAD
 
     /**
      * Add sale
@@ -288,6 +280,28 @@ class Item
     {
         return $this->type;
     }
-=======
->>>>>>> c74d57de822a63d22949ffa9ff2cdd61871e6e0d
+
+    /**
+     * Set manufacturer
+     *
+     * @param string $manufacturer
+     * @return Item
+     */
+    public function setManufacturer($manufacturer)
+    {
+        $this->manufacturer = $manufacturer;
+
+        return $this;
+    }
+
+    /**
+     * Get manufacturer
+     *
+     * @return string 
+     */
+    public function getManufacturer()
+    {
+        return $this->manufacturer;
+    }
+
 }

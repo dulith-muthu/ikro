@@ -50,7 +50,7 @@ class Debt
     private $isClosed;
 
     /**
-     * @ORM\OneToMany(targetEntity="Installment", mappedBy="dept")
+     * @ORM\OneToMany(targetEntity="Installment", mappedBy="debt")
      */
 
     private $installment;

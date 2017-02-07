@@ -41,7 +41,7 @@ class ItemRepository extends EntityRepository
 
         if($itemName != null & $itemName != ""){
             $qb->andWhere('o.name LIKE :name')
-                ->setParameter('name',$itemType)
+                ->setParameter('name',"%".$itemName."%")
             ;
         }
 

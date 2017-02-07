@@ -68,6 +68,11 @@ class Item
 
     private $sale;
 
+    /**
+     * @ORM\OneToMany(targetEntity="DebtSale", mappedBy="item")
+     */
+
+    private $debtSale;
 
     /**
      * @var string
@@ -299,4 +304,37 @@ class Item
         return $this->manufacturer;
     }
 
+
+    /**
+     * Add debtSale
+     *
+     * @param \AppBundle\Entity\DebtSale $debtSale
+     * @return Item
+     */
+    public function addDebtSale(\AppBundle\Entity\DebtSale $debtSale)
+    {
+        $this->debtSale[] = $debtSale;
+
+        return $this;
+    }
+
+    /**
+     * Remove debtSale
+     *
+     * @param \AppBundle\Entity\DebtSale $debtSale
+     */
+    public function removeDebtSale(\AppBundle\Entity\DebtSale $debtSale)
+    {
+        $this->debtSale->removeElement($debtSale);
+    }
+
+    /**
+     * Get debtSale
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDebtSale()
+    {
+        return $this->debtSale;
+    }
 }
