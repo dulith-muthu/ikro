@@ -1,0 +1,131 @@
+/* #Belize Hole Sea Flat Button
+==================================================*/
+.flat-button {
+  position: relative;
+  vertical-align: top;
+  padding: 10px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  color: #000;
+  text-align: center;
+  background: #ffab40;
+  border: 0;
+  cursor: pointer;
+  border-radius: 2px;
+  text-shadow: none; }
+  .flat-button.red {
+    background: rgba(158, 158, 158, 0.2); }
+
+.flat-button:active {
+  top: 1px;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none; }
+
+.btnRemove {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 100%;
+  border: 1px solid #e74c3c;
+  background-color: white;
+  color: #e74c3c;
+  font-size: 15px;
+  transition: background 0.2s; }
+  .btnRemove:hover {
+    background-color: #e74c3c;
+    color: white; }
+
+.btnEdit {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 100%;
+  border: 1px solid #ff9800;
+  background-color: white;
+  color: #ff9800;
+  font-size: 15px;
+  transition: background 0.2s; }
+  .btnEdit:hover {
+    background-color: #ff9800; }
+    .btnEdit:hover, .btnEdit:hover * {
+      color: white; }
+
+#btnRemoveAll {
+  height: 32px;
+  border-radius: 16px;
+  border: 1px solid #e74c3c;
+  background-color: white;
+  color: #e74c3c;
+  font-size: 15px;
+  transition: background 0.3s; }
+  #btnRemoveAll:hover {
+    background-color: #e74c3c;
+    color: white; }
+
+.text-remove-deco {
+  text-decoration: none; }
+
+.list-search-div {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 20px;
+  margin-bottom: 15px;
+  background-color: #fcfcfc; }
+  .list-search-div th {
+    font-weight: 400;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    padding-right: 1%; }
+
+.list-data-table {
+  width: 100%;
+  table-layout: fixed; }
+
+.list-search-table {
+  width: 100%; }
+
+.list-search-input {
+  border: 1px solid darkgrey;
+  font-size: 15px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-top: 3px;
+  width: 95%; }
+
+.list-search-select {
+  border: 1px solid darkgrey;
+  font-size: 15px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  margin-top: 3px;
+  width: 95%; }
+
+.table-data-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+.item-code {
+  width: 10%; }
+
+.item-name {
+  width: 15%; }
+
+.item-type {
+  width: 15%; }
+
+.item-description {
+  width: 23%; }
+
+.item-available-stock {
+  width: 15%; }
+
+.item-manufacturer {
+  width: 15%; }
+
+.item-edit-btn {
+  width: 7%; }
+
+/*# sourceMappingURL=app.item.list.css.map */
