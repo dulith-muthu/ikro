@@ -17,61 +17,48 @@
 
             <form>
 
-                <select name="logType" id="selectLogType">
-                    <option value="">All</option>
-                    {% for type in logTypes %}
-                        <option value="{{ type.metacode }}" {% if type.metacode == selectedLogType %}selected{% endif %}>{{ type.name }}</option>
+                <select name="isClosed">
+                    <option value="0">All</option>
+                    <option value="1">Pending</option>
+                    <option value="2">Closed</option>
 
-                    {% endfor %}
+
                 </select>
 
-
-                <select name="logAction" id="selectLogAction">
-                    <option value="">All</option>
-                    {% for action in logActions %}
-                        <option value="{{ action.metacode }}" {% if action.metacode == selectedLogAction %}selected{% endif %}>{{ action.name }}</option>
-                    {% endfor %}
-                </select>
+                <input name="customerId" value="{{  selectedCustomerId }}">
 
 
-                <select name="user" id="selectUser">
-                    <option value="">All</option>
-                    {% for iUser in userList %}
-                        <option value="{{ iUser.id }}" {% if iUser.id == selectedUser %}selected{% endif %}>{{ iUser.username }}</option>
-                    {% endfor %}
-                </select>
 
-
-                <input name="startDate" id="selectStartDate" type="datetime" value="{{ selectedStartDate }}">
-                <input name="endDate" id="selectEndDate" type="datetime" value="{{ selectedEndDate }}">
+                <input name="startDate" type="datetime" value="{{ selectedStartDate }}">
+                <input name="endDate" type="datetime" value="{{ selectedEndDate }}">
                 <button type="submit">Search</button>
 
             </form>
 
             <table>
                 <thead>
-                <th>Action</th>
-                <th>Type</th>
-                <th>Description</th>
-                <th>Date - Time</th>
-                <th>Logged ID</th>
-                <td>User</td>
+                <th>Customer</th>
+                <th>Total</th>
+                <th>First Payment</th>
+                <th>Interest</th>
+                <th>Pending/Closed</th>
+                <th>Date/Time</th>
                 </thead>
-                {% for log in logs %}
+                {% for debt in debts %}
                     <tr>
-                        <td>{{ log.action.name }}</td>
-                        <td>{{ log.type.name }}</td>
-                        <td>{{ log.description }}</td>
-                        <td>{{ log.dateTime|date('F j, Y, g:i a') }}</td>
-                        <td><a href="{{ url(log.type.url,{id:log.loggedId}) }}" class="text-remove-deco"> ✎ </a></td>
-                        <td>{{ log.user_id.username }}</td>
+                        <td>{{ debt.customer.name }}</td>
+                        <td>{{ debtTotal }}</td>
+                        <td>{{ debt.firstPayment }}</td>
+                        <td>{{ debt.interest }}</td>
+                        <td>{% if debt.isClosed %}Closed{% else %}Pending{% endif %}</td>
+                        <td>{{ debt.dateTime|date('F j, Y, g:i a') }}</td>
                     </tr>
 
                 {% endfor %}
             </table>
 
             <div class="navigation">
-                {{ knp_pagination_render(logs) }}
+                {{ knp_pagination_render(debts) }}
             </div>
 
 
