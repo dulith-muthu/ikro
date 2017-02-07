@@ -134,6 +134,23 @@ class BillingController extends BaseController
 
         }
 
+        $customer->name = "shan";
+        $customer->nic = "943321205v";
+        $customer->mobile="0712418805";
+        $customer->home = "0413415456";
+        $customer->address ="141/2";
+
+        $invoice[0]->itemCode ="101";
+        $invoice[0]->itemName ="Chair";
+        $invoice[0]->quantity =5;
+        $invoice[0]->price = 1500;
+        $invoice[0]->soldPrice = 1400;
+        $invoice[0]->discount = 100;
+        $invoice[0]->totalPrice = 7000;
+
+
+
+
         return array($customer,$invoice);
     }
 
