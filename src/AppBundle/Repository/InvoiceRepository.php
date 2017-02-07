@@ -12,4 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class InvoiceRepository extends EntityRepository
 {
+    public function search($startDate,$endDate)
+    {
+        $qb = $this->createQueryBuilder('o');
+
+        $qb->select('o')
+            ->andWhere('o.dateTime BETWEEN :startDate AND :endDate')
+            ->setParameter('startDate',$startDate)
+            ->setParameter('endDate',$endDate)
+            ;
+        return $qb->getQuery()->getResult();
+    }
 }
