@@ -60,7 +60,10 @@ class UserController extends BaseController
     {
 
         $inactiveUsers = $this->getDoctrine()->getRepository('AppBundle:Users')->findBy(array('isactive' => '0'));
-        return $this->render('user\listInactiveUsers.html.twig', array('inactiveUsers' => $inactiveUsers));
+        return $this->render('user\listInactiveUsers.html.twig', array(
+            'inactiveUsers' => $inactiveUsers,
+            'tab'=>$this->inactiveUserList
+        ));
     }
 
     /**

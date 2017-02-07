@@ -31,13 +31,15 @@ class BillingController extends BaseController
 
     public function billingPurchaseAction(Request $request){
 
-        $dataArray = $this->generateInvoice($request->get('bill'));
+
+//        $dataArray = $this->generateInvoice($request->get('data'));
+
 
 
         return $this->render('billing/invoicePrintPurchase.html.twig',array(
-            'customer' =>$dataArray[0],
-            'invoice' =>$dataArray[1],
-            'tab'=>$this->bill
+//            'customer' =>$dataArray[0],
+//            'invoice' =>$dataArray[1],
+            'tab'=>$this->purchaseBill
         ));
     }
 
@@ -53,6 +55,7 @@ class BillingController extends BaseController
            'customer' =>$dataArray[0],
             'invoice' =>$dataArray[1],
             'tab'=>$this->bill
+
         ));
 
     }

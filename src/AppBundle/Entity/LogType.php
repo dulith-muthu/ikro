@@ -35,6 +35,13 @@ class LogType
      */
     private $metacode;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url", type="string", length=255)
+     */
+    private $url;
+
 
     /**
      * Get id
@@ -90,5 +97,28 @@ class LogType
     public function getMetacode()
     {
         return $this->metacode;
+    }
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     * @return LogType
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string 
+     */
+    public function getUrl()
+    {
+        return $this->url;
     }
 }
