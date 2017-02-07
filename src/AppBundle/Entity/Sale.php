@@ -54,6 +54,14 @@ class Sale
      */
     private $quantity;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="discount", type="string", length=50)
+     */
+
+    private $discount;
+
 
     /**
      * Get id
@@ -178,5 +186,28 @@ class Sale
     public function getInvoice()
     {
         return $this->invoice;
+    }
+
+    /**
+     * Set discount
+     *
+     * @param string $discount
+     * @return Sale
+     */
+    public function setDiscount($discount)
+    {
+        $this->discount = $discount;
+
+        return $this;
+    }
+
+    /**
+     * Get discount
+     *
+     * @return string 
+     */
+    public function getDiscount()
+    {
+        return $this->discount;
     }
 }

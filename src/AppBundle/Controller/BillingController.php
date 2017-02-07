@@ -8,8 +8,11 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Invoice;
+use AppBundle\Entity\Sale;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 
 class BillingController extends BaseController
@@ -32,15 +35,58 @@ class BillingController extends BaseController
     public function billingPurchaseAction(Request $request){
 
 
-//        $dataArray = $this->generateInvoice($request->get('data'));
+        $dataArray = $this->generateInvoice($request->get('data'));
+        $stringifyArray = $this->objectSerialize($dataArray);
 
 
 
         return $this->render('billing/invoicePrintPurchase.html.twig',array(
-//            'customer' =>$dataArray[0],
-//            'invoice' =>$dataArray[1],
+            'customer' =>$dataArray[0],
+            'invoice' =>$dataArray[1],
+            'stringifyArray' =>$stringifyArray,
             'tab'=>$this->purchaseBill
         ));
+    }
+
+    /**
+     * @Route("/admin/bill/purchase/save", name="billPurchaseSave")
+     */
+
+    public function billPurchaseSaveAction(Request $request){
+        $dataArray = $this->objectDeserialize($request->get('invoice'));
+        $customer = $dataArray[0];
+        $invoiceSales = $dataArray[1];
+
+        $em = $this->getDoctrine()->getManager();
+
+        $dateTime = new \DateTime('now');
+
+        $invoice = new Invoice();
+        $invoice->setCustomerName($customer->name);
+        $invoice->setCustomerAddress($customer->address);
+        $invoice->setCustomerNic($customer->nic);
+        $invoice->setCustomerPhone($customer->mobile);
+        $invoice->setDateTime($dateTime);
+        //Todo add total price of the invoice
+        $this->insert($invoice);
+        foreach ($invoiceSales as $saleItem){
+            $sale = new Sale();
+            $sale->setDateTime($dateTime);
+            $sale->setQuantity($saleItem->quantity);
+            $sale->setSoldPrice($saleItem->soldPrice);
+            $sale->setDiscount($saleItem->discount);
+            $item = $this->getRepository('Item')->findOneBy(array('itemCode'=>$saleItem->itemCode));
+            $sale->setItem($item);
+            $sale->setInvoice($invoice);
+
+
+            $em->persist($sale);
+        }
+        $em->flush();
+
+        $response = new \stdClass();
+        $response->status = true;
+        return new Response($response);
     }
 
     /**
