@@ -17,6 +17,7 @@ class BaseController extends Controller
     public $customer = 'customer';
     public $purchaseBill = 'purchaseBill';
     public $item = 'item';
+    public $report = 'report';
 
 
 
@@ -26,6 +27,8 @@ class BaseController extends Controller
 
     public $expenseAdd = 'expenseAdd';
     public $expenseList = 'expenseList';
+
+    public $salesPurchaseReport = 'salesPurchaseReport';
 
 
     protected function getRepository($class)

@@ -33,6 +33,47 @@
 
 {% endblock %}
 {% block body %}
+    <script>
+        var toSendBack = "{{ stringifyArray }}"
+    </script>
+
+
+
+    {% for flash_message in app.session.flashBag.get('error') %}
+        <div class="alert alert-danger" style="text-align: center">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+    {% for flash_message in app.session.flashBag.get('success') %}
+        <div class="alert alert-success" style="text-align: center">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+    {{ customer.name }}
+    {{ customer.address }}
+    <table>
+        <thead>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+        <th>Discount on unit Price</th>
+        <th>Total</th>
+        </thead>
+        <tbody>
+        {% for item in invoice %}
+            <tr>
+                <td>{{ item.itemCode ~ " "~ item.itemName }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.discount }}</td>
+                <td>{{ item.totalPrice }}</td>
+            </tr>
+
+
+        {% endfor %}
+
+        </tbody>
+    </table>
 
     <div id="div-printable">
 
@@ -181,4 +222,6 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/JavaScript" src="{{ asset('bower/jQuery.print/jQuery.print.js') }}"></script>
+    <script type="text/JavaScript" src="{{ asset('js/app.purchase.js') }}"></script>
+
 {% endblock %}

@@ -1,0 +1,25 @@
+<div class="mdl-cell mdl-cell--2-col mdl-card mdl-shadow--2dp ikro-sidebar-div">
+    <!-- Icon List -->
+
+
+    <ul class="main-sidebar mdl-list">
+        <a href="{{ url('salesPurchaseReport') }}" style="text-decoration: none">
+            <li class="mdl-list__item {% if(subTab == 'salesPurchaseReport') %}active {% endif %}"><span class="mdl-list__item-primary-content"> <i
+                            class="material-icons mdl-list__item-icon">person  </i>
+    Sales Report (Purchases)
+</span>
+            </li>
+        </a>
+
+        <a href="{{ url('customerList') }}" style="text-decoration: none">
+            <li class="mdl-list__item {% if(subTab == 'customerList') %}active {% endif %}"><span class="mdl-list__item-primary-content"> <i
+                            class="material-icons mdl-list__item-icon">person</i>
+    Customer List
+  </span>
+            </li>
+        </a>
+
+
+    </ul>
+
+</div>
