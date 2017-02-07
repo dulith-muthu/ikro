@@ -13,6 +13,8 @@ class BaseController extends Controller
     public $bill = 'bill';
     public $dashboard = 'dashboard';
     public $inactiveUserList = 'inactiveUserList';
+    public $users = 'users';
+    public $user = 'user';
     public $stock = 'stock';
     public $customer = 'customer';
     public $purchaseBill = 'purchaseBill';
