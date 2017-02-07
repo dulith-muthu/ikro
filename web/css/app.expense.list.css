@@ -69,48 +69,57 @@
 .text-remove-deco {
   text-decoration: none; }
 
-.expense-search {
+.list-search-div {
   border: 1px solid rgba(0, 0, 0, 0.12);
   padding: 20px;
   margin-bottom: 15px;
   background-color: #fcfcfc; }
-  .expense-search th {
+  .list-search-div th {
     font-weight: 400;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     padding-right: 1%; }
 
-.expense-data-table {
+.list-data-table {
   width: 100%;
   table-layout: fixed; }
 
-.search-input-table {
+.list-search-table {
   width: 100%; }
 
-.search-input {
+.list-search-input {
   border: 1px solid darkgrey;
   font-size: 15px;
   padding-top: 8px;
   padding-bottom: 8px;
-  margin-top: 3px; }
+  margin-top: 3px;
+  width: 95%; }
+
+.list-search-select {
+  border: 1px solid darkgrey;
+  font-size: 15px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  margin-top: 3px;
+  width: 95%; }
 
 .table-data-truncate {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; }
 
-#expense-type {
+.expense-type {
   width: 20%; }
 
-#expense-time {
+.expense-time {
   width: 20%; }
 
-#expense-description {
+.expense-description {
   width: 30%; }
 
-#expense-amount {
+.expense-amount {
   width: 20%; }
 
-#expense-edit-btn {
+.expense-edit-btn {
   width: 10%; }
 
 /*# sourceMappingURL=app.expense.list.css.map */

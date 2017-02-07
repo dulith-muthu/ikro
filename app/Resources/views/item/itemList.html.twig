@@ -20,7 +20,7 @@
         </div>
     {% endfor %}
 
-    <form onsubmit="removeEmptyFields()">
+    <form>
         <div class="list-search-div">
             <table class="list-search-table">
                 <thead>
@@ -87,25 +87,5 @@
     <div class="navigation">
         {{ knp_pagination_render(items) }}
     </div>
-
-    <script>
-        function removeEmptyFields() {
-            if ($("#inputItemCode").val() == "") {
-                $("#inputItemCode").remove();
-            }
-            if ($("#inputItemName").val() == "") {
-                $("#inputItemName").remove();
-            }
-            if ($("#selectItemType").val() == "") {
-                $("#selectItemType").remove();
-            }
-            if ($("#inputItemCount").val() == "") {
-                $("#inputItemCount").remove();
-            }
-
-        }
-    </script>
-
-
 
 {% endblock %}

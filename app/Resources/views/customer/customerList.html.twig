@@ -30,9 +30,8 @@
     {% endfor %}
 
     <form>
-
-        <div class="customer-search mdl-shadow--2dp">
-            <table>
+        <div class="list-search-div mdl-shadow--2dp">
+            <table class="list-search-table">
                 <thead>
                 <tr>
                     <th>Name</th>
@@ -43,11 +42,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <td><input name="name" value="{{ name }}" class="search-input"></td>
-                <td><input name="address" value="{{ address }}" class="search-input"></td>
-                <td><input name="nic" value="{{ nic }}" class="search-input"></td>
-                <td><input name="mobile" value="{{ mobile }}" class="search-input"></td>
-                <td><input name="fixed" value="{{ fixed }}" class="search-input"></td>
+                <td><input name="name" value="{{ name }}" class="list-search-input"></td>
+                <td><input name="address" value="{{ address }}" class="list-search-input"></td>
+                <td><input name="nic" value="{{ nic }}" class="list-search-input"></td>
+                <td><input name="mobile" value="{{ mobile }}" class="list-search-input"></td>
+                <td><input name="fixed" value="{{ fixed }}" class="list-search-input"></td>
                 <td>
                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent main-buttons"
                             id="btnCashPayment" type="submit"><i class="material-icons">search</i>
@@ -56,7 +55,6 @@
                 </tbody>
             </table>
         </div>
-
     </form>
     {#<table>#}
     {#<thead>#}
@@ -79,26 +77,26 @@
 
     {#{% endfor %}#}
     {#</table>#}
-    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp customer-data-table">
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp list-data-table">
         <thead>
         <tr>
-            <th class="mdl-data-table__cell--non-numeric" id="customer-name">Name</th>
-            <th class="mdl-data-table__cell--non-numeric" id="customer-address">Address</th>
-            <th class="mdl-data-table__cell--non-numeric" id="customer-nic">NIC</th>
-            <th class="mdl-data-table__cell--non-numeric" id="customer-mobile">Mobile</th>
-            <th class="mdl-data-table__cell--non-numeric" id="customer-fixed">Fixed</th>
-            <th id="customer-edit-btn">#</th>
+            <th class="mdl-data-table__cell--non-numeric customer-name">Name</th>
+            <th class="mdl-data-table__cell--non-numeric customer-address">Address</th>
+            <th class="mdl-data-table__cell--non-numeric customer-nic">NIC</th>
+            <th class="mdl-data-table__cell--non-numeric customer-mobile">Mobile</th>
+            <th class="mdl-data-table__cell--non-numeric customer-fixed">Fixed</th>
+            <th class="customer-edit-btn">#</th>
         </tr>
         </thead>
         <tbody>
         {% for customer in customers %}
             <tr>
-                <td class="mdl-data-table__cell--non-numeric table-data-truncate" id="customer-name">{{ customer.name }}</td>
-                <td class="mdl-data-table__cell--non-numeric table-data-truncate" id="customer-address">{{ customer.address }}</td>
-                <td class="mdl-data-table__cell--non-numeric" id="customer-nic">{{ customer.nic }}</td>
-                <td class="mdl-data-table__cell--non-numeric" id="customer-mobile">{{ customer.mobile }}</td>
-                <td class="mdl-data-table__cell--non-numeric" id="customer-fixed">{{ customer.fixed }}</td>
-                <td id="customer-edit-btn">
+                <td class="mdl-data-table__cell--non-numeric table-data-truncate customer-name">{{ customer.name }}</td>
+                <td class="mdl-data-table__cell--non-numeric table-data-truncate customer-address">{{ customer.address }}</td>
+                <td class="mdl-data-table__cell--non-numeric customer-nic">{{ customer.nic }}</td>
+                <td class="mdl-data-table__cell--non-numeric customer-mobile">{{ customer.mobile }}</td>
+                <td class="mdl-data-table__cell--non-numeric customer-fixed">{{ customer.fixed }}</td>
+                <td class="customer-edit-btn">
                     <button data-id='' class='btnEdit' name='btnEdit'>
                         <a href="{{ url('customerEdit',{id:customer.id}) }}" class="text-remove-deco"> ✎ </a>
                     </button>
