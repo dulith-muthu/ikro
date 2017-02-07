@@ -1,0 +1,11 @@
+.div-printable hr {
+  margin: 0px; }
+.div-printable .stripe.bill-entry-head {
+  background-color: #eee;
+  font-weight: 700; }
+.div-printable .stripe.bill-footer .total-text {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 30px; }
+
+/*# sourceMappingURL=app.purchase.css.map */
