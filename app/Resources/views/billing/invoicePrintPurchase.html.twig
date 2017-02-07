@@ -34,7 +34,7 @@
 {% endblock %}
 {% block body %}
 
-    <div class="div-printable">
+    <div id="div-printable">
 
         <div class="stripe bill-title">
             <hr>
@@ -175,4 +175,10 @@
 
     </div>
 
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/JavaScript" src="{{ asset('bower/jQuery.print/jQuery.print.js') }}"></script>
 {% endblock %}
