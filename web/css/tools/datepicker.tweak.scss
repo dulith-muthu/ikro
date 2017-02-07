@@ -1,0 +1,17 @@
+@import "../variables";
+
+.ui-datepicker-header {
+  color: white;
+  background: $brand-second;
+}
+
+.ui-datepicker {
+  background: white;
+  * {
+    border-radius: 0;
+  }
+}
+
+.ui-widget-content .ui-state-default {
+ background-image: none;
+}
