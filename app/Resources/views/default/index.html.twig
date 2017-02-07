@@ -1,7 +1,28 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <!-- REQUIRED -->
 
+
+{% endblock %}
 {% block body %}
-Content from index.html
+    Content from index.html
+
+    <input type="text" data-datetime="true" size="30" style="width: 150px" readonly>
+
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <!-- REQUIRED -->
+
+    <script>
+
+    </script>
+
 
 {% endblock %}
 

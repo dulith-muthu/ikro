@@ -1,0 +1,123 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.customer.list.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/tools/pagination/pagination.style.css') }}">
+
+{% endblock %}
+
+
+{% block sideBar %}
+    {% include 'reportSideBar.html.twig' %}
+
+{% endblock %}
+
+
+{% block body %}
+
+    <h3>Sales Report</h3>
+    {% for flash_message in app.session.flashBag.get('error') %}
+        <div class="alert alert-danger" style="text-align: center">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+    {% for flash_message in app.session.flashBag.get('success') %}
+        <div class="alert alert-success" style="text-align: center">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+
+    <form>
+
+        <div class="customer-search mdl-shadow--2dp">
+            <table>
+                <thead>
+                <tr>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <td><input name="startDate" value="{{ startDate |date('Y/m/d') }}" class="search-input"></td>
+                <td><input name="endDate" value="{{ endDate |date('Y/m/d') }}" class="search-input"></td>
+                <td>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent main-buttons"
+                            id="btnCashPayment" type="submit"><i class="material-icons">search</i>
+                    </button>
+                </td>
+                </tbody>
+            </table>
+        </div>
+
+    </form>
+    {#<table>#}
+    {#<thead>#}
+    {#<th>Name</th>#}
+    {#<th>Address</th>#}
+    {#<th>NIC</th>#}
+    {#<th>Mobile</th>#}
+    {#<th>Fixed</th>#}
+    {#<td>Edit</td>#}
+    {#</thead>#}
+    {#{% for customer in customers %}#}
+    {#<tr>#}
+    {#<td>{{ customer.name }}</td>#}
+    {#<td>{{ customer.address }}</td>#}
+    {#<td>{{ customer.nic }}</td>#}
+    {#<td>{{ customer.mobile }}</td>#}
+    {#<td>{{ customer.fixed }}</td>#}
+    {#<td><a href="{{ url('customerEdit',{id:customer.id}) }}">Edit</a></td>#}
+    {#</tr>#}
+
+    {#{% endfor %}#}
+    {#</table>#}
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp customer-data-table">
+        <thead>
+        <tr>
+            <th class="mdl-data-table__cell--non-numeric" id="customer-name">Invoice Number</th>
+            <th class="mdl-data-table__cell--non-numeric" id="customer-address">Time</th>
+            <th class="mdl-data-table__cell--non-numeric" id="customer-nic">Customer Name</th>
+            <th id="customer-edit-btn">#</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for invoice in invoices %}
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric table-data-truncate" id="customer-name">{{ invoice.invoiceNumber }}</td>
+                <td class="mdl-data-table__cell--non-numeric table-data-truncate" id="customer-address">{{ invoice.dateTime | date('Y/m/d H:i:s ') }}</td>
+                <td class="mdl-data-table__cell--non-numeric" id="customer-nic">{{ invoice.customerName }}</td>
+                <td id="customer-edit-btn">
+                    <button data-id='' class='btnEdit' name='btnEdit'>
+                        <a  class="text-remove-deco"> ✎ </a>
+                    </button>
+                </td>
+            </tr>
+
+        {% endfor %}
+
+        {# ---------------Test code for Truncate---------------- #}
+
+        {#<tr>#}
+        {#<td class="mdl-data-table__cell--non-numeric table-data-truncate" style="width: 20%">adad hudagdiu uai gufi fu fu gfiug gf gfg yfgyga</td>#}
+        {#<td class="mdl-data-table__cell--non-numeric table-data-truncate" style="width: 40%">gaidhaisgisdgfigiufgsdigfigsfigsifgdsgfisgdiufgsgiadjoshhsdufsduhfusgdufgdsuigfuisgfdgsifgdsigfiusgigfiagfigaiyf</td>#}
+        {#<td class="mdl-data-table__cell--non-numeric" style="width: 10%">dafaf</td>#}
+        {#<td class="mdl-data-table__cell--non-numeric" style="width: 10%">fafaf</td>#}
+        {#<td class="mdl-data-table__cell--non-numeric" style="width: 10%">fafafa</td>#}
+        {#<td style="width: 10%">#}
+        {#<button data-id='' class='btnEdit' name='btnEdit'>#}
+        {#<a href="" class="text-remove-deco"> ✎ </a>#}
+        {#</button>#}
+        {#</td>#}
+        {#</tr>#}
+
+        </tbody>
+    </table>
+    <div class="navigation">
+        {{ knp_pagination_render(invoices) }}
+    </div>
+
+
+{% endblock %}
+

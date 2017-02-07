@@ -305,6 +305,7 @@ class Item
     }
 
 
+
     /**
      * Add debtSale
      *
@@ -337,4 +338,5 @@ class Item
     {
         return $this->debtSale;
     }
+
 }
