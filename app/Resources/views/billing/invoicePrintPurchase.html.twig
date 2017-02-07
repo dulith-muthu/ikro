@@ -39,8 +39,6 @@
 
 
 
-
-
     {% for flash_message in app.session.flashBag.get('error') %}
         <div class="alert alert-danger" style="text-align: center">
             {{ flash_message }}
@@ -76,6 +74,7 @@
 
         </tbody>
     </table>
+
     <div id="div-printable">
 
         <div class="stripe bill-title">
@@ -224,4 +223,5 @@
     {{ parent() }}
     <script type="text/JavaScript" src="{{ asset('bower/jQuery.print/jQuery.print.js') }}"></script>
     <script type="text/JavaScript" src="{{ asset('js/app.purchase.js') }}"></script>
+
 {% endblock %}
