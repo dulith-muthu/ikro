@@ -1,0 +1,16 @@
+.div-printable {
+  hr {
+    margin: 0px;
+  }
+  .stripe.bill-entry-head {
+    background-color: #eee;
+    font-weight: 700;
+  }
+  .stripe.bill-footer {
+    .total-text{
+      font-size: 18px;
+      font-weight: 700;
+      line-height:30px;
+    }
+  }
+}
