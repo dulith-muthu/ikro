@@ -4,7 +4,6 @@
   position: relative;
   vertical-align: top;
   padding: 10px;
-
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 14px;
   font-weight: 500;
@@ -19,7 +18,6 @@
   text-shadow: none; }
   .flat-button.red {
     background: rgba(158, 158, 158, 0.2); }
-
 
 .flat-button:active {
   top: 1px;
@@ -58,8 +56,6 @@
       color: white; }
 
 
-
-
 #btnRemoveAll {
   height: 32px;
   border-radius: 16px;
@@ -72,6 +68,8 @@
     background-color: #e74c3c;
     color: white; }
 
+.text-remove-deco {
+  text-decoration: none; }
 
 .text-remove-deco {
   text-decoration: none; }

@@ -4,16 +4,20 @@
   position: relative;
   vertical-align: top;
   padding: 10px;
-  font-size: 16px;
-  color: white;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  color: #000;
   text-align: center;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-  background: #ff9800;
+  background: #ffab40;
   border: 0;
   cursor: pointer;
-  border-radius: 2px; }
+  border-radius: 2px;
+  text-shadow: none; }
   .flat-button.red {
-    background: #e74c3c; }
+    background: rgba(158, 158, 158, 0.2); }
 
 .flat-button:active {
   top: 1px;
@@ -68,16 +72,45 @@
 .expense-search {
   border: 1px solid rgba(0, 0, 0, 0.12);
   padding: 20px;
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+  background-color: #fcfcfc; }
   .expense-search th {
-    font-weight: 500; }
+    font-weight: 400;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    padding-right: 1%; }
+
+.expense-data-table {
+  width: 100%;
+  table-layout: fixed; }
+
+.search-input-table {
+  width: 100%; }
 
 .search-input {
   border: 1px solid darkgrey;
   font-size: 15px;
   padding-top: 8px;
   padding-bottom: 8px;
-  margin-top: 3px;
-  margin-right: 5px; }
+  margin-top: 3px; }
+
+.table-data-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+#expense-type {
+  width: 20%; }
+
+#expense-time {
+  width: 20%; }
+
+#expense-description {
+  width: 30%; }
+
+#expense-amount {
+  width: 20%; }
+
+#expense-edit-btn {
+  width: 10%; }
 
 /*# sourceMappingURL=app.expense.list.css.map */
