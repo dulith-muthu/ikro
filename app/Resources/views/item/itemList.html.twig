@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--6-col">
+            <h3>Items</h3>
+            {% for flash_message in app.session.flashBag.get('error') %}
+                <div class="alert alert-danger" style="text-align: center">
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+            {% for flash_message in app.session.flashBag.get('success') %}
+                <div class="alert alert-success" style="text-align: center">
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+
+            <form onsubmit="removeEmptyFields()">
+                <input name="itemCode" id="inputItemCode" value="{{ selectedItemCode }}">
+                <input name="itemName" id="inputItemName" value="{{ selectedItemName }}">
+
+                <select name="itemType" id="selectItemType">
+                    <option value="">All</option>
+                    {% for type in itemTypes %}
+                        <option value="{{ type.metacode }}" {% if type.metacode == selectedItemType %}selected{% endif %}>{{ type.name }}</option>
+
+                    {% endfor %}
+                </select>
+
+                <input name="itemCountLessThan" id="inputItemCount" value="{{ selectedItemCount }}">
+                <button type="submit">Search</button>
+
+            </form>
+
+            <table>
+                <thead>
+                <th>Item Code</th>
+                <th>Item Name</th>
+                <th>Item Type</th>
+                <th>Description</th>
+                <th>Available Stock</th>
+                <td>Manufacturer</td>
+                </thead>
+                {% for item in items %}
+                    <tr>
+                        <td>{{ item.itemCode }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.type.name }}</td>
+                        <td>{{ item.description }}</td>
+                        <td>{{ item.availableStock }}</td>
+                        <td>{{ item.manufacturer }}</td>
+                    </tr>
+
+                {% endfor %}
+            </table>
+
+            <div class="navigation">
+                {{ knp_pagination_render(items) }}
+            </div>
+
+            <script>
+                function removeEmptyFields(){
+                    if($("#inputItemCode").val()=="") {
+                        $("#inputItemCode").remove();
+                    }
+                    if($("#inputItemName").val()=="") {
+                        $("#inputItemName").remove();
+                    }
+                    if($("#selectItemType").val()=="") {
+                        $("#selectItemType").remove();
+                    }
+                    if($("#inputItemCount").val()=="") {
+                        $("#inputItemCount").remove();
+                    }
+
+                }
+            </script>
+
+        </div>
+    </div>
+{% endblock %}
