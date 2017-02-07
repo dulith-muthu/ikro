@@ -1,0 +1,84 @@
+/* #Belize Hole Sea Flat Button
+==================================================*/
+.flat-button {
+  position: relative;
+  vertical-align: top;
+  padding: 10px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  color: #000;
+  text-align: center;
+  background: #ffab40;
+  border: 0;
+  cursor: pointer;
+  border-radius: 2px;
+  text-shadow: none; }
+  .flat-button.red {
+    background: rgba(158, 158, 158, 0.2); }
+
+.flat-button:active {
+  top: 1px;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none; }
+
+.btnRemove {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 100%;
+  border: 1px solid #e74c3c;
+  background-color: white;
+  color: #e74c3c;
+  font-size: 15px;
+  transition: background 0.2s; }
+  .btnRemove:hover {
+    background-color: #e74c3c;
+    color: white; }
+
+.btnEdit {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 100%;
+  border: 1px solid #ff9800;
+  background-color: white;
+  color: #ff9800;
+  font-size: 15px;
+  transition: background 0.2s; }
+  .btnEdit:hover {
+    background-color: #ff9800; }
+    .btnEdit:hover, .btnEdit:hover * {
+      color: white; }
+
+#btnRemoveAll {
+  height: 32px;
+  border-radius: 16px;
+  border: 1px solid #e74c3c;
+  background-color: white;
+  color: #e74c3c;
+  font-size: 15px;
+  transition: background 0.3s; }
+  #btnRemoveAll:hover {
+    background-color: #e74c3c;
+    color: white; }
+
+.text-remove-deco {
+  text-decoration: none; }
+
+.ui-datepicker-header {
+  color: white;
+  background: #ff9800; }
+
+.ui-datepicker {
+  background: white; }
+  .ui-datepicker * {
+    border-radius: 0; }
+
+.ui-widget-content .ui-state-default {
+  background-image: none; }
+
+/*# sourceMappingURL=datepicker.tweak.css.map */
