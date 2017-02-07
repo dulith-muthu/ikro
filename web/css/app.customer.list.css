@@ -85,6 +85,8 @@
 
 .list-search-table {
   width: 100%; }
+  .list-search-table input {
+    padding-left: 5px; }
 
 .list-search-input {
   border: 1px solid darkgrey;

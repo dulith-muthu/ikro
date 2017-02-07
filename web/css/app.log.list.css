@@ -109,25 +109,22 @@
   overflow: hidden;
   text-overflow: ellipsis; }
 
-.item-code {
-  width: 10%; }
-
-.item-name {
+.log-action {
   width: 15%; }
 
-.item-type {
+.log-type {
   width: 15%; }
 
-.item-description {
-  width: 23%; }
+.log-description {
+  width: 27%; }
 
-.item-available-stock {
+.log-date-time {
+  width: 20%; }
+
+.log-user {
   width: 15%; }
 
-.item-manufacturer {
-  width: 15%; }
+.log-btn-details {
+  width: 8%; }
 
-.item-edit-btn {
-  width: 7%; }
-
-/*# sourceMappingURL=app.item.list.css.map */
+/*# sourceMappingURL=app.log.list.css.map */
