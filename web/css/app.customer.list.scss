@@ -4,19 +4,49 @@
   border: 1px solid rgba(0,0,0,.12);
   padding: 20px;
   margin-bottom: 15px;
+  background-color: $ikro-pale-white;
   th {
-    font-weight: 500;
+    font-weight: 400;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    padding-right: 1%;
   }
 }
 
-
+.customer-data-table {
+  width: 100%;
+  table-layout: fixed;
+}
 .search-input{
   border: 1px solid darkgrey;
   font-size: 15px;
   padding-top: 8px;
   padding-bottom: 8px;
   margin-top: 3px;
-  margin-right: 5px;
-  width: 60px;
+  width: 95%;
 }
 
+.table-data-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#customer-name {
+  width: 20%;
+}
+#customer-address {
+  width: 40%;
+}
+#customer-nic {
+  width: 10%;
+}
+#customer-mobile {
+  width: 10%;
+}
+#customer-fixed {
+  width: 10%;
+}
+
+#customer-edit-btn {
+  width: 10%;
+}

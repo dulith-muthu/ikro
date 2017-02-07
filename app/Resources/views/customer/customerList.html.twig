@@ -16,103 +16,118 @@
 
 
 {% block body %}
-    <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--12-col">
-            <h3>Customer List</h3>
-            {% for flash_message in app.session.flashBag.get('error') %}
-                <div class="alert alert-danger" style="text-align: center">
-                    {{ flash_message }}
-                </div>
-            {% endfor %}
-            {% for flash_message in app.session.flashBag.get('success') %}
-                <div class="alert alert-success" style="text-align: center">
-                    {{ flash_message }}
-                </div>
-            {% endfor %}
 
-            <form>
+    <h3>Customer List</h3>
+    {% for flash_message in app.session.flashBag.get('error') %}
+        <div class="alert alert-danger" style="text-align: center">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+    {% for flash_message in app.session.flashBag.get('success') %}
+        <div class="alert alert-success" style="text-align: center">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
 
-                <div class="customer-search mdl-shadow--2dp">
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Address</th>
-                            <th>NIC</th>
-                            <th>Mobile</th>
-                            <th>Fixed</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <td><input name="name" value="{{ name }}" class="search-input"></td>
-                        <td><input name="address" value="{{ address }}" class="search-input"></td>
-                        <td><input name="nic" value="{{ nic }}" class="search-input"></td>
-                        <td><input name="mobile" value="{{ mobile }}" class="search-input"></td>
-                        <td><input name="fixed" value="{{ fixed }}" class="search-input"></td>
-                        <td>
-                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent main-buttons"
-                                    id="btnCashPayment" type="submit"><i class="material-icons">search</i>
-                            </button>
-                        </td>
-                        </tbody>
-                    </table>
-                </div>
+    <form>
 
-            </form>
-            {#<table>#}
-            {#<thead>#}
-            {#<th>Name</th>#}
-            {#<th>Address</th>#}
-            {#<th>NIC</th>#}
-            {#<th>Mobile</th>#}
-            {#<th>Fixed</th>#}
-            {#<td>Edit</td>#}
-            {#</thead>#}
-            {#{% for customer in customers %}#}
-            {#<tr>#}
-            {#<td>{{ customer.name }}</td>#}
-            {#<td>{{ customer.address }}</td>#}
-            {#<td>{{ customer.nic }}</td>#}
-            {#<td>{{ customer.mobile }}</td>#}
-            {#<td>{{ customer.fixed }}</td>#}
-            {#<td><a href="{{ url('customerEdit',{id:customer.id}) }}">Edit</a></td>#}
-            {#</tr>#}
-
-            {#{% endfor %}#}
-            {#</table>#}
-            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+        <div class="customer-search mdl-shadow--2dp">
+            <table>
                 <thead>
                 <tr>
-                    <th class="mdl-data-table__cell--non-numeric">Name</th>
-                    <th class="mdl-data-table__cell--non-numeric">Address</th>
-                    <th class="mdl-data-table__cell--non-numeric">NIC</th>
-                    <th class="mdl-data-table__cell--non-numeric">Mobile</th>
-                    <th class="mdl-data-table__cell--non-numeric">Fixed</th>
-                    <th>#</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>NIC</th>
+                    <th>Mobile</th>
+                    <th>Fixed</th>
                 </tr>
                 </thead>
                 <tbody>
-                {% for customer in customers %}
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">{{ customer.name }}</td>
-                        <td class="mdl-data-table__cell--non-numeric">{{ customer.address }}</td>
-                        <td class="mdl-data-table__cell--non-numeric">{{ customer.nic }}</td>
-                        <td class="mdl-data-table__cell--non-numeric">{{ customer.mobile }}</td>
-                        <td class="mdl-data-table__cell--non-numeric">{{ customer.fixed }}</td>
-                        <td>
-                            <button data-id='' class='btnEdit' name='btnEdit'>
-                                <a href="{{ url('customerEdit',{id:customer.id}) }}" class="text-remove-deco"> ✎ </a>
-                            </button>
-                        </td>
-                    </tr>
-
-                {% endfor %}
+                <td><input name="name" value="{{ name }}" class="search-input"></td>
+                <td><input name="address" value="{{ address }}" class="search-input"></td>
+                <td><input name="nic" value="{{ nic }}" class="search-input"></td>
+                <td><input name="mobile" value="{{ mobile }}" class="search-input"></td>
+                <td><input name="fixed" value="{{ fixed }}" class="search-input"></td>
+                <td>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent main-buttons"
+                            id="btnCashPayment" type="submit"><i class="material-icons">search</i>
+                    </button>
+                </td>
                 </tbody>
             </table>
-            <div class="navigation">
-                {{ knp_pagination_render(customers) }}
-            </div>
         </div>
+
+    </form>
+    {#<table>#}
+    {#<thead>#}
+    {#<th>Name</th>#}
+    {#<th>Address</th>#}
+    {#<th>NIC</th>#}
+    {#<th>Mobile</th>#}
+    {#<th>Fixed</th>#}
+    {#<td>Edit</td>#}
+    {#</thead>#}
+    {#{% for customer in customers %}#}
+    {#<tr>#}
+    {#<td>{{ customer.name }}</td>#}
+    {#<td>{{ customer.address }}</td>#}
+    {#<td>{{ customer.nic }}</td>#}
+    {#<td>{{ customer.mobile }}</td>#}
+    {#<td>{{ customer.fixed }}</td>#}
+    {#<td><a href="{{ url('customerEdit',{id:customer.id}) }}">Edit</a></td>#}
+    {#</tr>#}
+
+    {#{% endfor %}#}
+    {#</table>#}
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp customer-data-table">
+        <thead>
+        <tr>
+            <th class="mdl-data-table__cell--non-numeric" id="customer-name">Name</th>
+            <th class="mdl-data-table__cell--non-numeric" id="customer-address">Address</th>
+            <th class="mdl-data-table__cell--non-numeric" id="customer-nic">NIC</th>
+            <th class="mdl-data-table__cell--non-numeric" id="customer-mobile">Mobile</th>
+            <th class="mdl-data-table__cell--non-numeric" id="customer-fixed">Fixed</th>
+            <th id="customer-edit-btn">#</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for customer in customers %}
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric table-data-truncate" id="customer-name">{{ customer.name }}</td>
+                <td class="mdl-data-table__cell--non-numeric table-data-truncate" id="customer-address">{{ customer.address }}</td>
+                <td class="mdl-data-table__cell--non-numeric" id="customer-nic">{{ customer.nic }}</td>
+                <td class="mdl-data-table__cell--non-numeric" id="customer-mobile">{{ customer.mobile }}</td>
+                <td class="mdl-data-table__cell--non-numeric" id="customer-fixed">{{ customer.fixed }}</td>
+                <td id="customer-edit-btn">
+                    <button data-id='' class='btnEdit' name='btnEdit'>
+                        <a href="{{ url('customerEdit',{id:customer.id}) }}" class="text-remove-deco"> ✎ </a>
+                    </button>
+                </td>
+            </tr>
+
+        {% endfor %}
+
+        {# ---------------Test code for Truncate---------------- #}
+
+        {#<tr>#}
+            {#<td class="mdl-data-table__cell--non-numeric table-data-truncate" style="width: 20%">adad hudagdiu uai gufi fu fu gfiug gf gfg yfgyga</td>#}
+            {#<td class="mdl-data-table__cell--non-numeric table-data-truncate" style="width: 40%">gaidhaisgisdgfigiufgsdigfigsfigsifgdsgfisgdiufgsgiadjoshhsdufsduhfusgdufgdsuigfuisgfdgsifgdsigfiusgigfiagfigaiyf</td>#}
+            {#<td class="mdl-data-table__cell--non-numeric" style="width: 10%">dafaf</td>#}
+            {#<td class="mdl-data-table__cell--non-numeric" style="width: 10%">fafaf</td>#}
+            {#<td class="mdl-data-table__cell--non-numeric" style="width: 10%">fafafa</td>#}
+            {#<td style="width: 10%">#}
+                {#<button data-id='' class='btnEdit' name='btnEdit'>#}
+                    {#<a href="" class="text-remove-deco"> ✎ </a>#}
+                {#</button>#}
+            {#</td>#}
+        {#</tr>#}
+
+        </tbody>
+    </table>
+    <div class="navigation">
+        {{ knp_pagination_render(customers) }}
     </div>
+
+
 {% endblock %}
 
