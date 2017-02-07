@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h3>{{ user.username }}</h3>
+    <table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp">
+        <tr>
+            <th class="mdl-data-table__cell--non-numeric">Name: </th>
+            <td class="mdl-data-table__cell--non-numeric">{{ user.username }}</td>
+        </tr>
+        <tr>
+            <th class="mdl-data-table__cell--non-numeric">Password: </th>
+            <td class="mdl-data-table__cell--non-numeric">{{ user.password }}</td>
+        </tr>
+        <tr>
+            <th class="mdl-data-table__cell--non-numeric">Email: </th>
+            <td class="mdl-data-table__cell--non-numeric">{{ user.email }}</td>
+        </tr>
+        <tr>
+            <th class="mdl-data-table__cell--non-numeric">Created Date: </th>
+            <td class="mdl-data-table__cell--non-numeric">{{ user.createdAt | date('F j,Y,g:i a') }}</td>
+        </tr>
+        <tr>
+            <th class="mdl-data-table__cell--non-numeric">Last Updated Date: </th>
+            <td class="mdl-data-table__cell--non-numeric">{{ user.updatedAt | date('F j,Y,g:i a') }}</td>
+        </tr>
+        <tr>
+            <th class="mdl-data-table__cell--non-numeric">Is Active: </th>
+            <td class="mdl-data-table__cell--non-numeric">{% if user.isactive %} Yes {% else %} No {% endif %}</td>
+        </tr>
+    </table>
+    <hr>
+    <div style="width: 120px">
+    <a href="account/update" class="mdl-button mdl-js-button mdl-button--raised">Edit Profile</a>
+    </div>
+{% endblock %}

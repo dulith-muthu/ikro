@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h3>Users</h3>
+    <table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp">
+        <thead>
+        <tr>
+            <th class="mdl-data-table__cell--non-numeric">Name</th>
+            <th class="mdl-data-table__cell--non-numeric">Created Date</th>
+            <th class="mdl-data-table__cell--non-numeric">Email</th>
+            <th class="mdl-data-table__cell--non-numeric">Role</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric">{{ user.username }}</td>
+                <td class="mdl-data-table__cell--non-numeric">{{ user.createdAt | date('F j,Y,g:i a') }}</td>
+                <td class="mdl-data-table__cell--non-numeric">{{ user.email }}</td>
+                <td class="mdl-data-table__cell--non-numeric">{{ user.role.name }}
+                    <select name="menu" onChange="window.document.location.href=this.options[this.selectedIndex].value;" value="GO">
+                        <option selected="selected">-Change Role-</option>
+                        {% for role in roles %}
+                        <option value="http://localhost/ikro/web/app_dev.php/admin/users/list/{{ user.id }}/{{ role.id }}">{{ role.name }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td class="mdl-data-table__cell--non-numeric">
+                    <a href="list/{{ user.id }}" class="mdl-button mdl-js-button">{% if user.isactive ==0 %}
+                            Activate
+                        {% else %}
+                            Inactive
+                        {% endif %}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="navigation">
+        {{ knp_pagination_render(users) }}
+    </div>
+
+
+{% endblock %}
