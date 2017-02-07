@@ -107,39 +107,39 @@ class BillingController extends BaseController
     }
 
     private function generateInvoice($data){
-        $data = $this->objectDeserialize($data);
-        $invoice = [];
-
-        $customer = $data->customer;
-        foreach ($data->data as $row){
-            $tempObj = new \stdClass();
-            $tempObj->itemCode = $row->itemCode;
-            $tempObj->itemName = $row->itemName;
-            $tempObj->quantity = $row->qty;
-            $tempObj->price = $row->price;
-            $discountType = $row->discType;
-            $discount = $row->disc;
-
-            if($discountType == 1){
-                $tempObj->soldPrice = ((double)$row->price - (double)($row->price * $discount)/100);
-                $tempObj->discount = $discount." %";
-            }
-            else{
-                $tempObj->soldPrice = ($row->price - $discount);
-                $tempObj->discount = $discount;
-            }
-
-            $tempObj->totalPrice = $tempObj->soldPrice * $tempObj->quantity;
-            $invoice [] = $tempObj;
-
-        }
-
+//        $data = $this->objectDeserialize($data);
+//        $invoice = [];
+//
+//        $customer = $data->customer;
+//        foreach ($data->data as $row){
+//            $tempObj = new \stdClass();
+//            $tempObj->itemCode = $row->itemCode;
+//            $tempObj->itemName = $row->itemName;
+//            $tempObj->quantity = $row->qty;
+//            $tempObj->price = $row->price;
+//            $discountType = $row->discType;
+//            $discount = $row->disc;
+//
+//            if($discountType == 1){
+//                $tempObj->soldPrice = ((double)$row->price - (double)($row->price * $discount)/100);
+//                $tempObj->discount = $discount." %";
+//            }
+//            else{
+//                $tempObj->soldPrice = ($row->price - $discount);
+//                $tempObj->discount = $discount;
+//            }
+//
+//            $tempObj->totalPrice = $tempObj->soldPrice * $tempObj->quantity;
+//            $invoice [] = $tempObj;
+//
+//        }
+        $customer = new \stdClass();
         $customer->name = "shan";
         $customer->nic = "943321205v";
         $customer->mobile="0712418805";
         $customer->home = "0413415456";
         $customer->address ="141/2";
-
+        $invoice[0] = new \stdClass();
         $invoice[0]->itemCode ="101";
         $invoice[0]->itemName ="Chair";
         $invoice[0]->quantity =5;
