@@ -2,6 +2,18 @@
 
 {% block body %}
     <h3>Inactive Users</h3>
+
+    {% for flash_message in app.session.flashBag.get('error') %}
+        <div class="alert alert-danger" style="text-align: center">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+    {% for flash_message in app.session.flashBag.get('success') %}
+        <div class="alert alert-success" style="text-align: center">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+
     <table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp">
         <thead>
         <tr>
@@ -19,7 +31,7 @@
                 <td class="mdl-data-table__cell--non-numeric">{{ inactiveUser.email }}</td>
                 <td class="mdl-data-table__cell--non-numeric">{{ inactiveUser.role.name }}</td>
                 <td class="mdl-data-table__cell--non-numeric">
-                    <a href="approve/{{ inactiveUser.id }}" class="mdl-button mdl-js-button">Activate</a>
+                    <a href="{{ url('userActive',{id:inactiveUser.id}) }}" class="mdl-button mdl-js-button">Activate</a>
                 </td>
             </tr>
         {% endfor %}

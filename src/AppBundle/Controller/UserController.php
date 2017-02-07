@@ -86,7 +86,7 @@ class UserController extends BaseController
         $InactiveUser = $this->getRepository('Users')->find($id);
         $InactiveUser->setIsactive(1);
         $this->insert($InactiveUser);
-        $this->addFlash('success', 'User Activated');
+        $this->addFlash('success', 'User Activated Successfully');
 
         return $this->redirectToRoute('userApprove');
     }
@@ -105,7 +105,7 @@ class UserController extends BaseController
 
 
         $this->insert($user);
-        $this->addFlash('success', 'User Updated');
+        $this->addFlash('success', 'UserList Updated Successfully');
 
         return $this->redirectToRoute('userList');
     }
@@ -119,7 +119,7 @@ class UserController extends BaseController
         $role = $this->getRepository('Roles')->find($role);
         $user->setRole($role);
         $this->insert($user);
-        $this->addFlash('success', 'User Updated');
+        $this->addFlash('success', 'UserList Updated Successfully');
 
         return $this->redirectToRoute('userList');
     }
@@ -194,7 +194,7 @@ class UserController extends BaseController
             $user->setUpdatedAt($now);
 
             $this->insert($user);
-
+            $this->addFlash('success', 'Profile Updated Successfully');
             return $this->redirectToRoute('userAccount');
 
         }

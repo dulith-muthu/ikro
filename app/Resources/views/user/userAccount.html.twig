@@ -2,14 +2,22 @@
 
 {% block body %}
     <h3>{{ user.username }}</h3>
+
+    {% for flash_message in app.session.flashBag.get('error') %}
+        <div class="alert alert-danger" style="text-align: center">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+    {% for flash_message in app.session.flashBag.get('success') %}
+        <div class="alert alert-success" style="text-align: center">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+
     <table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp">
         <tr>
             <th class="mdl-data-table__cell--non-numeric">Name: </th>
             <td class="mdl-data-table__cell--non-numeric">{{ user.username }}</td>
-        </tr>
-        <tr>
-            <th class="mdl-data-table__cell--non-numeric">Password: </th>
-            <td class="mdl-data-table__cell--non-numeric">{{ user.password }}</td>
         </tr>
         <tr>
             <th class="mdl-data-table__cell--non-numeric">Email: </th>
@@ -30,6 +38,6 @@
     </table>
     <hr>
     <div style="width: 120px">
-    <a href="account/update" class="mdl-button mdl-js-button mdl-button--raised">Edit Profile</a>
+    <a href="{{ url('updateAccount',{id:user.id}) }}" class="mdl-button mdl-js-button mdl-button--raised">Edit Profile</a>
     </div>
 {% endblock %}
