@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--6-col">
+            <h3>Debts</h3>
+            {% for flash_message in app.session.flashBag.get('error') %}
+                <div class="alert alert-danger" style="text-align: center">
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+            {% for flash_message in app.session.flashBag.get('success') %}
+                <div class="alert alert-success" style="text-align: center">
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+
+            <form>
+
+                <select name="logType" id="selectLogType">
+                    <option value="">All</option>
+                    {% for type in logTypes %}
+                        <option value="{{ type.metacode }}" {% if type.metacode == selectedLogType %}selected{% endif %}>{{ type.name }}</option>
+
+                    {% endfor %}
+                </select>
+
+
+                <select name="logAction" id="selectLogAction">
+                    <option value="">All</option>
+                    {% for action in logActions %}
+                        <option value="{{ action.metacode }}" {% if action.metacode == selectedLogAction %}selected{% endif %}>{{ action.name }}</option>
+                    {% endfor %}
+                </select>
+
+
+                <select name="user" id="selectUser">
+                    <option value="">All</option>
+                    {% for iUser in userList %}
+                        <option value="{{ iUser.id }}" {% if iUser.id == selectedUser %}selected{% endif %}>{{ iUser.username }}</option>
+                    {% endfor %}
+                </select>
+
+
+                <input name="startDate" id="selectStartDate" type="datetime" value="{{ selectedStartDate }}">
+                <input name="endDate" id="selectEndDate" type="datetime" value="{{ selectedEndDate }}">
+                <button type="submit">Search</button>
+
+            </form>
+
+            <table>
+                <thead>
+                <th>Action</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Date - Time</th>
+                <th>Logged ID</th>
+                <td>User</td>
+                </thead>
+                {% for log in logs %}
+                    <tr>
+                        <td>{{ log.action.name }}</td>
+                        <td>{{ log.type.name }}</td>
+                        <td>{{ log.description }}</td>
+                        <td>{{ log.dateTime|date('F j, Y, g:i a') }}</td>
+                        <td><a href="{{ url(log.type.url,{id:log.loggedId}) }}" class="text-remove-deco"> ✎ </a></td>
+                        <td>{{ log.user_id.username }}</td>
+                    </tr>
+
+                {% endfor %}
+            </table>
+
+            <div class="navigation">
+                {{ knp_pagination_render(logs) }}
+            </div>
+
+
+
+        </div>
+    </div>
+{% endblock %}
