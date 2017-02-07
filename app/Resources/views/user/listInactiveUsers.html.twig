@@ -8,6 +8,7 @@
             <th class="mdl-data-table__cell--non-numeric">Name</th>
             <th class="mdl-data-table__cell--non-numeric">Created Date</th>
             <th class="mdl-data-table__cell--non-numeric">Email</th>
+            <th class="mdl-data-table__cell--non-numeric">Role</th>
         </tr>
         </thead>
         <tbody>
@@ -16,28 +17,18 @@
                 <td class="mdl-data-table__cell--non-numeric">{{ inactiveUser.username }}</td>
                 <td class="mdl-data-table__cell--non-numeric">{{ inactiveUser.createdAt | date('F j,Y,g:i a') }}</td>
                 <td class="mdl-data-table__cell--non-numeric">{{ inactiveUser.email }}</td>
+                <td class="mdl-data-table__cell--non-numeric">{{ inactiveUser.role.name }}</td>
                 <td class="mdl-data-table__cell--non-numeric">
-                    <a href="approve/userActive/{{ inactiveUser.id }}" class="mdl-button mdl-js-button">Activate</a>
+                    <a href="approve/{{ inactiveUser.id }}" class="mdl-button mdl-js-button">Activate</a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+
     <div class="navigation">
-        <ul class="pagination">
-            <li class="disabled">
-                <span>«&nbsp;Previous</span>
-            </li>
-            <li class="active">
-                <span>1</span>
-            </li>
-            <li>
-                <a href="/ikro/web/app_dev.php/admin/users/list?page=2">2</a>
-            </li>
-            <li>
-                <a rel="next" href="/ikro/web/app_dev.php/admin/users/list?page=2">Next&nbsp;»</a>
-            </li>
-        </ul>
+        {{ knp_pagination_render(inactiveUsers) }}
     </div>
+
 
 {% endblock %}

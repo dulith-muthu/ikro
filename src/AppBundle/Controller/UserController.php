@@ -64,18 +64,25 @@ class UserController extends BaseController
     {
 
         $inactiveUsers = $this->getRepository('Users')->findBy(array('isactive' => '0'));
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $inactiveUsers, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
+
         return $this->render('user\listInactiveUsers.html.twig', array(
-            'inactiveUsers' => $inactiveUsers,
+            'inactiveUsers' => $pagination,
             'tab' => $this->inactiveUserList
         ));
     }
 
     /**
-     * @Route("admin/users/approve/userActive/{id}", name="userActive")
+     * @Route("admin/users/approve/{id}", name="userActive")
      */
     public function UserActive($id, Request $request)
     {
-        $this->getRepository('Users')->find($id);
         $InactiveUser = $this->getRepository('Users')->find($id);
         $InactiveUser->setIsactive(1);
         $this->insert($InactiveUser);
@@ -85,6 +92,40 @@ class UserController extends BaseController
     }
 
     /**
+     * @Route("admin/users/list/{id}", name="userUpdate")
+     */
+    public function UserUpdate($id, Request $request)
+    {
+        $user = $this->getRepository('Users')->find($id);
+        if ($user->getIsactive() == 0) {
+            $user->setIsactive(1);
+        } else {
+            $user->setIsactive(0);
+        }
+
+
+        $this->insert($user);
+        $this->addFlash('success', 'User Updated');
+
+        return $this->redirectToRoute('userList');
+    }
+
+    /**
+     * @Route("admin/users/list/{id}/{role}", name="userUpdateRole")
+     */
+    public function UserUpdateRole($id,$role, Request $request)
+    {
+        $user = $this->getRepository('Users')->find($id);
+        $role = $this->getRepository('Roles')->find($role);
+        $user->setRole($role);
+        $this->insert($user);
+        $this->addFlash('success', 'User Updated');
+
+        return $this->redirectToRoute('userList');
+    }
+
+
+    /**
      * @Route("admin/users/list" , name ="userList")
      */
 
@@ -92,8 +133,18 @@ class UserController extends BaseController
     {
 
         $users = $this->getRepository('Users')->findAll();
-        return $this->render('user\Users.html.twig', array(
-            'users' => $users,
+        $roles = $this->getRepository('Roles')->findAll();
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $users, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
+
+        return $this->render('user\users.html.twig', array(
+            'users' => $pagination,
+            'roles' => $roles,
             'tab' => $this->users
         ));
     }
@@ -104,7 +155,7 @@ class UserController extends BaseController
 
     public function userAccount(Request $request)
     {
-        $id= $this->get('security.context')->getToken()->getUser()->getId();
+        $id = $this->get('security.context')->getToken()->getUser()->getId();
 
         $user = $this->getRepository('Users')->find($id);
         return $this->render('user\userAccount.html.twig', array(
@@ -118,14 +169,14 @@ class UserController extends BaseController
      */
     public function EditAction(Request $request)
     {
-        $id= $this->get('security.context')->getToken()->getUser()->getId();
+        $id = $this->get('security.context')->getToken()->getUser()->getId();
         $user = $this->getRepository('Users')->find($id);
 
         $form = $this->createFormBuilder($user)
             ->add('username', TextType::class, array('attr' => array('class' => 'mdl-textfield__input', 'style' => 'margin:10px 0 30px 50px')))
             ->add('email', EmailType::class, array('attr' => array('class' => 'mdl-textfield__input', 'style' => 'margin:10px 0 30px 50px')))
             ->add('password', PasswordType::class, array('attr' => array('class' => 'mdl-textfield__input', 'style' => 'margin:10px 0 30px 50px')))
-            ->add('save', SubmitType::class, array('label'=>'Update','attr' => array('class' => 'mdl-button mdl-js-button mdl-button--raised', 'style' => 'margin-top:20px')))
+            ->add('save', SubmitType::class, array('label' => 'Update', 'attr' => array('class' => 'mdl-button mdl-js-button mdl-button--raised', 'style' => 'margin-top:20px')))
             ->getForm();
 
         $form->handleRequest($request);
@@ -143,11 +194,13 @@ class UserController extends BaseController
             $user->setUpdatedAt($now);
 
             $this->insert($user);
-            
-            return $this->redirect('../account');
+
+            return $this->redirectToRoute('userAccount');
 
         }
 
-        return $this->render('user/UpdateUserAccount.html.twig', array('tab' => $this->user, 'form' => $form->createView()));
+        return $this->render('user/UpdateUserAccount.html.twig', array(
+            'tab' => $this->user,
+            'form' => $form->createView()));
     }
 }

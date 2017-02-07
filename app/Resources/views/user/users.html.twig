@@ -8,6 +8,7 @@
             <th class="mdl-data-table__cell--non-numeric">Name</th>
             <th class="mdl-data-table__cell--non-numeric">Created Date</th>
             <th class="mdl-data-table__cell--non-numeric">Email</th>
+            <th class="mdl-data-table__cell--non-numeric">Role</th>
         </tr>
         </thead>
         <tbody>
@@ -16,25 +17,29 @@
                 <td class="mdl-data-table__cell--non-numeric">{{ user.username }}</td>
                 <td class="mdl-data-table__cell--non-numeric">{{ user.createdAt | date('F j,Y,g:i a') }}</td>
                 <td class="mdl-data-table__cell--non-numeric">{{ user.email }}</td>
+                <td class="mdl-data-table__cell--non-numeric">{{ user.role.name }}
+                    <select name="menu" onChange="window.document.location.href=this.options[this.selectedIndex].value;" value="GO">
+                        <option selected="selected">-Change Role-</option>
+                        {% for role in roles %}
+                        <option value="http://localhost/ikro/web/app_dev.php/admin/users/list/{{ user.id }}/{{ role.id }}">{{ role.name }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td class="mdl-data-table__cell--non-numeric">
+                    <a href="list/{{ user.id }}" class="mdl-button mdl-js-button">{% if user.isactive ==0 %}
+                            Activate
+                        {% else %}
+                            Inactive
+                        {% endif %}</a>
+                </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+
     <div class="navigation">
-        <ul class="pagination">
-            <li class="disabled">
-                <span>«&nbsp;Previous</span>
-            </li>
-            <li class="active">
-                <span>1</span>
-            </li>
-            <li>
-                <a href="/ikro/web/app_dev.php/admin/users/list?page=2">2</a>
-            </li>
-            <li>
-                <a rel="next" href="/ikro/web/app_dev.php/admin/users/list?page=2">Next&nbsp;»</a>
-            </li>
-        </ul>
+        {{ knp_pagination_render(users) }}
     </div>
+
 
 {% endblock %}

@@ -20,6 +20,10 @@
             <td class="mdl-data-table__cell--non-numeric">{{ user.createdAt | date('F j,Y,g:i a') }}</td>
         </tr>
         <tr>
+            <th class="mdl-data-table__cell--non-numeric">Last Updated Date: </th>
+            <td class="mdl-data-table__cell--non-numeric">{{ user.updatedAt | date('F j,Y,g:i a') }}</td>
+        </tr>
+        <tr>
             <th class="mdl-data-table__cell--non-numeric">Is Active: </th>
             <td class="mdl-data-table__cell--non-numeric">{% if user.isactive %} Yes {% else %} No {% endif %}</td>
         </tr>
