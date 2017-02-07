@@ -50,11 +50,22 @@ class Debt
     private $isClosed;
 
     /**
-     * @ORM\OneToMany(targetEntity="Installment", mappedBy="dept")
+     * @ORM\OneToMany(targetEntity="Installment", mappedBy="debt")
      */
 
     private $installment;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Customer", inversedBy="debt")
+     * @ORM\JoinColumn(name="customer", referencedColumnName="id")
+     */
+    private $customer;
+
+    /**
+     * @ORM\OneToMany(targetEntity="DebtSale", mappedBy="debt")
+     */
+
+    private $debtSale;
 
     /**
      * Get id
@@ -196,5 +207,30 @@ class Debt
     public function getInstallment()
     {
         return $this->installment;
+    }
+
+    
+
+    /**
+     * Set customer
+     *
+     * @param \AppBundle\Entity\Customer $customer
+     * @return Debt
+     */
+    public function setCustomer(\AppBundle\Entity\Customer $customer = null)
+    {
+        $this->customer = $customer;
+
+        return $this;
+    }
+
+    /**
+     * Get customer
+     *
+     * @return \AppBundle\Entity\Customer 
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
     }
 }

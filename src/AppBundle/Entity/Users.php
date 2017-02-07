@@ -77,6 +77,8 @@ class Users implements UserInterface, \Serializable
 
     private $log;
 
+    
+
     /**
      * Get id
      *
@@ -339,4 +341,6 @@ class Users implements UserInterface, \Serializable
     {
         return $this->log;
     }
+
+    
 }

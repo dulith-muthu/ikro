@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--6-col">
+            <h3>Debts</h3>
+            {% for flash_message in app.session.flashBag.get('error') %}
+                <div class="alert alert-danger" style="text-align: center">
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+            {% for flash_message in app.session.flashBag.get('success') %}
+                <div class="alert alert-success" style="text-align: center">
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+
+            <form>
+
+                <select name="isClosed">
+                    <option value="0">All</option>
+                    <option value="1">Pending</option>
+                    <option value="2">Closed</option>
+
+
+                </select>
+
+                <input name="customerId" value="{{  selectedCustomerId }}">
+
+
+
+                <input name="startDate" type="datetime" value="{{ selectedStartDate }}">
+                <input name="endDate" type="datetime" value="{{ selectedEndDate }}">
+                <button type="submit">Search</button>
+
+            </form>
+
+            <table>
+                <thead>
+                <th>Customer</th>
+                <th>Total</th>
+                <th>First Payment</th>
+                <th>Interest</th>
+                <th>Pending/Closed</th>
+                <th>Date/Time</th>
+                </thead>
+                {% for debt in debts %}
+                    <tr>
+                        <td>{{ debt.customer.name }}</td>
+                        <td>{{ debtTotal }}</td>
+                        <td>{{ debt.firstPayment }}</td>
+                        <td>{{ debt.interest }}</td>
+                        <td>{% if debt.isClosed %}Closed{% else %}Pending{% endif %}</td>
+                        <td>{{ debt.dateTime|date('F j, Y, g:i a') }}</td>
+                    </tr>
+
+                {% endfor %}
+            </table>
+
+            <div class="navigation">
+                {{ knp_pagination_render(debts) }}
+            </div>
+
+
+
+        </div>
+    </div>
+{% endblock %}

@@ -56,6 +56,11 @@ class Customer
      */
     private $fixed;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Debt", mappedBy="customer")
+     */
+
+    private $debt;
 
     /**
      * Get id
@@ -180,5 +185,45 @@ class Customer
     public function getFixed()
     {
         return $this->fixed;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->debt = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add debt
+     *
+     * @param \AppBundle\Entity\Debt $debt
+     * @return Customer
+     */
+    public function addDebt(\AppBundle\Entity\Debt $debt)
+    {
+        $this->debt[] = $debt;
+
+        return $this;
+    }
+
+    /**
+     * Remove debt
+     *
+     * @param \AppBundle\Entity\Debt $debt
+     */
+    public function removeDebt(\AppBundle\Entity\Debt $debt)
+    {
+        $this->debt->removeElement($debt);
+    }
+
+    /**
+     * Get debt
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDebt()
+    {
+        return $this->debt;
     }
 }

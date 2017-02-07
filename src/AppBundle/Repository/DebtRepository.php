@@ -12,4 +12,42 @@ use Doctrine\ORM\EntityRepository;
  */
 class DebtRepository extends EntityRepository
 {
+    public function search($isClosedReceived,$customer,$startDate,$endDate)
+    {
+        $qb = $this->createQueryBuilder('o');
+
+        $qb->select('o');
+
+        if($isClosedReceived == 1){
+            $qb->andWhere('o.isClosed = :isClosed')
+                ->setParameter('isClosed',0)
+            ;
+        }else if($isClosedReceived == 2){
+            $qb->andWhere('o.isClosed = :isClosed')
+                ->setParameter('isClosed',1)
+            ;
+        }
+
+        if($customer != null & $customer != ""){
+            $qb->andWhere('o.customer = :customer')
+                ->setParameter('customer',$customer)
+            ;
+        }
+
+        if($startDate != null & $startDate != ""){
+            $qb->andWhere('o.dateTime >= :startDate')
+                ->setParameter('startDate',$startDate)
+            ;
+        }
+
+        if($endDate != null & $endDate != ""){
+            $qb->andWhere('o.dateTime <= :endDate')
+                ->setParameter('endDate',$endDate)
+            ;
+        }
+        $qb->orderBy('o.dateTime','DESC')
+
+        ;
+        return $qb->getQuery()->getResult();
+    }
 }
