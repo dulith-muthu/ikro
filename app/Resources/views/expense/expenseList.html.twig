@@ -27,7 +27,7 @@
 
             <form>
                 <div class="expense-search mdl-shadow--2dp">
-                    <table>
+                    <table class="search-input-table">
                         <thead>
                         <tr>
                             <th>Description</th>
@@ -52,23 +52,23 @@
 
             </form>
 
-            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp expense-data-table">
                 <thead>
                 <tr>
-                    <th class="mdl-data-table__cell--non-numeric">Type</th>
-                    <th class="mdl-data-table__cell--non-numeric">Time</th>
-                    <th class="mdl-data-table__cell--non-numeric"><div class="truncate">Description</div></th>
-                    <th class="mdl-data-table__cell--non-numeric">Amount</th>
-                    <th>#</th>
+                    <th class="mdl-data-table__cell--non-numeric" id="expense-type">Type</th>
+                    <th class="mdl-data-table__cell--non-numeric" id="expense-time">Time</th>
+                    <th class="mdl-data-table__cell--non-numeric" id="expense-description">Description</th>
+                    <th class="mdl-data-table__cell--non-numeric" id="expense-amount">Amount</th>
+                    <th id="expense-edit-btn">#</th>
                 </tr>
                 </thead>
                 {% for expense in expenses %}
                     <tr>
-                        <td class="mdl-data-table__cell--non-numeric">{{ expense.type.name }}</td>
-                        <td class="mdl-data-table__cell--non-numeric">{{ expense.dateTime | date('Y-m-d H:i:s') }}</td>
-                        <td class="mdl-data-table__cell--non-numeric">{{ expense.description }}</td>
-                        <td class="mdl-data-table__cell--non-numeric">{{ expense.amount }}</td>
-                        <td>
+                        <td class="mdl-data-table__cell--non-numeric table-data-truncate" id="expense-type">{{ expense.type.name }}</td>
+                        <td class="mdl-data-table__cell--non-numeric" id="expense-time">{{ expense.dateTime | date('Y-m-d H:i:s') }}</td>
+                        <td class="mdl-data-table__cell--non-numeric table-data-truncate" id="expense-description">{{ expense.description }}</td>
+                        <td class="mdl-data-table__cell--non-numeric" id="expense-amount">{{ expense.amount }}</td>
+                        <td id="expense-edit-btn">
                             <button data-id='' class='btnEdit' name='btnEdit'>
                                 <a href="{{ url('expenseEdit',{id:expense.id}) }}" class="text-remove-deco"> ✎ </a>
                             </button>
@@ -76,17 +76,6 @@
                     </tr>
 
                 {% endfor %}
-                <tr>
-                    <td class="mdl-data-table__cell--non-numeric">fbh</td>
-                    <td class="mdl-data-table__cell--non-numeric">bdhsjgb</td>
-                    <td class="mdl-data-table__cell--non-numeric">sdsghfgsdhgfjgsjkgfkjsd</td>
-                    <td class="mdl-data-table__cell--non-numeric">ndjksgfkj</td>
-                    <td>
-                        <button data-id='' class='btnEdit' name='btnEdit'>
-                            <a href="" class="text-remove-deco"> ✎ </a>
-                        </button>
-                    </td>
-                </tr>
             </table>
 
             <div class="navigation">
