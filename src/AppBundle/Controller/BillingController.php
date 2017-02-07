@@ -60,7 +60,6 @@ class BillingController extends BaseController
     private function generateInvoice($data){
         $data = $this->objectDeserialize($data);
         $invoice = [];
-        var_dump($data);
 
         $customer = $data->customer;
         foreach ($data->data as $row){
