@@ -5,24 +5,30 @@
     <table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp">
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Created Date</th>
-            <th>Email</th>
+            <th class="mdl-data-table__cell--non-numeric">Name</th>
+            <th class="mdl-data-table__cell--non-numeric">Created Date</th>
+            <th class="mdl-data-table__cell--non-numeric">Email</th>
+            <th class="mdl-data-table__cell--non-numeric">Role</th>
         </tr>
         </thead>
         <tbody>
         {% for inactiveUser in inactiveUsers %}
             <tr>
-                <td>{{ inactiveUser.username }}</td>
-                <td>{{ inactiveUser.createdAt | date('F j,Y,g:i a') }}</td>
-                <td>{{ inactiveUser.email }}</td>
-                <td>
-                    <a href="approve/userActive/{{ inactiveUser.id }}" class="mdl-button mdl-js-button">Activate</a>
-
+                <td class="mdl-data-table__cell--non-numeric">{{ inactiveUser.username }}</td>
+                <td class="mdl-data-table__cell--non-numeric">{{ inactiveUser.createdAt | date('F j,Y,g:i a') }}</td>
+                <td class="mdl-data-table__cell--non-numeric">{{ inactiveUser.email }}</td>
+                <td class="mdl-data-table__cell--non-numeric">{{ inactiveUser.role.name }}</td>
+                <td class="mdl-data-table__cell--non-numeric">
+                    <a href="approve/{{ inactiveUser.id }}" class="mdl-button mdl-js-button">Activate</a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+
+    <div class="navigation">
+        {{ knp_pagination_render(inactiveUsers) }}
+    </div>
+
 
 {% endblock %}

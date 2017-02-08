@@ -57,7 +57,9 @@
 
                 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect ul-user-menu"
                     for="demo-menu-lower-right">
-                    <li class="mdl-menu__item">My Account</li>
+                    <a href="{{ url('userAccount') }}">
+                        <li class="mdl-menu__item">My Account</li>
+                    </a>
                     <a href="{{ url('logout') }}">
                         <li class="mdl-menu__item">Logout</li>
                     </a>
