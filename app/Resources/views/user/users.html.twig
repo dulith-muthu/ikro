@@ -2,6 +2,18 @@
 
 {% block body %}
     <h3>Users</h3>
+
+    {% for flash_message in app.session.flashBag.get('error') %}
+        <div class="alert alert-danger" style="text-align: center">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+    {% for flash_message in app.session.flashBag.get('success') %}
+        <div class="alert alert-success" style="text-align: center">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+
     <table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp">
         <thead>
         <tr>
@@ -21,12 +33,12 @@
                     <select name="menu" onChange="window.document.location.href=this.options[this.selectedIndex].value;" value="GO">
                         <option selected="selected">-Change Role-</option>
                         {% for role in roles %}
-                        <option value="http://localhost/ikro/web/app_dev.php/admin/users/list/{{ user.id }}/{{ role.id }}">{{ role.name }}</option>
+                        <option value="{{ url('userUpdateRole',{id:user.id,role:role.id}) }}">{{ role.name }}</option>
                         {% endfor %}
                     </select>
                 </td>
                 <td class="mdl-data-table__cell--non-numeric">
-                    <a href="list/{{ user.id }}" class="mdl-button mdl-js-button">{% if user.isactive ==0 %}
+                    <a href="{{ url('userUpdate',{id:user.id}) }}" class="mdl-button mdl-js-button">{% if user.isactive ==0 %}
                             Activate
                         {% else %}
                             Inactive
