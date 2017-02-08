@@ -20,6 +20,7 @@ class BaseController extends Controller
     public $purchaseBill = 'purchaseBill';
     public $item = 'item';
     public $report = 'report';
+    public $log = 'log';
 
 
 
