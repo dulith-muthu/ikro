@@ -60,7 +60,7 @@ class LogController extends BaseController
             'selectedStartDate'=>$startDateReceived,
             'selectedEndDate'=>$endDateReceived,
             'selectedUser'=>$userReceived,
-            'tab'=>'LOG'
+            'tab'=>$this->log
         ));
     }
 }
