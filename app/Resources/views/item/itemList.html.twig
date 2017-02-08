@@ -1,81 +1,91 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.item.list.css') }}">
+{% endblock %}
+
 {% block body %}
-    <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--6-col">
-            <h3>Items</h3>
-            {% for flash_message in app.session.flashBag.get('error') %}
-                <div class="alert alert-danger" style="text-align: center">
-                    {{ flash_message }}
-                </div>
-            {% endfor %}
-            {% for flash_message in app.session.flashBag.get('success') %}
-                <div class="alert alert-success" style="text-align: center">
-                    {{ flash_message }}
-                </div>
-            {% endfor %}
 
-            <form onsubmit="removeEmptyFields()">
-                <input name="itemCode" id="inputItemCode" value="{{ selectedItemCode }}">
-                <input name="itemName" id="inputItemName" value="{{ selectedItemName }}">
 
-                <select name="itemType" id="selectItemType">
+    <h3>Items</h3>
+    {% for flash_message in app.session.flashBag.get('error') %}
+        <div class="alert alert-danger" style="text-align: center">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+    {% for flash_message in app.session.flashBag.get('success') %}
+        <div class="alert alert-success" style="text-align: center">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+
+    <form>
+        <div class="list-search-div">
+            <table class="list-search-table">
+                <thead>
+                <tr>
+                    <th>Item Code</th>
+                    <th>Item Name</th>
+                    <th>Item Type</th>
+                    <th>Item Count</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <td><input class="list-search-input" name="itemCode" id="inputItemCode" value="{{ selectedItemCode }}"></td>
+                <td><input class="list-search-input" name="itemName" id="inputItemName" value="{{ selectedItemName }}"></td>
+
+                <td><select class="list-search-select" name="itemType" id="selectItemType">
                     <option value="">All</option>
                     {% for type in itemTypes %}
-                        <option value="{{ type.metacode }}" {% if type.metacode == selectedItemType %}selected{% endif %}>{{ type.name }}</option>
+                        <option value="{{ type.metacode }}"
+                                {% if type.metacode == selectedItemType %}selected{% endif %}>{{ type.name }}</option>
 
                     {% endfor %}
-                </select>
+                </select></td>
 
-                <input name="itemCountLessThan" id="inputItemCount" value="{{ selectedItemCount }}">
-                <button type="submit">Search</button>
-
-            </form>
-
-            <table>
-                <thead>
-                <th>Item Code</th>
-                <th>Item Name</th>
-                <th>Item Type</th>
-                <th>Description</th>
-                <th>Available Stock</th>
-                <td>Manufacturer</td>
-                </thead>
-                {% for item in items %}
-                    <tr>
-                        <td>{{ item.itemCode }}</td>
-                        <td>{{ item.name }}</td>
-                        <td>{{ item.type.name }}</td>
-                        <td>{{ item.description }}</td>
-                        <td>{{ item.availableStock }}</td>
-                        <td>{{ item.manufacturer }}</td>
-                    </tr>
-
-                {% endfor %}
+                <td><input class="list-search-input" name="itemCountLessThan" id="inputItemCount" value="{{ selectedItemCount }}"></td>
+                <td>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent main-buttons"
+                            type="submit"><i class="material-icons">search</i>
+                    </button>
+                </td>
+                </tbody>
             </table>
-
-            <div class="navigation">
-                {{ knp_pagination_render(items) }}
-            </div>
-
-            <script>
-                function removeEmptyFields(){
-                    if($("#inputItemCode").val()=="") {
-                        $("#inputItemCode").remove();
-                    }
-                    if($("#inputItemName").val()=="") {
-                        $("#inputItemName").remove();
-                    }
-                    if($("#selectItemType").val()=="") {
-                        $("#selectItemType").remove();
-                    }
-                    if($("#inputItemCount").val()=="") {
-                        $("#inputItemCount").remove();
-                    }
-
-                }
-            </script>
-
         </div>
+    </form>
+
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp list-data-table">
+        <thead>
+        <th class="mdl-data-table__cell--non-numeric item-code">Item Code</th>
+        <th class="mdl-data-table__cell--non-numeric item-name">Item Name</th>
+        <th class="mdl-data-table__cell--non-numeric item-type">Item Type</th>
+        <th class="mdl-data-table__cell--non-numeric item-description">Description</th>
+        <th class="mdl-data-table__cell--non-numeric item-manufacturer">Manufacturer</th>
+        <th class="item-available-stock">Available Stock</th>
+        <th class="item-edit-btn">#</th>
+        </thead>
+        {% for item in items %}
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric item-code">{{ item.itemCode }}</td>
+                <td class="mdl-data-table__cell--non-numeric item-name">{{ item.name }}</td>
+                <td class="mdl-data-table__cell--non-numeric item-type">{{ item.type.name }}</td>
+                <td class="mdl-data-table__cell--non-numeric table-data-truncate item-description">{{ item.description }}</td>
+                <td class="mdl-data-table__cell--non-numeric item-manufacturer">{{ item.manufacturer }}</td>
+                <td class="item-available-stock">{{ item.availableStock }}</td>
+                <td class="item-edit-btn">
+                    <button data-id='' class='btnEdit' name='btnEdit'>
+                        <a href="{{ url('itemEdit',{id:item.id}) }}" class="text-remove-deco"> ✎ </a>
+                    </button>
+                </td>
+            </tr>
+
+        {% endfor %}
+    </table>
+
+    <div class="navigation">
+        {{ knp_pagination_render(items) }}
     </div>
+
 {% endblock %}

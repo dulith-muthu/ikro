@@ -69,25 +69,38 @@
 .text-remove-deco {
   text-decoration: none; }
 
-.customer-search {
+.list-search-div {
   border: 1px solid rgba(0, 0, 0, 0.12);
   padding: 20px;
   margin-bottom: 15px;
   background-color: #fcfcfc; }
-  .customer-search th {
+  .list-search-div th {
     font-weight: 400;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     padding-right: 1%; }
 
-.customer-data-table {
+.list-data-table {
   width: 100%;
   table-layout: fixed; }
 
-.search-input {
+.list-search-table {
+  width: 100%; }
+  .list-search-table input {
+    padding-left: 5px; }
+
+.list-search-input {
   border: 1px solid darkgrey;
   font-size: 15px;
   padding-top: 8px;
   padding-bottom: 8px;
+  margin-top: 3px;
+  width: 95%; }
+
+.list-search-select {
+  border: 1px solid darkgrey;
+  font-size: 15px;
+  padding-top: 7px;
+  padding-bottom: 7px;
   margin-top: 3px;
   width: 95%; }
 
@@ -96,22 +109,22 @@
   overflow: hidden;
   text-overflow: ellipsis; }
 
-#customer-name {
+.customer-name {
   width: 20%; }
 
-#customer-address {
+.customer-address {
   width: 40%; }
 
-#customer-nic {
+.customer-nic {
   width: 10%; }
 
-#customer-mobile {
+.customer-mobile {
   width: 10%; }
 
-#customer-fixed {
+.customer-fixed {
   width: 10%; }
 
-#customer-edit-btn {
+.customer-edit-btn {
   width: 10%; }
 
 /*# sourceMappingURL=app.customer.list.css.map */

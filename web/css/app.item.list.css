@@ -109,19 +109,25 @@
   overflow: hidden;
   text-overflow: ellipsis; }
 
-.expense-type {
-  width: 20%; }
-
-.expense-time {
-  width: 20%; }
-
-.expense-description {
-  width: 30%; }
-
-.expense-amount {
-  width: 20%; }
-
-.expense-edit-btn {
+.item-code {
   width: 10%; }
 
-/*# sourceMappingURL=app.expense.list.css.map */
+.item-name {
+  width: 15%; }
+
+.item-type {
+  width: 15%; }
+
+.item-description {
+  width: 23%; }
+
+.item-available-stock {
+  width: 15%; }
+
+.item-manufacturer {
+  width: 15%; }
+
+.item-edit-btn {
+  width: 7%; }
+
+/*# sourceMappingURL=app.item.list.css.map */

@@ -109,19 +109,22 @@
   overflow: hidden;
   text-overflow: ellipsis; }
 
-.expense-type {
+.log-action {
+  width: 15%; }
+
+.log-type {
+  width: 15%; }
+
+.log-description {
+  width: 27%; }
+
+.log-date-time {
   width: 20%; }
 
-.expense-time {
-  width: 20%; }
+.log-user {
+  width: 15%; }
 
-.expense-description {
-  width: 30%; }
+.log-btn-details {
+  width: 8%; }
 
-.expense-amount {
-  width: 20%; }
-
-.expense-edit-btn {
-  width: 10%; }
-
-/*# sourceMappingURL=app.expense.list.css.map */
+/*# sourceMappingURL=app.log.list.css.map */
